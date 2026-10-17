@@ -6,6 +6,8 @@
 
 CHRIS pomáhá výzkumníkům sestavit tým pro konkrétní výzkumný projekt. Výzkumník popíše projekt vlastními slovy, systém se doptá na to, co chybí, a navrhne dvě varianty týmu (**INTELLIGENCE**, **GRANT**). U každé skupiny uvede proč, přínos, mezeru a první krok a každé tvrzení podloží dohledatelným zdrojem.
 
+**Live demo:** [Spustit live demo](https://bobcermak.github.io/CHRIS/)
+
 ## Ukázky
 
 <p align="center">
