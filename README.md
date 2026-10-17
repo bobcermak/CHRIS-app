@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="public/images/og.png" alt="CHRIS · Správný partner. Správný zdroj. Správný čas." width="100%">
+  <img src="public/images/images/og.png" alt="CHRIS · Správný partner. Správný zdroj. Správný čas." width="100%">
 </p>
 
 ---
@@ -9,7 +9,7 @@ CHRIS pomáhá výzkumníkům sestavit tým pro konkrétní výzkumný projekt. 
 ## Ukázky
 
 <p align="center">
-  <img src="docs/mockups/01-mockup.png" width="720" alt="CHRIS na notebooku a telefonu: úvodní obrazovka se zadáním projektu">
+  <img src="docs%20copy/mockups/01-mockup.png" width="720" alt="CHRIS na notebooku a telefonu: úvodní obrazovka se zadáním projektu">
   <br>
   <sub><b>Zadání</b> · výzkumník popíše projekt vlastními slovy, na desktopu i mobilu</sub>
 </p>
@@ -17,12 +17,12 @@ CHRIS pomáhá výzkumníkům sestavit tým pro konkrétní výzkumný projekt. 
 <table align="center">
   <tr>
     <td align="center" width="50%">
-      <img src="docs/mockups/02-upresneni.png" width="420" alt="Upřesnění: AI se doptá na to, co chybí">
+      <img src="docs%20copy/mockups/02-upresneni.png" width="420" alt="Upřesnění: AI se doptá na to, co chybí">
       <br>
       <sub><b>Upřesnění</b> · AI se doptá na to, co chybí</sub>
     </td>
     <td align="center" width="50%">
-      <img src="docs/mockups/03-tymy.png" width="420" alt="Týmy: navržený tým a nejlepší grant">
+      <img src="docs%20copy/mockups/03-tymy.png" width="420" alt="Týmy: navržený tým a nejlepší grant">
       <br>
       <sub><b>Týmy</b> · navržený tým, shoda skupin a nejlepší grant</sub>
     </td>
@@ -60,14 +60,17 @@ Poprvé před testy: `pnpm exec playwright install`.
 ## Struktura
 
 ```
-src/
-  app/          router, providers
-  routes/       tenké stránky: /, /projekt/$id/{upresneni,tymy,prihlaska}, právní stránky
-  components/   UI po oblastech: ui · layout · home · clarify · teams · application · thinking · legal · system
-  lib/          api (klient backendu) · data (demo + api zdroj) · queries · stream · utils · validation
-  stores/       Zustand
-  styles/       brand.css (tokeny)
-e2e/            Playwright testy
+docs copy/
+  cover-16x9.png
+  mockups/
+    01-mockup.png
+    02-upresneni.png
+    03-tymy.png
+public/
+  images/
+    images/
+      og.png
+      favicon.svg
 ```
 
 ## Před nasazením
@@ -86,5 +89,9 @@ e2e/            Playwright testy
 - Jen veřejná data, žádná data pacientů. Výstupy jsou koncepty, oficiální podání probíhá v ISVP/GRIS.
 - Žádné cookies ani analytika. Právní stránky: `/o-projektu`, `/ochrana-udaju` (GDPR), `/pristupnost` (WCAG 2.1 AA); upozornění na AI v patičce.
 - E2E testy hlídají, že prohlížeč volá jen vlastní origin a Google Fonts, že build nese CSP a že v kódu není `eval` ani vkládání HTML.
+
+## Licence
+
+Tento projekt je dostupný pod licencí [MIT](LICENSE).
 
 <sub>Není to zdravotnický prostředek ani klinicky ověřený nástroj.</sub>
