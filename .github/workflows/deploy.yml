@@ -31,6 +31,8 @@ jobs:
         env:
           VITE_API_URL: ${{ vars.VITE_API_URL }}
           VITE_PUBLIC_KEY: ${{ secrets.VITE_PUBLIC_KEY }}
+          VITE_BASE_PATH: /CHRIS-app/
+          VITE_DEMO: 'true'
       - uses: actions/upload-pages-artifact@v3
         with:
           path: CHRIS-main/dist
