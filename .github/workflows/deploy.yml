@@ -19,13 +19,15 @@ jobs:
         with:
           node-version: 20
       - run: npm ci
+        working-directory: CHRIS-main
       - run: npm run build
+        working-directory: CHRIS-main
         env:
           VITE_API_URL: ${{ vars.VITE_API_URL }}
           VITE_PUBLIC_KEY: ${{ secrets.VITE_PUBLIC_KEY }}
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist
+          path: ./CHRIS-main/dist
 
   deploy:
     needs: build
