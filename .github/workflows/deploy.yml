@@ -13,19 +13,27 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: CHRIS-main
     steps:
       - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-      - run: npm ci
-      - run: npm run build
+          cache: pnpm
+          cache-dependency-path: CHRIS-main/pnpm-lock.yaml
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
         env:
           VITE_API_URL: ${{ vars.VITE_API_URL }}
           VITE_PUBLIC_KEY: ${{ secrets.VITE_PUBLIC_KEY }}
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist
+          path: CHRIS-main/dist
 
   deploy:
     needs: build
