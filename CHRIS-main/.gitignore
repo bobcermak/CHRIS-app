@@ -1,0 +1,28 @@
+# Env — only .env.example is committed
+.env
+.env.*
+!.env.example
+*.local
+
+# Build & deps
+node_modules
+dist
+dist-ssr
+*.tsbuildinfo
+
+# Logs
+*.log
+
+# Editor
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+
+teamNN.md
+
+# Playwright
+test-results/
+playwright-report/
+blob-report/
+playwright/.cache/

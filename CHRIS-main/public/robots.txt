@@ -1,0 +1,3 @@
+# Hackathon prototype — keep out of search indexes until the public launch.
+User-agent: *
+Disallow: /

@@ -1,0 +1,20 @@
+{
+  "model": "intfloat/multilingual-e5-large",
+  "dim": 1024,
+  "slugs": [
+    "azv-cr-2027",
+    "gacr-standard-2027",
+    "gacr-expro-2027",
+    "gacr-junior-star-2027",
+    "tacr-sigma-2026",
+    "tacr-trend-2026",
+    "opjak-excel-vyzkum-2026",
+    "horizon-mission-cancer-2027",
+    "horizon-cluster1-health-2027",
+    "eu4health-2027",
+    "erc-starting-2027",
+    "msca-postdoc-2027",
+    "eic-pathfinder-2026",
+    "norway-grants-health-2027"
+  ]
+}

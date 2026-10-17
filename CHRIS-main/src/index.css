@@ -1,0 +1,153 @@
+/* Fonts: Bricolage Grotesque — display & numbers, Geist — UI text, Geist Mono — meta, Montserrat — buttons. */
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Montserrat:wght@500&display=swap");
+@import "tailwindcss";
+@import "./styles/brand.css";
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    min-height: 100dvh;
+    background: var(--canvas);
+    color: var(--text);
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    line-height: 1.5rem;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  ::selection {
+    background: var(--orange-50);
+    color: var(--charcoal-900);
+  }
+  :focus-visible {
+    outline: 2px solid var(--orange-500);
+    outline-offset: 2px;
+  }
+  textarea,
+  input,
+  button,
+  select {
+    font: inherit;
+    color: inherit;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]) {
+    cursor: pointer;
+  }
+  /* Disabled things never react to the pointer — no hover, no trace, no underline */
+  :disabled,
+  [aria-disabled="true"] {
+    pointer-events: none;
+  }
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+}
+
+/* Fields: focus = orange edge + soft orange halo, never a detached outline. Unlayered on purpose so
+   it wins over per-field border utilities. Bare fields inside a framed composer (data-bare) let the
+   frame show focus instead. */
+:is(textarea, select, input:not([type="checkbox"]):not([type="radio"])):focus-visible:not([data-bare]) {
+  outline: none;
+  border-color: var(--orange-500);
+  box-shadow: 0 0 0 3px var(--orange-50);
+}
+:is(textarea, input)[data-bare]:focus-visible {
+  outline: none;
+}
+
+/* Numbers that change should not shift layout */
+@utility tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Soft dotted grid used on the 01/02 canvases */
+@utility dot-grid {
+  background-image: radial-gradient(circle at 1px 1px, rgb(29 29 31 / 0.09) 1px, transparent 0);
+  background-size: 22px 22px;
+}
+
+/* Popover / menu: fade + 4 px slide from the trigger side (Radix data-state / data-side) */
+@keyframes menu-in {
+  from {
+    opacity: 0;
+    translate: var(--menu-from, 0 4px);
+  }
+}
+@keyframes menu-out {
+  to {
+    opacity: 0;
+    translate: var(--menu-from, 0 4px);
+  }
+}
+.menu-pop {
+  transform-origin: var(--radix-dropdown-menu-content-transform-origin);
+}
+.menu-pop[data-side="top"] { --menu-from: 0 4px; }
+.menu-pop[data-side="bottom"] { --menu-from: 0 -4px; }
+.menu-pop[data-side="right"] { --menu-from: -4px 0; }
+.menu-pop[data-side="left"] { --menu-from: 4px 0; }
+.menu-pop[data-state="open"] {
+  animation: menu-in var(--dur-hover) var(--ease-out);
+}
+.menu-pop[data-state="closed"] {
+  animation: menu-out var(--dur-hover) var(--ease-out);
+}
+
+/* Orbiting network on 01 Zadání (whole <svg> per ring rotates on the compositor; off with reduced motion) */
+@keyframes orbit-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.orbit {
+  transform-origin: 50% 50%;
+  will-change: transform;
+  animation: orbit-spin 200s linear infinite;
+}
+.orbit-reverse {
+  animation-direction: reverse;
+}
+.orbit-paused {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 18mm 16mm 20mm;
+  }
+  body {
+    background: #fff;
+  }
+  .no-print,
+  [role='dialog'],
+  [role='tooltip'] {
+    display: none !important;
+  }
+  .print-only {
+    display: block !important;
+  }
+}
+.print-only {
+  display: none;
+}
