@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.venv/
+venv/
+
+# uv
+.python-version
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# macOS
+.DS_Store
+
+# Secrets / env
+.env
+.env.local
+.env.*.local
+
+# Local model cache (fastembed caches to tempdir by default; this entry is a
+# safety net in case someone sets FASTEMBED_CACHE_DIR=./.model_cache locally)
+.model_cache/

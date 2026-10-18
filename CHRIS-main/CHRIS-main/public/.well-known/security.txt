@@ -1,0 +1,3 @@
+Contact: mailto:director@nuvr.cz
+Expires: 2027-10-16T00:00:00.000Z
+Preferred-Languages: cs, en

@@ -10,42 +10,26 @@ permissions:
   pages: write
   id-token: write
 
-concurrency:
-  group: pages
-  cancel-in-progress: true
-
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      VITE_BASE_PATH: /CHRIS/
-      VITE_DEMO: true
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
         with:
-          version: 10
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+          version: 9
+      - uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 20
           cache: pnpm
-
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
-
-      - name: Build demo
-        run: pnpm build
-
-      - name: Add SPA fallback
-        run: cp dist/index.html dist/404.html
-
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
+      - run: pnpm install --no-frozen-lockfile
+      - run: pnpm build
+        env:
+          VITE_API_URL: ${{ vars.VITE_API_URL }}
+          VITE_PUBLIC_KEY: ${{ secrets.VITE_PUBLIC_KEY }}
+          VITE_BASE_PATH: /CHRIS/
+          VITE_DEMO: 'false'
+      - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
 
@@ -56,6 +40,5 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
+      - id: deployment
         uses: actions/deploy-pages@v4

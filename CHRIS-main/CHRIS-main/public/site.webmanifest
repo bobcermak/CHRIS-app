@@ -1,0 +1,16 @@
+{
+  "name": "CHRIS · Collaborative Hub for Research Intelligence & Synergy",
+  "short_name": "CHRIS",
+  "description": "Správný partner. Správný zdroj. Správný čas.",
+  "lang": "cs",
+  "icons": [
+    {
+      "src": "/images/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "theme_color": "#FF5E1F",
+  "background_color": "#FFFFFF",
+  "display": "standalone"
+}

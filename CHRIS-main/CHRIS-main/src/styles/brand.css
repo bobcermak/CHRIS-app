@@ -1,0 +1,127 @@
+/* src/styles/brand.css — ARCHITECTURE.md §11. The only fixed design tokens.
+   Palette (orange + charcoal) is unchanged; typography and warm neutrals follow the approved prototype v5. */
+:root {
+  /* Brand */
+  --orange-500:#FF5E1F; --orange-400:#FF8A4C; --orange-50:#FFF0E8;
+  --orange-ink:#B5410F;   /* orange text on light fills — AA contrast (orange-500 is ~2.9:1) */
+  --charcoal-900:#1D1D1F; --charcoal-700:#404041; --charcoal-500:#6D6E71; --charcoal-300:#BCBEC0;
+
+  /* Warm neutrals (prototype v5) */
+  --canvas:#FAF9F7;       /* 01 Zadání, 02 Upřesnění */
+  --canvas-warm:#F2F0ED;  /* 03 Týmy, 04 Přihláška */
+  --card:#FFFFFF;
+  --inset:#F7F6F4;        /* nested blocks inside cards */
+  --panel:#E9E6E2;        /* side panel */
+  --line:#E8E5E1;
+  --line-strong:#D9D5CF;
+
+  /* Text */
+  --text:#1D1D1F;
+  --text-muted:#5F6064;   /* charcoal-500 darkened for AA on warm canvases */
+  --text-faint:#8A8B8F;   /* large text / decorative only */
+
+  /* Legacy neutrals kept for compatibility */
+  --bg:var(--canvas); --surface:var(--inset); --border:var(--line);
+
+  /* Semantics — small marks only (dots, lines, text), never large areas */
+  --ok:#16A34A; --gap:#D97706; --stale:#9CA3AF; --risk:#DC2626; --info:#2563EB;
+
+  /* 6 dimensions */
+  --dim-research:#5B6B8C; --dim-tech:#6B8C7A; --dim-output:#8C7A5B;
+  --dim-bio:#7A6B8C; --dim-clinic:#8C5B6B; --dim-people:#5B8C8C;
+
+  /* Typography */
+  --font-display:"Bricolage Grotesque",ui-sans-serif,system-ui,sans-serif;
+  --font-sans:"Geist",ui-sans-serif,system-ui,sans-serif;
+  --font-mono:"Geist Mono",ui-monospace,SFMono-Regular,monospace;
+  --font-nav:"Montserrat",ui-sans-serif,system-ui,sans-serif;   /* buttons: 500, 14 px, lowercase */
+
+  /* Motion — every hover / focus / active transition uses these two tokens */
+  --dur-hover:450ms;    /* every hover / focus / active transition — same as buttons */
+  --dur-button:450ms;   /* buttons: white spill, arrow turn and trace are slower and more deliberate */
+  --ease-out:cubic-bezier(.22,1,.36,1);
+
+  /* Shape */
+  --r-card:28px; --r-inset:20px; --r-panel:24px; --r-field:16px;
+
+  color-scheme: light;
+}
+
+/* Tailwind bridge. `inline` keeps utilities pointing at the runtime variables above.
+   Default palette and font stacks are cleared so nothing off-brand is available. */
+@theme inline {
+  --color-*: initial;
+  --color-orange-500: var(--orange-500);
+  --color-orange-400: var(--orange-400);
+  --color-orange-50: var(--orange-50);
+  --color-orange-ink: var(--orange-ink);
+  --color-charcoal-900: var(--charcoal-900);
+  --color-charcoal-700: var(--charcoal-700);
+  --color-charcoal-500: var(--charcoal-500);
+  --color-charcoal-300: var(--charcoal-300);
+  --color-canvas: var(--canvas);
+  --color-canvas-warm: var(--canvas-warm);
+  --color-card: var(--card);
+  --color-inset: var(--inset);
+  --color-panel: var(--panel);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-text: var(--text);
+  --color-text-muted: var(--text-muted);
+  --color-text-faint: var(--text-faint);
+  --color-ok: var(--ok);
+  --color-gap: var(--gap);
+  --color-stale: var(--stale);
+  --color-risk: var(--risk);
+  --color-info: var(--info);
+  --color-dim-research: var(--dim-research);
+  --color-dim-tech: var(--dim-tech);
+  --color-dim-output: var(--dim-output);
+  --color-dim-bio: var(--dim-bio);
+  --color-dim-clinic: var(--dim-clinic);
+  --color-dim-people: var(--dim-people);
+  --color-white: #FFFFFF;
+  --color-transparent: transparent;
+  --color-current: currentColor;
+
+  --font-*: initial;
+  --font-display: var(--font-display);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+  --font-nav: var(--font-nav);
+
+  --radius-card: var(--r-card);
+  --radius-inset: var(--r-inset);
+  --radius-panel: var(--r-panel);
+  --radius-field: var(--r-field);
+  --radius-pill: 999px;
+}
+
+/* Type scale (text-hero, text-display, …). Display sizes are fluid. */
+@theme {
+  /* Every `transition-*` utility defaults to the hover tokens (§ P2: one timing for all hovers). */
+  --default-transition-duration: var(--dur-hover);
+  --default-transition-timing-function: var(--ease-out);
+
+  --text-hero: clamp(2.5rem, 1.6rem + 3.4vw, 4rem);
+  --text-hero--line-height: 1.04;
+  --text-hero--letter-spacing: -0.035em;
+  --text-display: clamp(2rem, 1.4rem + 2.2vw, 3.25rem);
+  --text-display--line-height: 1.06;
+  --text-display--letter-spacing: -0.035em;
+  --text-title: 1.625rem;
+  --text-title--line-height: 2rem;
+  --text-title--letter-spacing: -0.02em;
+  --text-heading: 1.1875rem;
+  --text-heading--line-height: 1.625rem;
+  --text-heading--letter-spacing: -0.01em;
+  --text-body: 0.9375rem;
+  --text-body--line-height: 1.5rem;
+  --text-small: 0.8125rem;
+  --text-small--line-height: 1.25rem;
+  --text-nav: 1rem;
+  --text-nav--line-height: 1.5rem;
+  --text-meta: 0.6875rem;
+  --text-meta--line-height: 1rem;
+  --text-meta--letter-spacing: 0.1em;
+}

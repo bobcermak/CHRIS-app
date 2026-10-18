@@ -6,8 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "build:pages": "cross-env VITE_BASE_PATH=/CHRIS/ VITE_DEMO=true vite build",
-    "deploy": "npm run build:pages && gh-pages --dotfiles -d dist",
+    "build:pages": "vite build --mode pages && node -e \"require('fs').copyFileSync('dist/index.html','dist/404.html')\"",
+    "deploy": "pnpm build:pages && npx --yes gh-pages@6.3.0 --dotfiles --nojekyll -d dist --remove \"{**/*,**/.[!g]*,**/.[!g]*/**/*,**/.github/**/*,**/.gitignore,**/.gitkeep}\"",
     "typecheck": "tsc -b",
     "gen:api": "openapi-typescript http://127.0.0.1:8000/openapi.json -o src/lib/api/schema.d.ts",
     "lint": "oxlint",

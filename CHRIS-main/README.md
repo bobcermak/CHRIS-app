@@ -6,7 +6,7 @@
 
 CHRIS pomáhá výzkumníkům sestavit tým pro konkrétní výzkumný projekt. Výzkumník popíše projekt vlastními slovy, systém se doptá na to, co chybí, a navrhne dvě varianty týmu (**INTELLIGENCE**, **GRANT**). U každé skupiny uvede proč, přínos, mezeru a první krok a každé tvrzení podloží dohledatelným zdrojem.
 
-**[Spustit live demo](https://bobcermak.github.io/CHRIS/)**
+**[Spustit live demo](https://bobcermak.github.io/CHRIS/)** · GitHub Pages, demo režim nad ilustračními daty
 
 ## Ukázky
 
@@ -54,6 +54,7 @@ S backendem: do `.env` nastavte `VITE_API_URL` (adresa backendu) a `VITE_DEMO=fa
 | `pnpm gen:api` | vygeneruje typy z běžícího backendu |
 | `pnpm typecheck` · `pnpm lint` | kontrola typů a lint |
 | `pnpm build` | produkční build (vyžaduje `VITE_API_URL` s `https://`) |
+| `pnpm run deploy` | demo build pod `/CHRIS/` a nasazení na [GitHub Pages](https://bobcermak.github.io/CHRIS/) (větev `gh-pages`) |
 | `pnpm test:e2e` | E2E testy (Playwright): celý flow, hraniční stavy, přístupnost (axe), bezpečnost; Chromium, Firefox, WebKit a mobil s omezeným pohybem |
 | `pnpm audit --prod` | kontrola zranitelností závislostí |
 
@@ -71,6 +72,16 @@ src/
   styles/       brand.css (tokeny)
 e2e/            Playwright testy
 ```
+
+## GitHub Pages
+
+Live demo: **https://bobcermak.github.io/CHRIS/**
+
+- Nasazení: `pnpm run deploy` (ne `pnpm deploy`). Knihovna `gh-pages` sestaví demo a pushne `dist` do větve `gh-pages`.
+- Konfigurace buildu je v `.env.pages` (`VITE_BASE_PATH=/CHRIS/`, `VITE_DEMO=true`), jen veřejné hodnoty.
+- Build kopíruje `index.html` jako `404.html`, takže fungují i přímé odkazy na podstránky.
+- Nastavení repozitáře: *Settings → Pages → Deploy from a branch → `gh-pages` / root*.
+- GitHub Pages neumí vlastní HTTP hlavičky; CSP a ostatní hlavičky ze `staticwebapp.config.json` platí jen na Azure Static Web Apps.
 
 ## Před nasazením
 
