@@ -5,9 +5,9 @@ import { tw as twMerge } from '../../lib/utils/tw'
 import { BUTTON_HEIGHT, BUTTON_SQUARE, type ButtonSize } from './buttonSizes'
 
 /**
- * primary / dark — the charcoal CTA with the arrow (white spill with an orange edge on hover)
- * outline / ghost — neutral · icon — round, icon only · accent — round orange icon (prompt send)
- * copilot — orange text with a leading icon for actions the copilot does for the user
+ * primary / dark - the charcoal CTA with the arrow (white spill with an orange edge on hover)
+ * outline / ghost - neutral · icon - round, icon only · accent - round orange icon (prompt send)
+ * copilot - orange text with a leading icon for actions the copilot does for the user
  */
 export type ButtonVariant = 'primary' | 'dark' | 'outline' | 'ghost' | 'icon' | 'accent' | 'copilot'
 
@@ -164,7 +164,7 @@ export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPr
   const showArrow = !noStyle && spills
   const CircleIcon = circleIcon ?? ArrowUpRightIcon
   // The arrow turns 45°; a plus turns 90° (45° would read as a close "×"); other glyphs (a check)
-  // stay still — turning them looks broken.
+  // stay still - turning them looks broken.
   const turn =
     !circleIcon
       ? 'group-hover:rotate-45 group-active:rotate-45 group-focus-visible:rotate-45'

@@ -2,7 +2,7 @@ import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 import { persistentJSON } from '../lib/storage'
 
-/** One research project the user worked on — restorable from the home page. */
+/** One research project the user worked on - restorable from the home page. */
 export interface Session {
   id: string
   /** Short summary of the project (IntentCard.title). */
@@ -11,7 +11,7 @@ export interface Session {
   updatedAt: string
   /** Last visited path + search inside the project, e.g. "/projekt/abc/tymy". */
   lastPath: string
-  /** Path of the furthest step reached (Upřesnění < Týmy < Přihláška) — where history reopens. */
+  /** Path of the furthest step reached (Upřesnění < Týmy < Přihláška) - where history reopens. */
   furthestPath?: string
 }
 

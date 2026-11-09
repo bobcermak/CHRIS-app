@@ -4,12 +4,12 @@
 
 ## Explanation
 
-Beyond automatic intent-based preloading on `<Link>` hover, you can manually preload routes programmatically with `router.preloadRoute()`. Use this for predictive preloading — loading the next likely route based on user behavior, scroll position, or application logic. You can also preload only the JS chunks without data using `router.loadRouteChunk()`.
+Beyond automatic intent-based preloading on `<Link>` hover, you can manually preload routes programmatically with `router.preloadRoute()`. Use this for predictive preloading - loading the next likely route based on user behavior, scroll position, or application logic. You can also preload only the JS chunks without data using `router.loadRouteChunk()`.
 
 ## Bad Example
 
 ```tsx
-// Preloading everything eagerly on mount — wastes bandwidth
+// Preloading everything eagerly on mount - wastes bandwidth
 function App() {
   const router = useRouter()
 
@@ -32,7 +32,7 @@ function WizardStep2() {
   const router = useRouter()
 
   useEffect(() => {
-    // User is on step 2 — preload step 3 (most likely next action)
+    // User is on step 2 - preload step 3 (most likely next action)
     router.preloadRoute({ to: '/wizard/step-3' })
   }, [router])
 
@@ -84,7 +84,7 @@ function App() {
       router.loadRouteChunk(router.routesByPath['/dashboard']),
       router.loadRouteChunk(router.routesByPath['/settings']),
     ]).catch(() => {
-      // Failed to preload chunks — non-critical, ignore
+      // Failed to preload chunks - non-critical, ignore
     })
   }, [router])
 }
@@ -106,8 +106,8 @@ await router.loadRouteChunk(router.routesByPath['/posts'])
 ## Context
 
 - `router.preloadRoute()` loads both JS chunks and route data (runs the loader)
-- `router.loadRouteChunk()` loads only the JS chunk — useful for warming the code cache without fetching data
-- Manual preloading respects `preloadStaleTime` — it won't refetch if data is still fresh
-- Wrap in try/catch — preloading failures are non-critical and shouldn't break the app
+- `router.loadRouteChunk()` loads only the JS chunk - useful for warming the code cache without fetching data
+- Manual preloading respects `preloadStaleTime` - it won't refetch if data is still fresh
+- Wrap in try/catch - preloading failures are non-critical and shouldn't break the app
 - Use for wizard flows, multi-step forms, or when you can predict the user's next action
-- Combine with automatic `defaultPreload: 'intent'` — manual preloading supplements intent-based preloading
+- Combine with automatic `defaultPreload: 'intent'` - manual preloading supplements intent-based preloading

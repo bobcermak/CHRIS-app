@@ -3,24 +3,24 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Tally — Motion Audit · design-motion-principles</title>
+<title>Tally - Motion Audit · design-motion-principles</title>
 
 <!--
   ════════════════════════════════════════════════════════════════════
-  design-motion-principles MOTION AUDIT — reference template
+  design-motion-principles MOTION AUDIT - reference template
   worked example: "Tally" (habit & streak tracker · React + Framer Motion)
   ════════════════════════════════════════════════════════════════════
   Canonical HTML report for the motion audit. Self-contained: one file,
   no local asset dependencies. Fonts load from a CDN with a robust
   fallback stack and degrade gracefully offline.
 
-  DISTINCT SIBLING of thumb-first's report-template.html — same system
+  DISTINCT SIBLING of thumb-first's report-template.html - same system
   architecture (OKLCH tokens, mono micro-labels, severity channel,
   finding cards), but its OWN identity: COOL slate-graphite (hue 255)
   instead of warm graphite, a magenta-rose accent, and the Familjen /
   Onest / Geist Mono type family. The personality is time + movement.
 
-  COLOR CHANNELS — keep them separate:
+  COLOR CHANNELS - keep them separate:
     • Fixed identity .... cool slate-graphite + chalk. Carries NO meaning.
     • --accent .......... ONE color SAMPLED FROM THE AUDITED PRODUCT.
                           Brand chrome only (eyebrow tick, section
@@ -31,15 +31,15 @@
                           (amber) · sluggish (red). Diagram + legend only.
     • Verdict chips ..... fixed: strong / concern / problem / mixed.
 
-  THE DEMO CARDS are the centerpiece — the only animated elements in the
+  THE DEMO CARDS are the centerpiece - the only animated elements in the
   document. Each Critical or Important finding gets a live, looping CSS
   demo of the RECOMMENDED motion, with a pure-CSS Light/Dark stage toggle
   so the reader can check the motion on either surface. Opportunities
   never get a demo card. The report itself has NO entrance, scroll, or
-  mount animation — anything else would reproduce the slop this skill
+  mount animation - anything else would reproduce the slop this skill
   audits against.
 
-  MODULAR SECTIONS — render a section ONLY if the audit produced it.
+  MODULAR SECTIONS - render a section ONLY if the audit produced it.
 -->
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -48,7 +48,7 @@
 
 <style>
   :root {
-    /* ——— Fixed identity: COOL slate-graphite + chalk (near-achromatic) ——— */
+    /* --- Fixed identity: COOL slate-graphite + chalk (near-achromatic) --- */
     --ink:        oklch(0.155 0.006 255);
     --surface:    oklch(0.195 0.007 255);
     --surface-2:  oklch(0.235 0.008 255);
@@ -59,18 +59,18 @@
     --line:       oklch(0.95 0.01 255 / 0.09);
     --line-strong:oklch(0.95 0.01 255 / 0.16);
 
-    /* ——— Accent (NEUTRAL BY DEFAULT) ———
+    /* --- Accent (NEUTRAL BY DEFAULT) ---
        The report has no primary color. --accent aliases the contrast
        neutral (--paper) so any element that historically wanted a brand
        splash now reads as quiet chrome. An individual audit can repoint
        these three to a sampled brand color if appropriate, but the
-       default — and the worked example — keeps the chrome neutral and
+       default - and the worked example - keeps the chrome neutral and
        lets severity be the only color in the report. */
     --accent:      var(--paper);
     --accent-soft: var(--paper-dim);
     --accent-tint: color-mix(in oklch, var(--paper) 12%, transparent);
 
-    /* ——— Severity (FIXED — never adaptive) ——— */
+    /* --- Severity (FIXED - never adaptive) --- */
     --crit:      oklch(0.655 0.185 25);
     --crit-tint: oklch(0.655 0.185 25 / 0.15);
     --imp:       oklch(0.805 0.125 78);
@@ -78,17 +78,17 @@
     --opp:       oklch(0.745 0.135 152);
     --opp-tint:  oklch(0.745 0.135 152 / 0.15);
 
-    /* ——— Timing-budget ramp (FIXED — diagram + its legend only) ——— */
+    /* --- Timing-budget ramp (FIXED - diagram + its legend only) --- */
     --t-good:  oklch(0.745 0.135 152);  /* instant + responsive */
     --t-mid:   oklch(0.805 0.125 78);   /* deliberate           */
     --t-slow:  oklch(0.655 0.185 25);   /* sluggish             */
 
-    /* ——— Verdict (FIXED — lens table) ——— */
+    /* --- Verdict (FIXED - lens table) --- */
     --strong:  var(--opp);
     --concern: var(--imp);
     --problem: var(--crit);
 
-    /* ——— Spacing (4pt scale, semantic) ——— */
+    /* --- Spacing (4pt scale, semantic) --- */
     --s1:4px; --s2:8px; --s3:12px; --s4:16px; --s5:24px;
     --s6:32px; --s7:48px; --s8:64px; --s9:96px;
 
@@ -99,7 +99,7 @@
 
   /* ═══════════════ LIGHT-MODE OVERRIDES ═══════════════
      Activated when the global theme toggle is set to Light. Every token
-     above gets a counterpart here — same hue, mirrored L — so the report
+     above gets a counterpart here - same hue, mirrored L - so the report
      reads cleanly on light backgrounds. Hue stays 255 (cool slate) so the
      identity is the same character, just inverted. */
   :root:has(#theme-light:checked) {
@@ -321,7 +321,7 @@
   .demo input[id$="-d"]:checked ~ .demo__bar .seg label[for$="-d"] { background: var(--accent-tint); color: var(--accent-soft); }
 
   .demo__stage {
-    /* AUTO default — stage uses the report's elevated surface, follows theme */
+    /* AUTO default - stage uses the report's elevated surface, follows theme */
     --st-bg: var(--surface-2);
     --st-fg: var(--paper);
     --st-line: var(--line-strong);
@@ -347,7 +347,7 @@
   }
 
   /* generic demo primitives, themed by the stage vars
-     (intentionally follow --st-fg/--st-bg, NOT the page accent — so they
+     (intentionally follow --st-fg/--st-bg, NOT the page accent - so they
      contrast correctly even when a stage is locked to a different theme
      than the page). */
   .ui-btn { display: inline-flex; align-items: center; justify-content: center; padding: 9px 18px; border-radius: 8px; background: var(--st-fg); color: var(--st-bg); font-family: var(--sans); font-size: 13px; font-weight: 600; }
@@ -358,7 +358,7 @@
   .ui-num { font-family: var(--display); font-size: 34px; font-weight: 700; color: var(--st-fg); font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
   .ui-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--st-dim); }
   /* milestone badge + sparks read off stage tokens (--st-fg disc, --st-bg ink),
-     set inline on the elements — same contract as every other stage primitive,
+     set inline on the elements - same contract as every other stage primitive,
      never --accent, correct in any locked stage. */
 
   /* ───────────── Combined recommendations ───────────── */
@@ -405,7 +405,7 @@
   @media (prefers-reduced-motion: no-preference) {
     .lens-table tbody tr, .finding-row { transition: border-color 0.2s ease; }
 
-    /* 01 · quick tab crossfade — 180ms ease-out */
+    /* 01 · quick tab crossfade - 180ms ease-out */
     @keyframes m1 {
       0%   { opacity: 0; transform: translateX(7px); }
       55%  { opacity: 1; transform: translateX(0); }
@@ -413,7 +413,7 @@
     }
     .demo-1__mt { animation: m1 3s cubic-bezier(0.22,1,0.36,1) infinite; }
 
-    /* 02 · sheet enter (mirror for exit) — 300ms ease-out-quint */
+    /* 02 · sheet enter (mirror for exit) - 300ms ease-out-quint */
     @keyframes m2 {
       0%   { opacity: 0; transform: translateY(115%); }
       45%  { opacity: 1; transform: translateY(0); }
@@ -421,7 +421,7 @@
     }
     .demo-2__mt { animation: m2 3s cubic-bezier(0.22,1,0.36,1) infinite; }
 
-    /* 03 · calm check — 200ms ease-out, no bounce */
+    /* 03 · calm check - 200ms ease-out, no bounce */
     @keyframes m3 {
       0%   { opacity: 0; transform: scale(0.9); }
       55%  { opacity: 1; transform: scale(1); }
@@ -429,7 +429,7 @@
     }
     .demo-3__mt .ui-check { animation: m3 3s cubic-bezier(0.33,1,0.68,1) infinite; transform-origin: center; }
 
-    /* 04 · number roll — 220ms, opacity + translateY + blur */
+    /* 04 · number roll - 220ms, opacity + translateY + blur */
     @keyframes m4 {
       0%   { opacity: 0; transform: translateY(10px); filter: blur(5px); }
       55%  { opacity: 1; transform: translateY(0);   filter: blur(0); }
@@ -437,7 +437,7 @@
     }
     .demo-4__mt .ui-num { animation: m4 3s cubic-bezier(0.22,1,0.36,1) infinite; display: inline-block; }
 
-    /* 05 · milestone badge enter — 260ms ease-out + one-shot sparkle */
+    /* 05 · milestone badge enter - 260ms ease-out + one-shot sparkle */
     @keyframes m5 {
       0%   { opacity: 0; transform: scale(0.8); }
       50%  { opacity: 1; transform: scale(1); }
@@ -476,9 +476,9 @@
   <!-- ═══════════ HEADER ═══════════ -->
   <header class="doc">
     <div class="eyebrow">Motion audit · design-motion-principles</div>
-    <h1 class="title">Tally — what to slow down, speed up, and finish</h1>
+    <h1 class="title">Tally - what to slow down, speed up, and finish</h1>
     <p class="lede">
-      A pass over Tally's core loop — check-off, tab switches, the add-habit sheet, and the streak milestones —
+      A pass over Tally's core loop - check-off, tab switches, the add-habit sheet, and the streak milestones -
       read through three motion practitioners' lenses, ordered by what users feel most and the order to fix it.
     </p>
     <div class="meta-row">
@@ -497,7 +497,7 @@
   <section class="assessment">
     <span class="mono-label">Overall</span>
     <p>
-      Tally has real motion personality — but it's <em>uneven</em>. The highest-frequency action, the check-off,
+      Tally has real motion personality - but it's <em>uneven</em>. The highest-frequency action, the check-off,
       is the most over-animated; the add-habit sheet that should glide just snaps shut. Tighten the frequent
       moments toward speed, finish the half-built transitions, then spend delight where it's earned: the streaks.
     </p>
@@ -508,7 +508,7 @@
     <div class="sec-index">01</div>
     <h2 class="section-title">How each practitioner reads the motion</h2>
     <p class="section-sub">
-      Three lenses, weighted for this context — a frequently-opened utility where most motion should get out of
+      Three lenses, weighted for this context - a frequently-opened utility where most motion should get out of
       the way, and a little should be memorable. The read is what each would push on hardest today.
     </p>
     <table class="lens-table">
@@ -517,7 +517,7 @@
         <tr>
           <td class="lens-name">Restraint &amp; Speed <span class="who">Emil Kowalski</span><span class="weight">Secondary</span></td>
           <td><span class="verdict v-concern">Concern</span></td>
-          <td class="lens-read">The check-off and tab switches are over-animated for actions this frequent — durations run long.</td>
+          <td class="lens-read">The check-off and tab switches are over-animated for actions this frequent - durations run long.</td>
         </tr>
         <tr>
           <td class="lens-name">Production Polish <span class="who">Jakub Krehel</span><span class="weight">Primary</span></td>
@@ -541,7 +541,7 @@
     <div class="sec-index">02</div>
     <h2 class="section-title">Where the timings land</h2>
     <p class="section-sub">
-      Duration is a budget. A 320ms sheet is correct — a large surface earns the time. A 600ms tab switch on an
+      Duration is a budget. A 320ms sheet is correct - a large surface earns the time. A 600ms tab switch on an
       action you fire dozens of times a session is the mistake. Each dot is one of Tally's animations, plotted
       where it runs today.
     </p>
@@ -564,7 +564,7 @@
           .tf-dot-good  { fill: var(--t-good); }
           .tf-dot-mid   { fill: var(--t-mid); }
           .tf-dot-slow  { fill: var(--t-slow); }
-          /* Dot label flips per theme — dot fills are lighter in dark mode
+          /* Dot label flips per theme - dot fills are lighter in dark mode
              (dark text reads on them) and deeper in light mode (light text reads). */
           .tf-dot-text  { fill: oklch(0.165 0.006 255); }
           .tf-missing-ring { stroke: var(--faint); }
@@ -628,8 +628,8 @@
           <circle cx="632" cy="147" r="12" class="tf-dot-slow"/><text x="632" y="151" class="tf-dot-text">1</text>
         </g>
 
-        <!-- frequency brace: groups the two rightmost (slowest) dots — check-off (2)
-             and tab switch (1) — which are also the app's most-fired actions. The
+        <!-- frequency brace: groups the two rightmost (slowest) dots - check-off (2)
+             and tab switch (1) - which are also the app's most-fired actions. The
              upward end-ticks sit directly under those dots; one caption carries it.
              Lands the core mismatch: most-fired should be fastest, but these are slowest. -->
         <path class="tf-bracket" stroke-width="1" d="M490 218 L490 224 L632 224 L632 218 M561 224 L561 230"/>
@@ -649,24 +649,24 @@
         </ol>
 
         <div class="zone-defs">
-          <div class="zone-def"><span class="dot" style="background:var(--t-good)"></span><div><span class="zt">Instant / Responsive</span> · 0–300ms — <span class="zd">where almost everything belongs. Taps, toggles, tabs, hovers.</span></div></div>
-          <div class="zone-def"><span class="dot" style="background:var(--t-mid)"></span><div><span class="zt">Deliberate</span> · 300–500ms — <span class="zd">earned by large surfaces: sheets, modals, full-screen routes.</span></div></div>
-          <div class="zone-def"><span class="dot" style="background:var(--t-slow)"></span><div><span class="zt">Sluggish</span> · 500ms+ — <span class="zd">feels laggy. Reserve for rare, deliberately cinematic moments — or nothing.</span></div></div>
+          <div class="zone-def"><span class="dot" style="background:var(--t-good)"></span><div><span class="zt">Instant / Responsive</span> · 0-300ms - <span class="zd">where almost everything belongs. Taps, toggles, tabs, hovers.</span></div></div>
+          <div class="zone-def"><span class="dot" style="background:var(--t-mid)"></span><div><span class="zt">Deliberate</span> · 300-500ms - <span class="zd">earned by large surfaces: sheets, modals, full-screen routes.</span></div></div>
+          <div class="zone-def"><span class="dot" style="background:var(--t-slow)"></span><div><span class="zt">Sluggish</span> · 500ms+ - <span class="zd">feels laggy. Reserve for rare, deliberately cinematic moments - or nothing.</span></div></div>
         </div>
 
         <div class="whats-off">
           <span class="mono-label">What's off</span>
-          <p>The two dots furthest right — tab switch (1) and check-off (2) — are the actions that fire most. Frequency and duration are inversely related: the more often it runs, the faster it should be. And the streak counter (5) has no transition at all.</p>
+          <p>The two dots furthest right - tab switch (1) and check-off (2) - are the actions that fire most. Frequency and duration are inversely related: the more often it runs, the faster it should be. And the streak counter (5) has no transition at all.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ═══════════ 03 · PER-LENS — JAKUB (primary) ═══════════ -->
+  <!-- ═══════════ 03 · PER-LENS - JAKUB (primary) ═══════════ -->
   <section class="lens-sec">
     <div class="sec-index">03</div>
     <div class="lens-sec__head">
-      <h3>Jakub Krehel — Production Polish</h3>
+      <h3>Jakub Krehel - Production Polish</h3>
       <span class="lens-sec__weight">Primary lens</span>
     </div>
     <p class="lens-sec__verdict"><span class="verdict v-problem">Problem</span></p>
@@ -674,8 +674,8 @@
     <div class="lens-block">
       <span class="mono-label">What's working well</span>
       <ul class="lens-list good">
-        <li><span class="mk">✓</span><span>Page routes use a clean opacity + 8px translate at 250ms — the right shape and duration. <code>routes/transition.tsx:14</code></span></li>
-        <li><span class="mk">✓</span><span>Toasts enter and <em>exit</em> symmetrically — the exit isn't an afterthought. <code>ui/Toast.tsx:31</code></span></li>
+        <li><span class="mk">✓</span><span>Page routes use a clean opacity + 8px translate at 250ms - the right shape and duration. <code>routes/transition.tsx:14</code></span></li>
+        <li><span class="mk">✓</span><span>Toasts enter and <em>exit</em> symmetrically - the exit isn't an afterthought. <code>ui/Toast.tsx:31</code></span></li>
       </ul>
     </div>
 
@@ -689,8 +689,8 @@
             <div class="find-tags"><span class="severity crit">Critical</span><span class="lens-chip">Jakub</span></div>
             <h4 class="find-title">The add-habit sheet enters, then snaps shut with no exit</h4>
             <div class="find-body">
-              <p><span class="label">What</span>The bottom sheet animates up on open (320ms, good), but on dismiss it's removed from the tree instantly — no exit. The component renders conditionally with no <code>AnimatePresence</code> wrapper, so Framer Motion never gets to play the exit.</p>
-              <p><span class="label">Why it matters</span>A surface that glides in and <em>vanishes</em> reads as broken — the eye expects symmetry. It's the single most common "half-built motion" tell, and it's on the app's primary create flow.</p>
+              <p><span class="label">What</span>The bottom sheet animates up on open (320ms, good), but on dismiss it's removed from the tree instantly - no exit. The component renders conditionally with no <code>AnimatePresence</code> wrapper, so Framer Motion never gets to play the exit.</p>
+              <p><span class="label">Why it matters</span>A surface that glides in and <em>vanishes</em> reads as broken - the eye expects symmetry. It's the single most common "half-built motion" tell, and it's on the app's primary create flow.</p>
               <div class="fix"><p><span class="label">Recommended motion</span>Wrap the sheet in <code>AnimatePresence</code> and mirror the enter: slide down + fade over 300ms with the same <code>ease-out-quint</code>. The demo shows the enter; the exit is its reverse.</p></div>
               <p class="find-loc"><code>screens/Habits/AddSheet.tsx:48</code></p>
             </div>
@@ -726,7 +726,7 @@
             <div class="find-tags"><span class="severity imp">Important</span><span class="lens-chip">Jakub</span></div>
             <h4 class="find-title">Streak counter jumps between values with no transition</h4>
             <div class="find-body">
-              <p><span class="label">What</span>When a streak increments, the number is replaced in place — a hard swap. There's no transition on the value change, so the most rewarding number in the app updates with the least ceremony.</p>
+              <p><span class="label">What</span>When a streak increments, the number is replaced in place - a hard swap. There's no transition on the value change, so the most rewarding number in the app updates with the least ceremony.</p>
               <p><span class="label">Why it matters</span>The streak count is the payoff of the whole interaction. A snap makes a hard-won number feel like a re-render, not an achievement.</p>
               <div class="fix"><p><span class="label">Recommended motion</span>Roll the new value in: opacity + 10px translateY + a 5px blur that clears, 220ms. Subtle, but it tells the eye <em>something changed and it's good</em>.</p></div>
               <p class="find-loc"><code>components/StreakBadge.tsx:22</code></p>
@@ -758,7 +758,7 @@
     <div class="lens-block">
       <span class="mono-label">Opportunities</span>
       <ul class="lens-list opp">
-        <li><span class="mk">💡</span><span>Habit cards lean on a drop shadow that's invisible on the dark theme — a 1px border would carry the elevation on both. <code>components/HabitCard.tsx:9</code></span></li>
+        <li><span class="mk">💡</span><span>Habit cards lean on a drop shadow that's invisible on the dark theme - a 1px border would carry the elevation on both. <code>components/HabitCard.tsx:9</code></span></li>
       </ul>
     </div>
 
@@ -768,11 +768,11 @@
     </div>
   </section>
 
-  <!-- ═══════════ 04 · PER-LENS — EMIL (secondary) ═══════════ -->
+  <!-- ═══════════ 04 · PER-LENS - EMIL (secondary) ═══════════ -->
   <section class="lens-sec">
     <div class="sec-index">04</div>
     <div class="lens-sec__head">
-      <h3>Emil Kowalski — Restraint &amp; Speed</h3>
+      <h3>Emil Kowalski - Restraint &amp; Speed</h3>
       <span class="lens-sec__weight">Secondary lens</span>
     </div>
     <p class="lens-sec__verdict"><span class="verdict v-concern">Concern</span></p>
@@ -780,8 +780,8 @@
     <div class="lens-block">
       <span class="mono-label">What's working well</span>
       <ul class="lens-list good">
-        <li><span class="mk">✓</span><span>Card hover lift is 80ms — instant, exactly right for a passive affordance. <code>components/HabitCard.tsx:18</code></span></li>
-        <li><span class="mk">✓</span><span>No animation on keyboard-driven navigation — keyboard users aren't taxed with motion they didn't ask for.</span></li>
+        <li><span class="mk">✓</span><span>Card hover lift is 80ms - instant, exactly right for a passive affordance. <code>components/HabitCard.tsx:18</code></span></li>
+        <li><span class="mk">✓</span><span>No animation on keyboard-driven navigation - keyboard users aren't taxed with motion they didn't ask for.</span></li>
       </ul>
     </div>
 
@@ -793,11 +793,11 @@
         <div class="finding-row" data-sev="crit" id="finding-1">
           <div class="finding-row__prose">
             <div class="find-tags"><span class="severity crit">Critical</span><span class="lens-chip">Emil</span></div>
-            <h4 class="find-title">Tab switches slide for 600ms — far too slow for the most frequent action</h4>
+            <h4 class="find-title">Tab switches slide for 600ms - far too slow for the most frequent action</h4>
             <div class="find-body">
               <p><span class="label">What</span>The four bottom tabs cross-slide the full panel width over 600ms with an <code>ease-in-out</code>. Tabs are the app's highest-frequency navigation; a 600ms slide means every switch holds the user behind an animation.</p>
               <p><span class="label">Why it matters</span>Emil's rule: the more often an action fires, the less it should animate. At this duration the motion stops being feedback and becomes a toll. <code>ease-in-out</code> also adds a slow start, compounding the lag.</p>
-              <div class="fix"><p><span class="label">Recommended motion</span>Drop to a 180ms opacity crossfade with a 7px slide, <code>ease-out</code>. Better still: consider no slide at all — a fast crossfade is plenty of orientation for a tab.</p></div>
+              <div class="fix"><p><span class="label">Recommended motion</span>Drop to a 180ms opacity crossfade with a 7px slide, <code>ease-out</code>. Better still: consider no slide at all - a fast crossfade is plenty of orientation for a tab.</p></div>
               <p class="find-loc"><code>navigation/TabView.tsx:63</code></p>
             </div>
           </div>
@@ -829,7 +829,7 @@
             <h4 class="find-title">Check-off pops from scale(0) with a spring bounce</h4>
             <div class="find-body">
               <p><span class="label">What</span>Ticking a habit animates the checkmark from <code>scale(0)</code> with a bouncy spring (~450ms to settle). It's the app's core, most-repeated gesture, and it's the showiest animation in the product.</p>
-              <p><span class="label">Why it matters</span>Bounce on a high-frequency confirm gets tiring fast — the overshoot draws attention to motion the user has already mentally completed. Starting from <code>scale(0)</code> exaggerates the distance and the time.</p>
+              <p><span class="label">Why it matters</span>Bounce on a high-frequency confirm gets tiring fast - the overshoot draws attention to motion the user has already mentally completed. Starting from <code>scale(0)</code> exaggerates the distance and the time.</p>
               <div class="fix"><p><span class="label">Recommended motion</span>Scale <code>0.9 → 1</code> with opacity, 200ms <code>ease-out</code>, no overshoot. Confident and done before the finger lifts.</p></div>
               <p class="find-loc"><code>components/HabitCheck.tsx:27</code></p>
             </div>
@@ -862,11 +862,11 @@
     </div>
   </section>
 
-  <!-- ═══════════ 05 · PER-LENS — JHEY (selective) ═══════════ -->
+  <!-- ═══════════ 05 · PER-LENS - JHEY (selective) ═══════════ -->
   <section class="lens-sec">
     <div class="sec-index">05</div>
     <div class="lens-sec__head">
-      <h3>Jhey Tompkins — Experimentation &amp; Delight</h3>
+      <h3>Jhey Tompkins - Experimentation &amp; Delight</h3>
       <span class="lens-sec__weight">Selective lens</span>
     </div>
     <p class="lens-sec__verdict"><span class="verdict v-strong">Strong</span></p>
@@ -874,7 +874,7 @@
     <div class="lens-block">
       <span class="mono-label">What's working well</span>
       <ul class="lens-list good">
-        <li><span class="mk">✓</span><span>Tally resists the urge to animate everything — restraint <em>is</em> the right default for a daily utility. Delight is rationed, which makes room for it to land where it counts.</span></li>
+        <li><span class="mk">✓</span><span>Tally resists the urge to animate everything - restraint <em>is</em> the right default for a daily utility. Delight is rationed, which makes room for it to land where it counts.</span></li>
       </ul>
     </div>
 
@@ -888,9 +888,9 @@
             <div class="find-tags"><span class="severity imp">Important</span><span class="lens-chip">Jhey</span></div>
             <h4 class="find-title">Hitting a milestone streak passes by with no celebration</h4>
             <div class="find-body">
-              <p><span class="label">What</span>Crossing a 7-, 30-, or 100-day streak looks identical to any other day — the number just increments. The one moment in the app that has genuinely earned a flourish gets none.</p>
-              <p><span class="label">Why it matters</span>This is where delight pays for itself. A milestone is rare, emotionally loaded, and shareable — exactly the place to spend motion the rest of the app withholds. Skipping it leaves the payoff flat.</p>
-              <div class="fix"><p><span class="label">Recommended motion</span>On a milestone only: a badge that scales <code>0.8 → 1</code> (260ms <code>ease-out</code>) with a short, one-shot sparkle burst. Fires once on the event — not a looping pulse.</p></div>
+              <p><span class="label">What</span>Crossing a 7-, 30-, or 100-day streak looks identical to any other day - the number just increments. The one moment in the app that has genuinely earned a flourish gets none.</p>
+              <p><span class="label">Why it matters</span>This is where delight pays for itself. A milestone is rare, emotionally loaded, and shareable - exactly the place to spend motion the rest of the app withholds. Skipping it leaves the payoff flat.</p>
+              <div class="fix"><p><span class="label">Recommended motion</span>On a milestone only: a badge that scales <code>0.8 → 1</code> (260ms <code>ease-out</code>) with a short, one-shot sparkle burst. Fires once on the event - not a looping pulse.</p></div>
               <p class="find-loc"><code>components/StreakBadge.tsx:40</code></p>
             </div>
           </div>
@@ -926,13 +926,13 @@
     <div class="lens-block">
       <span class="mono-label">Opportunities</span>
       <ul class="lens-list opp">
-        <li><span class="mk">💡</span><span>The today-list could stagger its rows in on first paint — 30ms apart, opacity + 6px rise. One orchestrated load beats scattered micro-interactions. <code>screens/Today.tsx:51</code></span></li>
+        <li><span class="mk">💡</span><span>The today-list could stagger its rows in on first paint - 30ms apart, opacity + 6px rise. One orchestrated load beats scattered micro-interactions. <code>screens/Today.tsx:51</code></span></li>
       </ul>
     </div>
 
     <div class="lens-take">
       <span class="mono-label">Through Jhey's lens</span>
-      <p>Don't add more motion — add it in <em>one</em> right place. The streak milestone is the moment worth engineering; everywhere else, keeping your hands off the controls is the sophisticated move.</p>
+      <p>Don't add more motion - add it in <em>one</em> right place. The streak milestone is the moment worth engineering; everywhere else, keeping your hands off the controls is the sophisticated move.</p>
     </div>
   </section>
 
@@ -951,7 +951,7 @@
         <thead><tr><th>Issue</th><th>File</th><th>Fix</th></tr></thead>
         <tbody>
           <tr><td>Tab switch runs 600ms on the highest-frequency action</td><td><code>TabView.tsx:63</code></td><td>180ms opacity crossfade + 7px slide, ease-out</td></tr>
-          <tr><td>Add-habit sheet has no exit — snaps shut</td><td><code>AddSheet.tsx:48</code></td><td>Wrap in AnimatePresence; mirror the 300ms enter on exit</td></tr>
+          <tr><td>Add-habit sheet has no exit - snaps shut</td><td><code>AddSheet.tsx:48</code></td><td>Wrap in AnimatePresence; mirror the 300ms enter on exit</td></tr>
         </tbody>
       </table>
     </div>
@@ -974,7 +974,7 @@
         <thead><tr><th>Enhancement</th><th>Where</th><th>Impact</th></tr></thead>
         <tbody>
           <tr><td>Habit-card elevation invisible on dark theme</td><td><code>HabitCard.tsx:9</code></td><td>1px border carries elevation on both themes</td></tr>
-          <tr><td>Today-list could stagger in on first paint</td><td><code>Today.tsx:51</code></td><td>30ms stagger, opacity + 6px rise — one orchestrated load</td></tr>
+          <tr><td>Today-list could stagger in on first paint</td><td><code>Today.tsx:51</code></td><td>30ms stagger, opacity + 6px rise - one orchestrated load</td></tr>
         </tbody>
       </table>
     </div>
@@ -986,12 +986,12 @@
     <h2 class="section-title">Which lens carried this audit</h2>
     <div class="ref-summary">
       <span class="mono-label">Referenced most</span>
-      <p class="big">Jakub Krehel — Production Polish</p>
-      <p class="why">Tally's gaps are craft gaps, not taste gaps: enters without exits, state changes that snap. That's Jakub's territory — finishing what's been started — so his lens drove the ordering. Emil set the durations; Jhey marked the one place to spend.</p>
+      <p class="big">Jakub Krehel - Production Polish</p>
+      <p class="why">Tally's gaps are craft gaps, not taste gaps: enters without exits, state changes that snap. That's Jakub's territory - finishing what's been started - so his lens drove the ordering. Emil set the durations; Jhey marked the one place to spend.</p>
       <ul class="ref-lean">
         <li><span class="nm">Lean Emil</span><span>Treat every duration as a budget. Push tab, check, and toggle timings under 200ms and question any motion on a high-frequency action.</span></li>
         <li><span class="nm">Lean Jakub</span><span>Audit every conditional render for a missing exit. Pair enters and exits, and give meaningful state changes a transition.</span></li>
-        <li><span class="nm">Lean Jhey</span><span>Pick the single highest-emotion moment — the milestone — and over-invest there, with @property, springs, or scroll-driven touches.</span></li>
+        <li><span class="nm">Lean Jhey</span><span>Pick the single highest-emotion moment - the milestone - and over-invest there, with @property, springs, or scroll-driven touches.</span></li>
       </ul>
     </div>
   </section>

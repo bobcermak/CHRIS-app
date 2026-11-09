@@ -187,7 +187,7 @@ function toCitation(group: BackendGroup): Citation {
     id: `nuvr-${group.slug}`,
     url: group.url,
     source: 'nuvr',
-    title: `${group.name} — profil výzkumné skupiny`,
+    title: `${group.name} - profil výzkumné skupiny`,
     snippet: group.focus || (group.expertise ?? []).join(', ') || group.name,
     fetched_at: new Date().toISOString(),
   }
@@ -284,7 +284,7 @@ function toGrantMatch({ grant, score }: BackendGrantMatch): GrantMatch {
       id: grant.slug,
       agency: toAgency(grant.agency),
       provider: grant.agency,
-      // The title already names the scheme ("TA ČR SIGMA — …"); prefixing the programme doubled it.
+      // The title already names the scheme ("TA ČR SIGMA - …"); prefixing the programme doubled it.
       name: grant.title,
       deadline: grant.deadline || undefined,
       status: closed ? 'closed' : 'open',
@@ -354,7 +354,7 @@ function toVariant(
     .sort((a, b) => Number(a.role.priority === 'nice') - Number(b.role.priority === 'nice'))
     .map((gap) => ({
       slot_key: gap.role.name,
-      label: `${gap.role.name}${gap.role.priority === 'nice' ? ' (volitelné)' : ''} — ${gap.reason}`,
+      label: `${gap.role.name}${gap.role.priority === 'nice' ? ' (volitelné)' : ''} - ${gap.reason}`,
     }))
   const planned = backend.role_plan.length
   const coverage = planned ? Math.max(0, planned - gaps.length) / planned : 0
@@ -425,7 +425,7 @@ const DRAFT_TONE: Record<EmailTone, Pick<DraftRequest, 'tone' | 'instruction'>> 
   short: { tone: 'neutral', instruction: 'Napiš to stručně, nejvýše pět vět.' },
 }
 
-// Mirror of backend `DeepSearchResult` — move to generated schema after `pnpm gen:api`.
+// Mirror of backend `DeepSearchResult` - move to generated schema after `pnpm gen:api`.
 interface DeepSearchCitation {
   url: string
   title: string
@@ -503,7 +503,7 @@ function toResearchReport(target: ResearchTarget, backend: DeepSearchResult): Re
         .trim()
       return { text, citation_ids: [...used] }
     })
-    // No claim without a source — drop paragraphs Perplexity returned uncited.
+    // No claim without a source - drop paragraphs Perplexity returned uncited.
     .filter((c) => c.text && c.citation_ids.length > 0)
 
   return {
@@ -516,7 +516,7 @@ function toResearchReport(target: ResearchTarget, backend: DeepSearchResult): Re
 function deepSearchBody(target: ResearchTarget, projectId: string): { path: string; body: unknown } {
   if (target.kind === 'group') return { path: '/deep-search/group', body: { slug: target.id } }
   if (target.kind === 'grant') return { path: '/deep-search/grant', body: { slug: target.id } }
-  // Technologies are derived from the team on read (see `getMatch`), not stored — apply the same
+  // Technologies are derived from the team on read (see `getMatch`), not stored - apply the same
   // transform here or `v.tech` is empty and the lookup always misses.
   const raw = readRecord<MatchResult>(MATCHES_KEY)[projectId]
   const match = raw ? withTech(raw) : null
@@ -539,7 +539,7 @@ function toTemplate(t: BackendTemplate): ApplicationTemplate {
     status: t.status,
     agency: t.agency ?? 'OTHER',
     scheme: t.scheme,
-    version: t.version ?? '—',
+    version: t.version ?? '-',
     language: t.language ?? 'cs',
     based_on: t.based_on ?? undefined,
     diff: t.diff ?? undefined,
@@ -586,13 +586,13 @@ function findTemplate(id: string): ApplicationTemplate {
   return template
 }
 
-/** "Řešitelský tým" prefilled from the chosen variant: leader, workplace and role — facts only. */
+/** "Řešitelský tým" prefilled from the chosen variant: leader, workplace and role - facts only. */
 function teamSection(variant: TeamVariant, groups: Record<string, Group>) {
   return [...variant.members]
     .sort(byMatch)
     .map((m) => {
       const g = groups[m.group_id]
-      return g ? `- **${g.pi_name}** (${g.institution}) — ${m.role}` : null
+      return g ? `- **${g.pi_name}** (${g.institution}) - ${m.role}` : null
     })
     .filter(Boolean)
     .join('\n')
@@ -644,7 +644,7 @@ function roleText(text: string, context: string): string {
 
 /**
  * `/match/refine` for one group in one role: the LLM's reason and the match scored against that
- * role (same scale as `/match`). Undefined if it fails — callers keep what they have.
+ * role (same scale as `/match`). Undefined if it fails - callers keep what they have.
  */
 async function refineOne(query: string, role: string, description: string, slug: string, signal: AbortSignal) {
   try {
@@ -664,7 +664,7 @@ async function refineOne(query: string, role: string, description: string, slug:
   }
 }
 
-/** Word overlap of two role names (crude, diacritics-insensitive) — to match a role to a role. */
+/** Word overlap of two role names (crude, diacritics-insensitive) - to match a role to a role. */
 function overlap(a: string, b: string): number {
   const words = (s: string) =>
     new Set(
@@ -760,7 +760,7 @@ export const apiSource: DataSource = {
 
   match: (id) => streamResult(async (signal) => {
     const { intent, brief } = readProject(id)
-    // No team_size unless the researcher gave one — the AI decides how many groups the project needs.
+    // No team_size unless the researcher gave one - the AI decides how many groups the project needs.
     const body: MatchRequest = brief
       ? { query: brief.query, team_size: brief.team_size, nodes: brief.nodes, exclude_slugs: brief.exclude_slugs }
       : { query: intent.prompt }
@@ -818,8 +818,8 @@ export const apiSource: DataSource = {
   /**
    * Remove / replace, one action at a time:
    * - remove: the group leaves; its role becomes a gap.
-   * - replace: `/match` picks the replacement — the project description plus the role to fill,
-   *   with the current team and the researcher's own group excluded — so the LLM chooses among
+   * - replace: `/match` picks the replacement - the project description plus the role to fill,
+   *   with the current team and the researcher's own group excluded - so the LLM chooses among
    *   the best candidates exactly as when the team was composed. Nobody fitting → a gap.
    * The team description is then rewritten for the team as it is now.
    */
@@ -840,15 +840,15 @@ export const apiSource: DataSource = {
         next = withoutMember(next, before.id, member.group_id)
 
         if (action.action === 'remove') {
-          next = withGap(next, before.id, { slot_key: member.role, label: `${member.role} — skupina ${leaving?.pi_name ?? member.group_id} byla z týmu odebrána.` })
+          next = withGap(next, before.id, { slot_key: member.role, label: `${member.role} - skupina ${leaving?.pi_name ?? member.group_id} byla z týmu odebrána.` })
           continue
         }
 
         const inTeam = current.members.map((m) => m.group_id)
         const roleDescription = roleText(member.covers.join(' '), member.role)
         const body: MatchRequest = {
-          // The role first, the project as context — the planner then centres on this one role.
-          query: `Hledáme jednu skupinu do role: ${member.role} — ${roleDescription}\n\nKontext projektu: ${query}`,
+          // The role first, the project as context - the planner then centres on this one role.
+          query: `Hledáme jednu skupinu do role: ${member.role} - ${roleDescription}\n\nKontext projektu: ${query}`,
           team_size: 2,
           exclude_slugs: [...exclude_slugs, ...inTeam],
           nodes,
@@ -860,7 +860,7 @@ export const apiSource: DataSource = {
         const pick = [...found.team].sort((a, b) => overlap(b.role.name, member.role) - overlap(a.role.name, member.role))[0]
         if (!pick) {
           const why = found.gaps?.[0]?.reason || 'V katalogu NÚVR jsem pro tuto roli nenašel jinou vhodnou skupinu.'
-          next = withGap(next, before.id, { slot_key: member.role, label: `${member.role} — ${why}` })
+          next = withGap(next, before.id, { slot_key: member.role, label: `${member.role} - ${why}` })
           continue
         }
         const group = toGroup(pick.group)
@@ -1045,7 +1045,7 @@ export const apiSource: DataSource = {
     return next
   },
   /**
-   * POST /copilot — one opponent for the whole application (§9.4.1). The backend is stateless:
+   * POST /copilot - one opponent for the whole application (§9.4.1). The backend is stateless:
    * it gets the application as stored here, plus the project, team and the chat history.
    */
   applicationPdf: (input) => postBlob('/application/pdf', input, AbortSignal.timeout(60_000)),

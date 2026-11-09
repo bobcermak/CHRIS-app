@@ -9,7 +9,7 @@ export interface StreamState<T> {
   stage?: string
   verb?: string
   pct?: number
-  /** Stages seen so far, with timing — for the folded "Analyzováno za 3 s · 3 kroky" summary. */
+  /** Stages seen so far, with timing - for the folded "Analyzováno za 3 s · 3 kroky" summary. */
   steps: { stage: string; at: number }[]
   startedAt?: number
   finishedAt?: number

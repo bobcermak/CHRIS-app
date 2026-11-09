@@ -156,7 +156,7 @@ export const PromptComposer = forwardRef<PromptComposerHandle, PromptComposerPro
         onPaste={onPaste}
         onFocus={() => onFocusChange?.(true)}
         onBlur={() => onFocusChange?.(value.trim().length > 0)}
-        placeholder="Popište svůj výzkumný projekt – cíl, metodu a co vám chybí…"
+        placeholder="Popište svůj výzkumný projekt - cíl, metodu a co vám chybí…"
         aria-invalid={Boolean(shownError)}
         aria-describedby={shownError ? errorId : undefined}
         disabled={busy}

@@ -47,7 +47,7 @@ export function ApplicationPage() {
     if (tid && (!fits[tid] || g.fit > fits[tid].fit)) fits[tid] = { fit: g.fit, callId: g.call.id, callName: g.call.name, url: g.call.url }
   }
   const recommendedId = Object.entries(fits).sort((a, b) => b[1].fit - a[1].fit)[0]?.[0]
-  // The grant in the gauge on the teams page — always offered first, template or not.
+  // The grant in the gauge on the teams page - always offered first, template or not.
   const featured = variant?.grants[0]
   // Grant the picked template is for (set by the picker; the featured grant may have no template).
   const chosenCall = useRef<string | undefined>(undefined)
@@ -144,7 +144,7 @@ export function ApplicationPage() {
 
 /** File name of the exported application (the browser also uses the page title as a print name). */
 function pdfName(title: string) {
-  return `Přihláška – ${title}`.replace(/[\\/:*?"<>|]+/g, ' ').trim().slice(0, 120)
+  return `Přihláška - ${title}`.replace(/[\\/:*?"<>|]+/g, ' ').trim().slice(0, 120)
 }
 
 /** Saves a Blob under a name: an object URL behind a temporary download link. */
@@ -218,7 +218,7 @@ function Editor({ app, title, callName, unassigned, library, onChangeTemplate }:
   const chat = useProjectStore((s) => s.copilotChat[app.id]) ?? NO_CHAT
   const setChat = useProjectStore((s) => s.setCopilotChat)
 
-  // What the running copilot request is for — decides where its result goes and what the UI
+  // What the running copilot request is for - decides where its result goes and what the UI
   // shows meanwhile. The ref is read by the stream callback, the state drives rendering.
   const runRef = useRef<CopilotRun | null>(null)
   const [active, setActive] = useState<CopilotRun | null>(null)
@@ -329,7 +329,7 @@ function Editor({ app, title, callName, unassigned, library, onChangeTemplate }:
   const exportPdf = async () => {
     const blob = await data.applicationPdf({
       title,
-      // Scheme and call name often both start with the agency — each part once.
+      // Scheme and call name often both start with the agency - each part once.
       subtitle: [...new Set([scheme, callName].filter(Boolean).join(' · ').split(' · '))].join(' · '),
       sections: app.sections.map((s) => ({ title: s.title, content_md: s.content_md })),
       notices: app.template_status !== 'verified' ? [UNVERIFIED_NOTICE] : [],
@@ -405,7 +405,7 @@ function Editor({ app, title, callName, unassigned, library, onChangeTemplate }:
           </div>
           {/* Export comes after the document: the user reaches it once the application is read through. */}
           <div className="mt-5 flex flex-wrap items-center justify-between gap-4 px-2">
-            <p className="max-w-[46ch] text-small text-text-muted">AI-assisted draft — oficiální podání pouze v ISVP/GRIS.</p>
+            <p className="max-w-[46ch] text-small text-text-muted">AI-assisted draft - oficiální podání pouze v ISVP/GRIS.</p>
             <Button type="button" variant="primary" ariaLabel="Exportovat PDF" onClick={() => setExportOpen(true)}>
               Exportovat PDF
             </Button>

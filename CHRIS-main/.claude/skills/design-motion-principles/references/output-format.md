@@ -2,10 +2,10 @@
 
 The audit produces one of two outputs:
 
-- **HTML mode (default)** — a self-contained `.html` file written to the audited project's `motion-audits/` directory and opened in the user's default browser. Each Critical or Important finding gets a live, looping CSS demo card beside it.
-- **Terminal mode (flag-triggered)** — a decorated-markdown report rendered inline in the conversation. Use when the user passes `--terminal`, `--inline`, `--no-html`, "show the full report inline," or any natural-language equivalent. No HTML file is written.
+- **HTML mode (default)** - a self-contained `.html` file written to the audited project's `motion-audits/` directory and opened in the user's default browser. Each Critical or Important finding gets a live, looping CSS demo card beside it.
+- **Terminal mode (flag-triggered)** - a decorated-markdown report rendered inline in the conversation. Use when the user passes `--terminal`, `--inline`, `--no-html`, "show the full report inline," or any natural-language equivalent. No HTML file is written.
 
-Both modes carry the same audit content; only the rendering differs. Do not summarize — users want full per-lens perspectives.
+Both modes carry the same audit content; only the rendering differs. Do not summarize - users want full per-lens perspectives.
 
 ---
 
@@ -18,7 +18,7 @@ Both modes carry the same audit content; only the rendering differs. Do not summ
 | `references/report-template.html` | **Source of truth.** Full worked example (fictional "Tally" habit tracker, React + Framer Motion). Every section, every token, every pattern. When in doubt about layout, structure, or styling, READ this file. |
 | `references/demo-shell.html` | Minimal isolated example of a single demo card with the per-finding slot pattern. Used as a per-finding template snippet. |
 
-The agent builds the report by reading these two files and adapting them to the audited project — same architecture, audit-specific content.
+The agent builds the report by reading these two files and adapting them to the audited project - same architecture, audit-specific content.
 
 ### File structure
 
@@ -30,7 +30,7 @@ Single self-contained `.html`. All CSS inlined. No external JS. Fonts loaded via
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{project-name} motion audit — {ISO date}</title>
+  <title>{project-name} motion audit - {ISO date}</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600;700&family=Public+Sans:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -48,7 +48,7 @@ Single self-contained `.html`. All CSS inlined. No external JS. Fonts loaded via
   <!-- Overall Assessment -->
   <!-- 01 · Lens summary table -->
   <!-- 02 · Where the timings land (duration-budget diagram) -->
-  <!-- 03–05 · Per-lens sections (Jakub, Emil, Jhey — ordered by weighting for the audited context) -->
+  <!-- 03-05 · Per-lens sections (Jakub, Emil, Jhey - ordered by weighting for the audited context) -->
   <!-- 06 · Combined recommendations tables -->
   <!-- 07 · Lens reference summary -->
   <!-- footer -->
@@ -60,11 +60,11 @@ Single self-contained `.html`. All CSS inlined. No external JS. Fonts loaded via
 
 Neutral-default, dual-mode, severity-driven.
 
-- **Neutrals.** Cool slate-graphite at hue 255, very low chroma (0.003–0.010). `--ink` is the page background; `--paper` is the foreground text. In light mode the two swap values via the `:root:has(#theme-light:checked)` override — every other token derives from these two and flips automatically.
+- **Neutrals.** Cool slate-graphite at hue 255, very low chroma (0.003-0.010). `--ink` is the page background; `--paper` is the foreground text. In light mode the two swap values via the `:root:has(#theme-light:checked)` override - every other token derives from these two and flips automatically.
 - **Severity (FIXED, never adaptive).** Red `oklch(0.655 0.185 25)` (critical) · Amber `oklch(0.805 0.125 78)` (important) · Green `oklch(0.745 0.135 152)` (opportunity). Light-mode counterparts deepen L for contrast on white; hues stay constant.
 - **Timing-budget ramp (FIXED).** Same hues as severity; used in section 02 only. Instant + responsive = green, deliberate = amber, sluggish = red.
-- **Accent (NEUTRAL by default).** `--accent`, `--accent-soft`, `--accent-tint` alias to `--paper`, `--paper-dim`, and a low-alpha paper tint. The report has no chromatic primary color — severity is the only color in the document. An individual audit MAY repoint these three to a sampled brand color, but ONLY if the brand has at least ~40° hue clearance from each of the severity hues and is verified not to fall in the AI-cliché zone (neon cyan, purple-to-blue gradients).
-- **Fonts.** Display = Familjen Grotesk, body = Public Sans, mono = Geist Mono. The mono carries timing values (`240ms · ease-out`) and all small labels — never substitute a more generic mono for the timing values.
+- **Accent (NEUTRAL by default).** `--accent`, `--accent-soft`, `--accent-tint` alias to `--paper`, `--paper-dim`, and a low-alpha paper tint. The report has no chromatic primary color - severity is the only color in the document. An individual audit MAY repoint these three to a sampled brand color, but ONLY if the brand has at least ~40° hue clearance from each of the severity hues and is verified not to fall in the AI-cliché zone (neon cyan, purple-to-blue gradients).
+- **Fonts.** Display = Familjen Grotesk, body = Public Sans, mono = Geist Mono. The mono carries timing values (`240ms · ease-out`) and all small labels - never substitute a more generic mono for the timing values.
 
 ### Dual theme
 
@@ -74,7 +74,7 @@ The global toggle's visual control is a segmented `Dark / Light` pill, top-right
 
 ### The report's motion posture
 
-**The report itself has no entrance, scroll, or mount animation.** No staggered reveals. No fade-in-on-scroll. No motion on mount outside the demo cards. The demo cards are the only animated elements in the document — anything else would reproduce the AI-slop patterns this skill audits against.
+**The report itself has no entrance, scroll, or mount animation.** No staggered reveals. No fade-in-on-scroll. No motion on mount outside the demo cards. The demo cards are the only animated elements in the document - anything else would reproduce the AI-slop patterns this skill audits against.
 
 The one allowed transition: `border-color 0.2s ease` on lens-table rows and finding-rows for hover feedback. That's it.
 
@@ -86,10 +86,10 @@ First element inside `.wrap`, right-aligned segmented `Dark / Light` pill.
 #### Header
 ```
 .eyebrow ("MOTION AUDIT · DESIGN-MOTION-PRINCIPLES")
-h1.title ({project name} — {one-line audit framing})
-p.lede ({1–2 sentence project description})
+h1.title ({project name} - {one-line audit framing})
+p.lede ({1-2 sentence project description})
 .meta-row (what it is · stack)
-.stats (Findings · Critical · Important · Opportunities — each is an anchor link to its rec table)
+.stats (Findings · Critical · Important · Opportunities - each is an anchor link to its rec table)
 ```
 
 Each severity count pairs the number with a text label so the signal is readable under red-green color vision deficiency. Each count is an anchor link (`#rec-crit`, `#rec-imp`, `#rec-opp`) to the corresponding recommendation table.
@@ -100,35 +100,35 @@ One short paragraph in larger display type. Does this feel polished? Too much? T
 #### 01 · Lens summary
 3-row table, one row per practitioner. Columns: Lens (with name and weight chip) · Verdict (`Strong` / `Concern` / `Problem` / `Mixed` with a colored dot) · One-line read. Weight chips indicate `Primary` / `Secondary` / `Selective` per audit context.
 
-#### 02 · Where the timings land — duration-budget diagram
-Motion-native analog of thumb-first's thumb-zone diagram. A horizontal SVG (`viewBox="0 0 660 300"`) plots Tally's animations as numbered dots on a 0–600ms scale with four zone bands:
+#### 02 · Where the timings land - duration-budget diagram
+Motion-native analog of thumb-first's thumb-zone diagram. A horizontal SVG (`viewBox="0 0 660 300"`) plots Tally's animations as numbered dots on a 0-600ms scale with four zone bands:
 
 | Zone | Range | Color |
 |---|---|---|
-| Instant | 0–100ms | green (`--t-good`) |
-| Responsive | 100–300ms | green (`--t-good`) |
-| Deliberate | 300–500ms | amber (`--t-mid`) |
+| Instant | 0-100ms | green (`--t-good`) |
+| Responsive | 100-300ms | green (`--t-good`) |
+| Deliberate | 300-500ms | amber (`--t-mid`) |
 | Sluggish | 500ms+ | red (`--t-slow`) |
 
 Animations with NO transition are plotted as hollow dashed circles at `x=40` (= 0ms). The paired key list to the right carries the action names and durations. A "What's off" block below explains the misalignments.
 
 The SVG uses CSS-class-driven fills (via an inline `<style>` block) so the diagram re-tones with the global theme. Dot label color flips per theme (dark text on lighter dots in dark mode, light text on deeper dots in light mode).
 
-#### 03–05 · Per-lens sections
+#### 03-05 · Per-lens sections
 Three sections, ordered by weighting (primary first). Each section:
 
 ```
-.lens-sec__head (h3 "Designer — Perspective" + .lens-sec__weight chip)
+.lens-sec__head (h3 "Designer - Perspective" + .lens-sec__weight chip)
 p.lens-sec__verdict (verdict dot)
 
 .lens-block "What's working well"  (ul.lens-list.good with ✓ markers + file refs)
 .lens-block "Issues to address"    (one .finding-row per Critical/Important finding)
 .lens-block "Opportunities"        (ul.lens-list.opp with 💡 markers + file refs)
 
-.lens-take ("Through {Designer}'s lens: {1–2 sentence summary}")
+.lens-take ("Through {Designer}'s lens: {1-2 sentence summary}")
 ```
 
-Section heading: `Designer Name — Perspective Handle` (em-dash). Lens take is the documented lens summary, NOT a quote from the person — render as `Through {Designer}'s lens` (apostrophe-s).
+Section heading: `Designer Name - Perspective Handle` (em-dash). Lens take is the documented lens summary, NOT a quote from the person - render as `Through {Designer}'s lens` (apostrophe-s).
 
 Three perspective handles:
 
@@ -144,7 +144,7 @@ Each Critical or Important finding renders as a `.finding-row` inside its lens's
 ```
 .finding-row[data-sev="crit|imp"]
   .finding-row__prose
-    .find-tags (severity chip + 1–2 lens chips)
+    .find-tags (severity chip + 1-2 lens chips)
     h4.find-title
     .find-body
       <p><span class="label">What</span>{prose}</p>
@@ -227,7 +227,7 @@ Motion-target elements (`.ui-btn`, `.ui-card`, `.ui-row`, `.ui-check`, `.ui-num`
 For each Critical or Important finding `{n}`:
 
 1. **Generate motion code.** Read the audited code, the relevant lens reference (`emil-kowalski.md` / `jakub-krehel.md` / `jhey-tompkins.md`), and `references/motion-cookbook.md` for the concrete recipe. Author a `@keyframes m{n}` block and a `.demo-{n}__mt { animation: m{n} 3s {easing} infinite; }` rule.
-2. **Loop pacing.** `animation-duration: 3s`. Keyframes at `0%` / `~60%` / `100%`. Motion completes by ~60% (~1.8s), then holds until `100%` (~1.2s) before looping. The `100%` state MUST match the motion-target's default (no-animation) static rendering — this is the `prefers-reduced-motion` fallback contract.
+2. **Loop pacing.** `animation-duration: 3s`. Keyframes at `0%` / `~60%` / `100%`. Motion completes by ~60% (~1.8s), then holds until `100%` (~1.2s) before looping. The `100%` state MUST match the motion-target's default (no-animation) static rendering - this is the `prefers-reduced-motion` fallback contract.
 3. **Inject into `<style>`.** Append the `@keyframes m{n}` + `.demo-{n}__mt` block to the report's `<style>`, after the layout CSS, inside a `@media (prefers-reduced-motion: no-preference) { ... }` guard.
 4. **Inject demo-card markup.** Append the `.demo` block to the finding's `.finding-row`. Set `.demo__title` to a short motion title (e.g., "Quick tab crossfade"). Set `.demo__timing` to duration + easing (e.g., "180ms · ease-out").
 5. **Honor reduced-motion.** The shell's `@media (prefers-reduced-motion: reduce)` block disables all `[class*="__mt"]` animations and hides the `↻` loop indicator. The per-finding `100%` keyframe state must match the motion-target's default static rendering. Do NOT write per-finding overrides inside the reduce-motion block.
@@ -254,7 +254,7 @@ When the audit produces zero Critical + zero Important findings:
 
 ### Absolute bans
 
-- **NO `border-left` or `border-right` >1px as a colored accent stripe** on cards, list items, callouts, or alerts. Use full borders, leading numbers, tinted backgrounds, or no visual indicator instead. (The previous version of this spec had `border-left: 3px solid var(--accent)` on the lens-take block — removed.)
+- **NO `border-left` or `border-right` >1px as a colored accent stripe** on cards, list items, callouts, or alerts. Use full borders, leading numbers, tinted backgrounds, or no visual indicator instead. (The previous version of this spec had `border-left: 3px solid var(--accent)` on the lens-take block - removed.)
 - **NO gradient text** (`background-clip: text` + gradient).
 - **NO pulsing UI** in any demo (looping scale/opacity on status indicators, "live" pulse rings, breathing CTAs). Demo motion is structured one-shot enters that loop, not attention-getting pulses.
 - **NO chromatic accent in the default system.** The neutral-default is the supported configuration. Repointing `--accent` to a sampled brand color is permitted only when severity-hue clearance is verified.
@@ -281,22 +281,22 @@ One paragraph: Does this feel polished? Too much? Too little? What's working, wh
 
 ### Per-Designer Sections
 
-For each designer (Emil, Jakub, Jhey — ordered by weighting), use a horizontal-rule header and the body format:
+For each designer (Emil, Jakub, Jhey - ordered by weighting), use a horizontal-rule header and the body format:
 
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⚡ EMIL KOWALSKI — Restraint & Speed       (Secondary)
+⚡ EMIL KOWALSKI - Restraint & Speed       (Secondary)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 What's Working Well
-- ✓ [Observation] — `file.tsx:line`
+- ✓ [Observation] - `file.tsx:line`
 
 Issues to Address
-- ✗ [Issue] — `file.tsx:line`
+- ✗ [Issue] - `file.tsx:line`
   [Brief explanation]
   Recommended: [Brief recommendation]
 
-Through Emil's lens: [1–2 sentence summary]
+Through Emil's lens: [1-2 sentence summary]
 ```
 
 ### Combined Recommendations
@@ -323,7 +323,7 @@ Opportunities · Could Enhance
 ### Lens Reference Summary
 
 ```
-> Lens referenced most: [Designer Name] — [Perspective]
+> Lens referenced most: [Designer Name] - [Perspective]
 >
 > Why: [Explanation based on the project context]
 >
@@ -343,4 +343,4 @@ Default to HTML mode. Trigger terminal mode only when the user explicitly signal
 - Natural-language equivalent: "show the full report inline," "skip the HTML," "no HTML," "terminal only"
 - Any headless or CI environment where opening a browser doesn't apply
 
-When defaulting to HTML, mention in the 3-line confirmation summary (see `workflows/audit.md`) that `--terminal` is the alternative — so the user knows it exists.
+When defaulting to HTML, mention in the 3-line confirmation summary (see `workflows/audit.md`) that `--terminal` is the alternative - so the user knows it exists.

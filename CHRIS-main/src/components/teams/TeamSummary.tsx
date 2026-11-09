@@ -13,7 +13,7 @@ interface TeamSummaryProps {
 }
 
 /**
- * The team on a map of Czechia at the bottom of the team card — just the map. It takes whatever
+ * The team on a map of Czechia at the bottom of the team card - just the map. It takes whatever
  * height the card has left, so the team card always ends with the grant column.
  */
 export function TeamSummary({ variant, groups, onOpen }: TeamSummaryProps) {

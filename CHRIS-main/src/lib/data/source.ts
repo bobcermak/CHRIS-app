@@ -59,7 +59,7 @@ export interface CopilotInput {
 
 /**
  * Everything the UI needs from the backend. Two implementations: demo (local fixtures)
- * and api (the FastAPI adapter). Components never talk to either directly — only via `lib/queries`.
+ * and api (the FastAPI adapter). Components never talk to either directly - only via `lib/queries`.
  */
 export interface DataSource {
   readonly kind: 'demo' | 'api'
@@ -76,9 +76,9 @@ export interface DataSource {
   recompute(projectId: string, req: RecomputeRequest): StreamOp<TeamDiff>
   /** Add a group the user picked (by description or from the list) to a variant. */
   addMember(projectId: string, variantId: string, input: AddMemberInput): Promise<MatchResult>
-  /** Put a variant back as it was (cancelling an edit) — replaces the variant of its strategy. */
+  /** Put a variant back as it was (cancelling an edit) - replaces the variant of its strategy. */
   restoreVariant(projectId: string, variant: TeamVariant): Promise<MatchResult>
-  /** "Vrátit změnu" — make a previous variant current again. PROPOSED endpoint. */
+  /** "Vrátit změnu" - make a previous variant current again. PROPOSED endpoint. */
   revertVariant(projectId: string, variantId: string): Promise<MatchResult>
 
   research(projectId: string, target: ResearchReport['target']): StreamOp<ResearchReport>
@@ -105,7 +105,7 @@ export interface DataSource {
   copilot(id: string, input: CopilotInput): StreamOp<CopilotResult>
   /**
    * The application as a downloadable A4 PDF (`POST /application/pdf`). Null where there is no
-   * backend (demo) — the page then falls back to the browser's print-to-PDF.
+   * backend (demo) - the page then falls back to the browser's print-to-PDF.
    */
   applicationPdf(input: ApplicationPdfInput): Promise<Blob | null>
 }

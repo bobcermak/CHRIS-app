@@ -2,7 +2,7 @@ import { ArrowUpRightIcon } from '@phosphor-icons/react'
 import { cn } from '../../lib/utils/cn'
 
 /**
- * Small round link with a diagonal arrow — opens an external page (a grant's website) in a new
+ * Small round link with a diagonal arrow - opens an external page (a grant's website) in a new
  * tab. Renders nothing without a URL, so callers can pass whatever the data has.
  */
 export function ExternalIconLink({ href, label, className }: { href?: string; label: string; className?: string }) {

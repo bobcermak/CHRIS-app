@@ -1,4 +1,4 @@
-"""Application templates (ARCHITECTURE §9.5) — the outline of a grant application.
+"""Application templates (ARCHITECTURE §9.5) - the outline of a grant application.
 
 A call without a library template is resolved from its documentation: a link to
 the call page (scraped, linked PDF/DOCX documents followed) or an uploaded PDF/DOCX.
@@ -6,7 +6,7 @@ Every extracted section and limit cites the place in the documentation it came
 from; nothing is generated from model memory. When extraction fails or finds
 nothing, the generic outline comes back (`status="generic"`) with a `warning`.
 
-Stateless — the client keeps the template and the user's confirmations.
+Stateless - the client keeps the template and the user's confirmations.
 """
 
 from typing import Literal
@@ -52,7 +52,7 @@ class ApplicationTemplate(BaseModel):
     status: TemplateStatus
     agency: Agency = "OTHER"
     scheme: str
-    version: str = "—"
+    version: str = "-"
     language: Language = "cs"
     based_on: str | None = None
     diff: list[str] | None = None

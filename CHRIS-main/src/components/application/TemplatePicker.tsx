@@ -52,7 +52,7 @@ interface TemplatePickerProps {
   recommendedId?: string;
   /** template id → its best grant, shown on the row so the choice is explained. */
   fits?: Record<string, TemplateFit>;
-  /** The grant in the gauge on the teams page — offered first, with or without a template. */
+  /** The grant in the gauge on the teams page - offered first, with or without a template. */
   featured?: GrantMatch;
   busy: boolean;
   /** `callId` = the grant the application is for, when the picker knows it. */
@@ -174,7 +174,7 @@ export function TemplatePicker({
   onPick,
 }: TemplatePickerProps) {
   const library = useTemplates();
-  // Grant a resolved (generic) template is for — the featured one when started from its card.
+  // Grant a resolved (generic) template is for - the featured one when started from its card.
   const resolvingFor = useRef<string | undefined>(undefined);
   const resolve = useStream<ApplicationTemplate>((t) => onPick(t, resolvingFor.current));
   const featuredTemplate = featured?.call.template_id
@@ -212,7 +212,7 @@ export function TemplatePicker({
     );
   }, [library.data, recommendedId, fits]);
 
-  // Which card started the resolve — its progress and errors are shown there.
+  // Which card started the resolve - its progress and errors are shown there.
   const [origin, setOrigin] = useState<"featured" | "other">("other");
 
   const start = (input: TemplateResolveInput, from: "featured" | "other" = "other") => {
@@ -267,7 +267,7 @@ export function TemplatePicker({
 
       {featured && (
         <Card reveal="mount" aria-labelledby="featured-title" className="mb-5">
-          {/* First option in the card: a different grant — scrolls down to "Jiný grant". */}
+          {/* First option in the card: a different grant - scrolls down to "Jiný grant". */}
           <div className="mb-4 flex justify-end">
             <button
               type="button"
@@ -316,7 +316,7 @@ export function TemplatePicker({
                 Pro tuto výzvu ještě nemám ověřenou šablonu. Vyberte si cestu:
               </p>
               <div className={cn("mt-3 grid gap-3", alternative && "sm:grid-cols-2")}>
-                {/* Recommended: stay with this grant — the template is read from its call page right
+                {/* Recommended: stay with this grant - the template is read from its call page right
                     away. Without a known page the button scrolls to "Jiný grant" instead. */}
                 <Option
                   highlighted

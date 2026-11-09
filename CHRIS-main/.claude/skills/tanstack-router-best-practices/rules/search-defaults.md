@@ -9,10 +9,10 @@ Always provide default values for search params so the app works when users visi
 ## Bad Example
 
 ```tsx
-// No defaults — crashes or shows errors on bare URL visit
+// No defaults - crashes or shows errors on bare URL visit
 const searchSchema = z.object({
-  page: z.number(),           // Required — /products without ?page= throws
-  sort: z.enum(['name', 'price']),  // Required — no fallback
+  page: z.number(),           // Required - /products without ?page= throws
+  sort: z.enum(['name', 'price']),  // Required - no fallback
 })
 
 export const Route = createFileRoute('/products')({
@@ -22,7 +22,7 @@ export const Route = createFileRoute('/products')({
 ```
 
 ```tsx
-// Using .default() without adapter — makes search params required in Link types
+// Using .default() without adapter - makes search params required in Link types
 const searchSchema = z.object({
   page: z.number().default(1),
   sort: z.enum(['name', 'price']).default('name'),
@@ -78,12 +78,12 @@ export const Route = createFileRoute('/products')({
   validateSearch: zodValidator(searchSchema),
 })
 
-// Links don't require search params — defaults are used
-<Link to="/products">Products</Link> // Works — no type error
+// Links don't require search params - defaults are used
+<Link to="/products">Products</Link> // Works - no type error
 <Link to="/products" search={{ page: 2 }}>Page 2</Link> // Also works
 ```
 
-## Good Example: With Valibot (Standard Schema — No Adapter Needed)
+## Good Example: With Valibot (Standard Schema - No Adapter Needed)
 
 ```tsx
 import * as v from 'valibot'
@@ -101,7 +101,7 @@ export const Route = createFileRoute('/products')({
 
 ## Context
 
-- `.catch()` makes Zod never throw on invalid input — returns the fallback value instead
+- `.catch()` makes Zod never throw on invalid input - returns the fallback value instead
 - `.default()` provides a default when the value is `undefined` but doesn't affect the TypeScript input type
 - `fallback()` from `@tanstack/zod-adapter` combines both: catches invalid values AND makes the param optional in navigation types
 - Use `.catch()` when you want malformed URLs to silently use defaults

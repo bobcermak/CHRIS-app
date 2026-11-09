@@ -1,10 +1,10 @@
 <!--
-  Demo Shell — design-motion-principles
+  Demo Shell - design-motion-principles
   =====================================
 
   Minimal, isolated reference for a single demo card. The agent reads this
   during STEP 3 of the audit workflow (see ../SKILL.md) and uses it as the
-  per-finding template — one .demo block per Critical or Important finding
+  per-finding template - one .demo block per Critical or Important finding
   (Opportunities don't get demo cards).
 
   The full worked example with five demo cards in context lives in
@@ -30,7 +30,7 @@
         (e.g., "Quick tab crossfade", "Sheet enter (mirror for exit)").
      d. Set .demo__timing to the duration plus easing (e.g.,
         "180ms · ease-out", "300ms · ease-out-quint"). The subhead
-        ALWAYS renders — populate it for every demo so card heights
+        ALWAYS renders - populate it for every demo so card heights
         stay consistent across the report.
      e. Renumber the four radio ids from st1-* to st{n}-*, and the
         labels' for= attributes to match.
@@ -50,7 +50,7 @@
 
   4. Motion targets and ANY UI primitives inside the stage (.ui-btn,
      .ui-card, .ui-row, .ui-check, .ui-num, .ui-label, badge, etc.)
-     use --st-bg / --st-fg / --st-line / --st-dim — NEVER --accent or
+     use --st-bg / --st-fg / --st-line / --st-dim - NEVER --accent or
      other page tokens. This guarantees the demo contrasts correctly
      when its stage is locked to a different theme than the report.
 
@@ -60,8 +60,8 @@
 
   Loop pacing
   -----------
-  animation-duration: 3s. Keyframes 0% / ~60% / 100%. Motion 0–60% ≈ 1.8s,
-  hold 60–100% ≈ 1.2s, then restart. Every demo in a report uses this
+  animation-duration: 3s. Keyframes 0% / ~60% / 100%. Motion 0-60% ≈ 1.8s,
+  hold 60-100% ≈ 1.2s, then restart. Every demo in a report uses this
   cadence so all cards share the same rhythm.
 
   Standalone preview
@@ -69,7 +69,7 @@
   Opening this file directly in a browser shows one .demo card with the
   loop indicator, the segmented Auto/Light/Dark stage toggle, and a
   placeholder motion target (a simple shape that fades in). No real
-  per-finding motion plays — the agent injects motion per finding when
+  per-finding motion plays - the agent injects motion per finding when
   this template is embedded in a report. The shell also honors the
   viewer's prefers-color-scheme for standalone rendering.
 -->
@@ -78,7 +78,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Demo Shell — design-motion-principles</title>
+  <title>Demo Shell - design-motion-principles</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600;700&family=Public+Sans:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -152,7 +152,7 @@
     }
 
     .demo__stage {
-      /* AUTO default — stage uses the ambient elevated surface */
+      /* AUTO default - stage uses the ambient elevated surface */
       --st-bg: var(--surface-2);
       --st-fg: var(--paper);
       --st-line: var(--line-strong);
@@ -178,7 +178,7 @@
     }
 
     /* Generic UI primitives for use inside motion targets. All theme via
-       stage tokens, NEVER page tokens — so they contrast correctly when a
+       stage tokens, NEVER page tokens - so they contrast correctly when a
        stage is locked to a different theme than the report. */
     .ui-btn { display: inline-flex; align-items: center; justify-content: center; padding: 9px 18px; border-radius: 8px; background: var(--st-fg); color: var(--st-bg); font-family: var(--sans); font-size: 13px; font-weight: 600; }
     .ui-card { background: var(--st-bg); border: 1px solid var(--st-line); border-radius: 10px; padding: 14px 16px; min-width: 180px; box-shadow: 0 8px 24px oklch(0 0 0 / 0.12); }
@@ -188,7 +188,7 @@
     .ui-num { font-family: var(--display); font-size: 34px; font-weight: 700; color: var(--st-fg); font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
     .ui-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--st-dim); }
 
-    /* prefers-reduced-motion — disables every per-finding animation and
+    /* prefers-reduced-motion - disables every per-finding animation and
        hides the loop indicator. The per-finding @keyframes 100% state
        must match the motion-target's default rendering so the reduce
        fallback shows the correct final visual. */
@@ -201,7 +201,7 @@
        Per-finding @keyframes and .demo-{n}__mt rules go here. {n} is the
        finding's 1-indexed position across the report.
 
-       Example shape (replace per finding — wrap in
+       Example shape (replace per finding - wrap in
        @media (prefers-reduced-motion: no-preference) { ... }):
 
        @media (prefers-reduced-motion: no-preference) {
@@ -216,7 +216,7 @@
        }
     */
 
-    /* Placeholder motion for standalone preview only — agent strips this
+    /* Placeholder motion for standalone preview only - agent strips this
        when composing the report. Demonstrates the 0 / 60 / 100 cadence. */
     @media (prefers-reduced-motion: no-preference) {
       @keyframes m-placeholder {
@@ -258,7 +258,7 @@
            The element's contents are agent-determined (a button shape,
            a card, an icon, a row of items for stagger demos, a number,
            a badge, etc.). All inner UI primitives use the stage tokens
-           (--st-fg / --st-bg / --st-line / --st-dim) — NEVER page tokens. -->
+           (--st-fg / --st-bg / --st-line / --st-dim) - NEVER page tokens. -->
       <div class="demo-1__mt">
         <div class="ui-card">
           <div class="ui-label" style="margin-bottom: 6px;">Placeholder</div>

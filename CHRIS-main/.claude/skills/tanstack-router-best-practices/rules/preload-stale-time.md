@@ -67,8 +67,8 @@ export const Route = createFileRoute('/about')({
 
 ## Context
 
-- `preloadStaleTime` only affects preloaded data — data loaded via actual navigation uses `staleTime`
-- Set `defaultPreloadStaleTime: 0` when using TanStack Query, SWR, or other external caches — this ensures every preload triggers the loader so the external library can handle deduplication and freshness
+- `preloadStaleTime` only affects preloaded data - data loaded via actual navigation uses `staleTime`
+- Set `defaultPreloadStaleTime: 0` when using TanStack Query, SWR, or other external caches - this ensures every preload triggers the loader so the external library can handle deduplication and freshness
 - For built-in cache: higher `preloadStaleTime` = fewer network requests but potentially staler data
 - `router.invalidate()` marks all cached data as stale and forces immediate reload of active routes
 - `preloadStaleTime` is configurable at the router level (`defaultPreloadStaleTime`) and per-route (`preloadStaleTime`)

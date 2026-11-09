@@ -1,16 +1,16 @@
 ---
 name: design-motion-principles
-description: "Motion and interaction design expert based on Emil Kowalski, Jakub Krehel, and Jhey Tompkins' techniques. Two modes — build interactive components with purposeful motion, or audit existing animations to catch AI-slop motion patterns (audit emits a branded HTML report with looping demos). Use when creating, adding, animating, or reviewing UI motion: transitions, hover states, micro-interactions, enter/exit animations, or any motion design work in React, Framer Motion, CSS, or HTML. Provides per-designer perspectives with context-aware weighting."
+description: "Motion and interaction design expert based on Emil Kowalski, Jakub Krehel, and Jhey Tompkins' techniques. Two modes - build interactive components with purposeful motion, or audit existing animations to catch AI-slop motion patterns (audit emits a branded HTML report with looping demos). Use when creating, adding, animating, or reviewing UI motion: transitions, hover states, micro-interactions, enter/exit animations, or any motion design work in React, Framer Motion, CSS, or HTML. Provides per-designer perspectives with context-aware weighting."
 ---
 
 # Design Motion Principles
 
 You are a senior design engineer specializing in motion and interaction design. This skill operates in two modes:
 
-- **Create** — Build interactive components with purposeful motion → `workflows/create.md`
-- **Audit** — Review existing motion design and report findings → `workflows/audit.md`
+- **Create** - Build interactive components with purposeful motion → `workflows/create.md`
+- **Audit** - Review existing motion design and report findings → `workflows/audit.md`
 
-**Scope**: Web and app UI motion — HTML/CSS, React, Framer Motion / Motion, iOS/Android transitions, design system animations. The frequency framework still applies to other motion work (game engines, Lottie, Rive, video), but designer-specific techniques may not translate.
+**Scope**: Web and app UI motion - HTML/CSS, React, Framer Motion / Motion, iOS/Android transitions, design system animations. The frequency framework still applies to other motion work (game engines, Lottie, Rive, video), but designer-specific techniques may not translate.
 
 ---
 
@@ -23,8 +23,8 @@ You are a senior design engineer specializing in motion and interaction design. 
 | Ambiguous (e.g. "look at this modal animation") | Ask the user |
 
 For ambiguous requests, if `AskUserQuestion` is available, present:
-- **Create** — Build or improve the component's motion
-- **Audit** — Review existing motion and report findings
+- **Create** - Build or improve the component's motion
+- **Audit** - Review existing motion and report findings
 
 Otherwise ask in plain text: "Should I build/improve the motion (Create mode), or review existing motion and report findings (Audit mode)?"
 
@@ -34,16 +34,16 @@ Otherwise ask in plain text: "Should I build/improve the motion (Create mode), o
 
 ## The Three Designers
 
-- **Emil Kowalski** (Linear, ex-Vercel) — Restraint, speed, purposeful motion. Best for productivity tools.
-- **Jakub Krehel** (jakub.kr) — Subtle production polish, professional refinement. Best for shipped consumer apps.
-- **Jhey Tompkins** (@jh3yy) — Playful experimentation, CSS innovation. Best for creative sites, kids apps, portfolios.
+- **Emil Kowalski** (Linear, ex-Vercel) - Restraint, speed, purposeful motion. Best for productivity tools.
+- **Jakub Krehel** (jakub.kr) - Subtle production polish, professional refinement. Best for shipped consumer apps.
+- **Jhey Tompkins** (@jh3yy) - Playful experimentation, CSS innovation. Best for creative sites, kids apps, portfolios.
 
-> These three lenses distill each designer's *publicly published* work — courses, articles, talks, and open-source projects. The weighting framework and the "lens" framing are this skill's interpretation of their principles, named in tribute; they are not authored or endorsed by the designers themselves.
+> These three lenses distill each designer's *publicly published* work - courses, articles, talks, and open-source projects. The weighting framework and the "lens" framing are this skill's interpretation of their principles, named in tribute; they are not authored or endorsed by the designers themselves.
 
 Each designer answers a different question:
-- **Emil** — *"Should this animate at all?"*
-- **Jakub** — *"Is this subtle and polished enough for production?"*
-- **Jhey** — *"What could this become?"*
+- **Emil** - *"Should this animate at all?"*
+- **Jakub** - *"Is this subtle and polished enough for production?"*
+- **Jhey** - *"What could this become?"*
 
 **Critical insight**: These perspectives are context-dependent, not universal rules. A kids' app should prioritize Jakub + Jhey (polish + delight), not Emil's productivity-focused speed rules. Both modes weight the designers by project context before doing anything.
 
@@ -80,7 +80,7 @@ Before adding or approving any animation, ask how often the user triggers it:
 
 | Context | Guideline |
 |---------|-----------|
-| Productivity UI (Emil) | Under 300ms — 180ms ideal |
+| Productivity UI (Emil) | Under 300ms - 180ms ideal |
 | Production polish (Jakub) | 200-500ms for smoothness |
 | Creative/kids/playful (Jhey) | Whatever serves the effect |
 
@@ -94,7 +94,7 @@ If users comment "nice animation!" on every interaction, it's probably too promi
 
 ### Accessibility is NOT Optional
 
-Every animation — generated in Create mode or reviewed in Audit mode — must handle `prefers-reduced-motion`. No exceptions. See `references/accessibility.md`.
+Every animation - generated in Create mode or reviewed in Audit mode - must handle `prefers-reduced-motion`. No exceptions. See `references/accessibility.md`.
 
 ---
 
@@ -102,16 +102,16 @@ Every animation — generated in Create mode or reviewed in Audit mode — must 
 
 | File | Contents | Load When |
 |------|----------|-----------|
-| [Motion Cookbook](references/motion-cookbook.md) | All motion recipes — enter/exit, easing, springs, clip-path, @property, FLIP, scroll-driven | Create mode (always); Audit mode for implementation recommendations |
+| [Motion Cookbook](references/motion-cookbook.md) | All motion recipes - enter/exit, easing, springs, clip-path, @property, FLIP, scroll-driven | Create mode (always); Audit mode for implementation recommendations |
 | [Creation Gotchas](references/creation-gotchas.md) | Claude's failure modes when writing motion | Create mode (always) |
 | [Audit Checklist](references/audit-checklist.md) | Systematic audit checklist | Audit mode (always) |
-| [Anti-Checklist](references/anti-checklist.md) | Quality gate — AI-slop motion categories + anti-patterns to flag | Audit mode (always) |
+| [Anti-Checklist](references/anti-checklist.md) | Quality gate - AI-slop motion categories + anti-patterns to flag | Audit mode (always) |
 | [Emil Kowalski](references/emil-kowalski.md) | Restraint philosophy, frequency rule, decision frameworks | Either mode, if Emil is weighted |
 | [Jakub Krehel](references/jakub-krehel.md) | Production polish philosophy and decision frameworks | Either mode, if Jakub is weighted |
 | [Jhey Tompkins](references/jhey-tompkins.md) | Playful experimentation philosophy and frameworks | Either mode, if Jhey is weighted |
 | [Accessibility](references/accessibility.md) | prefers-reduced-motion, vestibular safety | Both modes (mandatory) |
 | [Performance](references/performance.md) | GPU optimization, will-change, layout thrash | Either mode, for complex animations |
-| [Output Format](references/output-format.md) | Audit report template — HTML mode (default) + terminal mode (flag) | Audit mode only |
+| [Output Format](references/output-format.md) | Audit report template - HTML mode (default) + terminal mode (flag) | Audit mode only |
 | [Demo Shell](references/demo-shell.html) | Visual container template for per-finding demo cards in the HTML report | Audit mode, HTML output |
 
 ## Workflow Index

@@ -293,7 +293,7 @@ export interface paths {
          * Resolve Template
          * @description Application template for a call without a library template (§9.5), from its documentation.
          *
-         *     Send `url` (the call page — its linked template / call documents are followed —
+         *     Send `url` (the call page - its linked template / call documents are followed -
          *     or a direct PDF/DOCX link) **or** `file`. Every section cites the page or part
          *     of the documentation it came from and comes unconfirmed (`status="extracted"`).
          *     When nothing can be extracted the generic outline comes back
@@ -317,7 +317,7 @@ export interface paths {
         put?: never;
         /**
          * Post Copilot
-         * @description Application copilot — a strict panel reviewer that helps with the whole application.
+         * @description Application copilot - a strict panel reviewer that helps with the whole application.
          *
          *     - `oppose` (default): formal checks + panel review of every section, a per-criterion
          *       score, and `reply` to `instruction` (the copilot chat). An LLM outage still returns
@@ -379,7 +379,7 @@ export interface components {
             scheme: string;
             /**
              * Version
-             * @default —
+             * @default -
              */
             version: string;
             /**
@@ -637,7 +637,7 @@ export interface components {
         };
         /**
          * CopilotTeamMember
-         * @description A group in the team — slug, group name or PI; the profile comes from data/groups.json.
+         * @description A group in the team - slug, group name or PI; the profile comes from data/groups.json.
          */
         CopilotTeamMember: {
             /** Group */
@@ -773,13 +773,13 @@ export interface components {
         };
         /**
          * DraftTarget
-         * @description One recipient — just name it; the backend fills in the rest from the NÚVR data.
+         * @description One recipient - just name it; the backend fills in the rest from the NÚVR data.
          *
-         *     - `group` — slug, group name or PI name ("Jiří Homola"). Also accepted as `group_slug`.
-         *     - `technology` — technology name ("ddPCR"). The e-mail then asks the lab for access
+         *     - `group` - slug, group name or PI name ("Jiří Homola"). Also accepted as `group_slug`.
+         *     - `technology` - technology name ("ddPCR"). The e-mail then asks the lab for access
          *       to it instead of inviting the group into the team. Without `group`, the lab is
          *       found by the technology.
-         *     - `role`, `reason` — optional extra context (e.g. straight from a MatchResult member).
+         *     - `role`, `reason` - optional extra context (e.g. straight from a MatchResult member).
          */
         DraftTarget: {
             /** Group */
@@ -805,7 +805,7 @@ export interface components {
         };
         /**
          * Gap
-         * @description A role no NÚVR group fits well enough — left empty instead of forcing a weak match.
+         * @description A role no NÚVR group fits well enough - left empty instead of forcing a weak match.
          */
         Gap: {
             role: components["schemas"]["Role"];
@@ -814,7 +814,7 @@ export interface components {
         };
         /**
          * Grant
-         * @description A funding opportunity relevant to NÚVR research. Hand-curated for the demo —
+         * @description A funding opportunity relevant to NÚVR research. Hand-curated for the demo -
          *     real pipeline would scrape ISVAVAI (CZ) + EU Funding & Tenders.
          *
          *     `description` is the main semantic signal for embedding search; the structured
@@ -1185,7 +1185,7 @@ export interface components {
         };
         /**
          * Sender
-         * @description Who is writing the e-mail. Optional — LLM uses [placeholders] when missing.
+         * @description Who is writing the e-mail. Optional - LLM uses [placeholders] when missing.
          */
         Sender: {
             /** Name */

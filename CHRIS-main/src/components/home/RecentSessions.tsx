@@ -25,7 +25,7 @@ function when(iso: string): string {
   return day.format(d)
 }
 
-/** Recent projects on the home page — a click restores the exact step and URL. */
+/** Recent projects on the home page - a click restores the exact step and URL. */
 export function RecentSessions({ limit = 20 }: { limit?: number }) {
   const router = useRouter()
   const sessions = useSessionsStore((s) => s.sessions)
@@ -79,7 +79,7 @@ export function RecentSessions({ limit = 20 }: { limit?: number }) {
                 <div className="pointer-events-none fixed inset-0 z-50 flex items-center justify-center p-4">
                 <Dialog.Content asChild forceMount>
                   <motion.div
-                    // Unfolds from a band to its full shape (clip-path) — the content never scales or stretches
+                    // Unfolds from a band to its full shape (clip-path) - the content never scales or stretches
                     initial={{ opacity: 0, y: 12, clipPath: 'inset(42% 6% 42% 6% round 28px)' }}
                     animate={{ opacity: 1, y: 0, clipPath: 'inset(0% 0% 0% 0% round 28px)' }}
                     exit={{ opacity: 0, y: 8, clipPath: 'inset(42% 6% 42% 6% round 28px)' }}

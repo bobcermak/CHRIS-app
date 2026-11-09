@@ -1,14 +1,14 @@
-"""Application copilot (ARCHITECTURE §9.4, §9.4.1) — a strict panel reviewer of the whole
+"""Application copilot (ARCHITECTURE §9.4, §9.4.1) - a strict panel reviewer of the whole
 application that also helps with it.
 
 One persona, two requests:
-  - `oppose` (default) — reviews the whole application: formal checks (deterministic)
+  - `oppose` (default) - reviews the whole application: formal checks (deterministic)
     + panel-style objections ordered by severity, a per-criterion score, and an answer
     to the user's `instruction` when there is one (the copilot chat).
-  - `write` — drafts one section (`section_key`). Still the opponent: the draft comes
+  - `write` - drafts one section (`section_key`). Still the opponent: the draft comes
     with its weakest points and what the user must supply.
 
-Stateless — the client sends the application as it has it (sections, template, team)
+Stateless - the client sends the application as it has it (sections, template, team)
 and keeps the drafts, history and the user's edits.
 """
 
@@ -47,7 +47,7 @@ class CopilotTemplate(BaseModel):
 
 
 class CopilotTeamMember(BaseModel):
-    """A group in the team — slug, group name or PI; the profile comes from data/groups.json."""
+    """A group in the team - slug, group name or PI; the profile comes from data/groups.json."""
 
     group: str = Field(min_length=1, max_length=300)
     role: str = Field(default="", max_length=300)
@@ -105,7 +105,7 @@ class ScoreCriterion(BaseModel):
 
 
 class CopilotScore(BaseModel):
-    total: int = Field(ge=0, le=100)  # sum of criteria normalised to 0–100
+    total: int = Field(ge=0, le=100)  # sum of criteria normalised to 0-100
     criteria: list[ScoreCriterion]
     # True = the call's own criteria weren't available; general ones were used.
     general_criteria: bool = False

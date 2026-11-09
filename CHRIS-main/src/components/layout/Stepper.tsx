@@ -13,7 +13,7 @@ const STEPS = [
   { n: '04', label: 'Přihláška', segment: 'prihlaska' },
 ] as const
 
-/** 01 Zadání · 02 Upřesnění · 03 Týmy · 04 Přihláška — shared active indicator (layoutId). */
+/** 01 Zadání · 02 Upřesnění · 03 Týmy · 04 Přihláška - shared active indicator (layoutId). */
 export function Stepper() {
   const pathname = useRouterState({ select: (s) => s.location.pathname })
   const params = useParams({ strict: false }) as { id?: string }

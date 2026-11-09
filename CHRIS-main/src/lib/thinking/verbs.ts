@@ -1,4 +1,4 @@
-// ARCHITECTURE.md §10.1 — the only approved "thinking" copy. Backend sends `stage`;
+// ARCHITECTURE.md §10.1 - the only approved "thinking" copy. Backend sends `stage`;
 // a backend `verb` is shown only if it is listed here for that stage.
 
 export type Stage =
@@ -110,7 +110,7 @@ const POOLS: Record<Stage | 'unknown', readonly string[]> = {
   unknown: ['Zkoumám…', 'Bádám…', 'Analyzuji…', 'Experimentuji…', 'Pozoruji…', 'Měřím…'],
 }
 
-/** The house verb — CHRIS at work: always shown first, then it joins every stage's pool. */
+/** The house verb - CHRIS at work: always shown first, then it joins every stage's pool. */
 export const BRAND_VERB = 'Chrisuji…'
 
 export const VERBS: Record<Stage | 'unknown', readonly string[]> = { ...POOLS }

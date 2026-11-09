@@ -23,7 +23,7 @@ interface CopilotPanelProps {
   stream: Pick<StreamState<CopilotResult>, 'status' | 'stage' | 'verb' | 'pct' | 'error'>
   /** The conversation with the copilot, oldest first. */
   chat: CopilotChatTurn[]
-  /** A chat message is being answered — the thinking line shows under it, not at the top. */
+  /** A chat message is being answered - the thinking line shows under it, not at the top. */
   chatBusy: boolean
   /** The last chat message failed; shown in the conversation with a retry. */
   chatError?: string
@@ -38,8 +38,8 @@ interface CopilotPanelProps {
 
 /**
  * The CHRIS copilot of the application: one opponent for the whole application (§9.4.1). It
- * reviews as a strict panel member — objections by severity, each tied to a section and a rule,
- * score per criterion — and answers questions in the chat below. No praise.
+ * reviews as a strict panel member - objections by severity, each tied to a section and a rule,
+ * score per criterion - and answers questions in the chat below. No praise.
  */
 export function CopilotPanel(props: CopilotPanelProps) {
   const { result, stream, chat, chatBusy, chatError, sectionTitle, onRetry, onApply, onDismiss, onOption, onFocusSection, onInstruction } = props

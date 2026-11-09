@@ -71,7 +71,7 @@ export function opposeDemo(app: ApplicationDraft, instruction?: string): Copilot
 
   return {
     comments: sortBySeverity([...formalDemo(app), ...comments]),
-    // Demo chat: a fixed, honest answer — the real one comes from the backend copilot.
+    // Demo chat: a fixed, honest answer - the real one comes from the backend copilot.
     reply: instruction
       ? 'Ukázková odpověď copilota (demo). Nejvíc bodů teď ztrácíte na proveditelnosti: doplňte do Metodiky zdůvodnění velikosti souboru a do Harmonogramu milníky po letech.'
       : undefined,
@@ -117,7 +117,7 @@ export function writeDemo(app: ApplicationDraft, sectionKey: string): CopilotRes
   }
 }
 
-/** Formal part of the review (limits, template state) — the backend computes it the same way. */
+/** Formal part of the review (limits, template state) - the backend computes it the same way. */
 function formalDemo(app: ApplicationDraft): CopilotComment[] {
   const comments: CopilotComment[] = []
   for (const s of app.sections) {

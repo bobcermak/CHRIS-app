@@ -5,7 +5,7 @@ import logo from '../../assets/brand/logo.svg'
 export function Wordmark() {
   return (
     <Link to="/" className="inline-flex shrink-0 items-center rounded-md transition-opacity hover:opacity-80">
-      <img src={logo} alt="CHRIS – úvod" width={82} height={28} className="h-7 w-auto" />
+      <img src={logo} alt="CHRIS - úvod" width={82} height={28} className="h-7 w-auto" />
     </Link>
   )
 }

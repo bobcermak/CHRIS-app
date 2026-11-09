@@ -9,7 +9,7 @@ Search middlewares transform search params when generating link hrefs and upon n
 ## Bad Example
 
 ```tsx
-// Manually retaining search params in every Link — tedious, error-prone
+// Manually retaining search params in every Link - tedious, error-prone
 function Navigation() {
   const { locale } = Route.useSearch()
 
@@ -116,8 +116,8 @@ export const Route = createRootRoute({
 ## Context
 
 - Middlewares run when generating link hrefs and during navigation after search validation
-- `retainSearchParams` — automatically carries specified params across navigations without manual spreading
-- `stripSearchParams` — removes params from the URL when they match default values, keeping URLs clean
-- Middlewares can be chained in the `middlewares` array — they run in order
-- Custom middlewares receive `{ search, next }` — call `next(search)` to continue the chain
+- `retainSearchParams` - automatically carries specified params across navigations without manual spreading
+- `stripSearchParams` - removes params from the URL when they match default values, keeping URLs clean
+- Middlewares can be chained in the `middlewares` array - they run in order
+- Custom middlewares receive `{ search, next }` - call `next(search)` to continue the chain
 - Define on the root route for global params (locale, theme), or on specific routes for scoped params

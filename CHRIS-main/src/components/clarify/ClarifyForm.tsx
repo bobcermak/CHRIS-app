@@ -9,7 +9,7 @@ interface ClarifyFormProps {
   round: ClarifyRound
   busy: boolean
   onSubmit: (answers: ClarifyAnswer[]) => void
-  /** "Hledej teď" — skip the remaining questions and search immediately. */
+  /** "Hledej teď" - skip the remaining questions and search immediately. */
   onSkip: () => void
 }
 

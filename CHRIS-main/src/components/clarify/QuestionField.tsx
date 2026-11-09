@@ -15,7 +15,7 @@ interface QuestionFieldProps {
   autoFocus?: boolean
 }
 
-/** One numbered question (01, 02, …) — free text or pill choices, always with "Nevím". */
+/** One numbered question (01, 02, …) - free text or pill choices, always with "Nevím". */
 export function QuestionField({ index, question, answer, onChange, autoFocus }: QuestionFieldProps) {
   const area = useRef<HTMLTextAreaElement>(null)
   const id = `q-${question.id}`

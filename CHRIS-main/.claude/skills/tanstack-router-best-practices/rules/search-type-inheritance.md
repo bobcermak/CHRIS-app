@@ -17,7 +17,7 @@ export const Route = createFileRoute('/posts')({
 
 // routes/posts.$postId.tsx
 export const Route = createFileRoute('/posts/$postId')({
-  // Re-declaring parent's search params — redundant, can go out of sync
+  // Re-declaring parent's search params - redundant, can go out of sync
   validateSearch: z.object({
     view: z.enum(['grid', 'list']).catch('grid'),
     tab: z.enum(['content', 'comments']).catch('content'),
@@ -28,14 +28,14 @@ export const Route = createFileRoute('/posts/$postId')({
 ## Good Example
 
 ```tsx
-// routes/posts.tsx — defines shared search params once
+// routes/posts.tsx - defines shared search params once
 export const Route = createFileRoute('/posts')({
   validateSearch: z.object({
     view: z.enum(['grid', 'list']).catch('grid'),
   }),
 })
 
-// routes/posts.$postId.tsx — only defines its own search params
+// routes/posts.$postId.tsx - only defines its own search params
 export const Route = createFileRoute('/posts/$postId')({
   validateSearch: z.object({
     tab: z.enum(['content', 'comments']).catch('content'),
@@ -55,7 +55,7 @@ function PostPage() {
 ## Good Example: Global Search Params on Root
 
 ```tsx
-// routes/__root.tsx — search params available everywhere
+// routes/__root.tsx - search params available everywhere
 export const Route = createRootRoute({
   validateSearch: z.object({
     theme: z.enum(['light', 'dark']).catch('light'),
@@ -75,10 +75,10 @@ function AnyComponent() {
 ```tsx
 function PostFilters() {
   return (
-    // WRONG — loses parent search params (view, theme, etc.)
+    // WRONG - loses parent search params (view, theme, etc.)
     // <Link to="." search={{ tab: 'comments' }}>Comments</Link>
 
-    // CORRECT — preserves parent params with functional update
+    // CORRECT - preserves parent params with functional update
     <Link to="." search={(prev) => ({ ...prev, tab: 'comments' })}>
       Comments
     </Link>
@@ -88,7 +88,7 @@ function PostFilters() {
 
 ## Context
 
-- Search params flow down the route tree — parent → child
+- Search params flow down the route tree - parent → child
 - Children don't need to re-validate parent search params
 - Use `useSearch({ from: '/parent-path' })` to read a specific parent's search params with type safety
 - Always use functional `search` updates (`(prev) => ({ ...prev, ... })`) to preserve inherited params when navigating

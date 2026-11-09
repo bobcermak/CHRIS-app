@@ -11,7 +11,7 @@ const NODES = [
 
 /**
  * Shown while files are dragged over the page: the frame draws itself around the viewport and
- * scattered "nodes" drift into the centre — the file is about to join the project.
+ * scattered "nodes" drift into the centre - the file is about to join the project.
  */
 export function DropOverlay({ active }: { active: boolean }) {
   const reduce = useReducedMotion()

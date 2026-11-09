@@ -96,6 +96,6 @@ test('recommended grant without a template: "Načíst šablonu" reads its call p
   const featured = page.getByRole('region', { name: /Program na podporu zdravotnického/ })
   await expect(featured.getByText('Pro tuto výzvu ještě nemám ověřenou šablonu.', { exact: false })).toBeVisible()
   await featured.getByRole('button', { name: 'Načíst šablonu' }).click()
-  // Straight to confirming the sections — no detour through the link field.
+  // Straight to confirming the sections - no detour through the link field.
   await expect(page.getByText('Přihláška · potvrzení šablony')).toBeVisible({ timeout: 15_000 })
 })

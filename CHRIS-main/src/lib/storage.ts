@@ -13,7 +13,7 @@ export const safeLocalStorage: StateStorage = {
     try {
       localStorage.setItem(name, value)
     } catch {
-      // ignore — the app keeps working in memory
+      // ignore - the app keeps working in memory
     }
   },
   removeItem: (name) => {

@@ -132,7 +132,7 @@ function extractedDemoTemplate(fileName: string): ApplicationTemplate {
     status: 'extracted',
     agency: 'OTHER',
     scheme: 'Ukázková výzva 2027 (demo)',
-    version: '—',
+    version: '-',
     language: 'cs',
     sections: [
       section('aims', 'Cíle projektu', 'Obecný a dílčí cíle projektu.', 2000),
@@ -176,7 +176,7 @@ export function resolveDemoTemplate(input: TemplateResolveInput): ApplicationTem
     status: 'generic',
     agency: 'OTHER',
     scheme: 'Obecná osnova',
-    version: '—',
+    version: '-',
     language: 'cs',
     sections: GENERIC_SECTIONS,
     source_url: 'url' in input ? input.url : '',

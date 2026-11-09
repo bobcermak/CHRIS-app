@@ -1,7 +1,7 @@
-"""Outreach drafts: e-mails to a matched NÚVR group (its PI) — either inviting it
+"""Outreach drafts: e-mails to a matched NÚVR group (its PI) - either inviting it
 into the project team, or asking its lab for access to a technology it runs.
 
-Stateless — one LLM round-trip per target, nothing is stored. The client keeps
+Stateless - one LLM round-trip per target, nothing is stored. The client keeps
 the drafts (and any manual edits / undo history) and calls the same endpoint
 again with `instruction` + `current` to let the copilot revise them.
 """
@@ -20,7 +20,7 @@ MAX_HISTORY = 50
 
 
 class Sender(BaseModel):
-    """Who is writing the e-mail. Optional — LLM uses [placeholders] when missing."""
+    """Who is writing the e-mail. Optional - LLM uses [placeholders] when missing."""
 
     name: str = Field(..., min_length=1, max_length=200)
     affiliation: str = Field(default="", max_length=300)
@@ -38,13 +38,13 @@ class CopilotTurn(BaseModel):
 
 
 class DraftTarget(BaseModel):
-    """One recipient — just name it; the backend fills in the rest from the NÚVR data.
+    """One recipient - just name it; the backend fills in the rest from the NÚVR data.
 
-    - `group` — slug, group name or PI name ("Jiří Homola"). Also accepted as `group_slug`.
-    - `technology` — technology name ("ddPCR"). The e-mail then asks the lab for access
+    - `group` - slug, group name or PI name ("Jiří Homola"). Also accepted as `group_slug`.
+    - `technology` - technology name ("ddPCR"). The e-mail then asks the lab for access
       to it instead of inviting the group into the team. Without `group`, the lab is
       found by the technology.
-    - `role`, `reason` — optional extra context (e.g. straight from a MatchResult member).
+    - `role`, `reason` - optional extra context (e.g. straight from a MatchResult member).
     """
 
     group: str | None = Field(
@@ -109,7 +109,7 @@ class DraftResponse(BaseModel):
     errors: list[DraftError] = Field(default_factory=list)
 
 
-# Swagger "Examples" dropdown for POST /drafts. Just names — context comes from data/groups.json.
+# Swagger "Examples" dropdown for POST /drafts. Just names - context comes from data/groups.json.
 _QUERY = (
     "Chci vyvinout neinvazivní test pro včasnou detekci kolorektálního karcinomu "
     "z tekuté biopsie (cfDNA + cirkulující proteiny) a ověřit ho na pacientských vzorcích."
@@ -122,11 +122,11 @@ _CURRENT = {
 
 DRAFT_REQUEST_EXAMPLES = {
     "team": {
-        "summary": "Tým — jen jména skupin / PI",
+        "summary": "Tým - jen jména skupin / PI",
         "value": {"query": _QUERY, "targets": [{"group": "Ondřej Slabý"}, {"group": "Jiří Homola"}, {"group": "hajduch-marian"}]},
     },
     "technology": {
-        "summary": "Technologie — jen název, laboratoř se dohledá",
+        "summary": "Technologie - jen název, laboratoř se dohledá",
         "value": {"query": _QUERY, "targets": [{"technology": "ddPCR"}, {"technology": "hmotnostní spektrometrie"}]},
     },
     "technology_at_group": {
@@ -147,7 +147,7 @@ DRAFT_REQUEST_EXAMPLES = {
         "value": {"query": _QUERY, "targets": [{"technology": "HDX-MS"}], "language": "en", "tone": "friendly"},
     },
     "revise": {
-        "summary": "Copilot — úprava e-mailu",
+        "summary": "Copilot - úprava e-mailu",
         "value": {
             "query": _QUERY,
             "targets": [{"group": "Ondřej Slabý", "current": _CURRENT}],

@@ -12,7 +12,7 @@ Pathless layout routes (prefixed with `_`) wrap child routes with shared UI with
 // Adding a path segment just for layout purposes
 // URL becomes /app/dashboard instead of /dashboard
 routes/
-├── app.tsx                 # /app — unnecessary path segment
+├── app.tsx                 # /app - unnecessary path segment
 ├── app.dashboard.tsx       # /app/dashboard
 ├── app.settings.tsx        # /app/settings
 
@@ -30,7 +30,7 @@ export const Route = createFileRoute('/dashboard')({
 ## Good Example
 
 ```
-# Pathless layout — no URL impact, shared layout
+# Pathless layout - no URL impact, shared layout
 routes/
 ├── __root.tsx
 ├── _app.tsx                # Pathless layout (no URL segment)
@@ -40,7 +40,7 @@ routes/
 ```
 
 ```tsx
-// routes/_app.tsx — wraps children without affecting URL
+// routes/_app.tsx - wraps children without affecting URL
 import { createFileRoute, Outlet } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/_app')({
@@ -61,7 +61,7 @@ function AppLayout() {
   )
 }
 
-// routes/_app.dashboard.tsx — URL is /dashboard, not /_app/dashboard
+// routes/_app.dashboard.tsx - URL is /dashboard, not /_app/dashboard
 export const Route = createFileRoute('/_app/dashboard')({
   component: DashboardPage,
 })
@@ -92,8 +92,8 @@ routes/
 
 ## Context
 
-- The `_` prefix marks a route as pathless — it doesn't contribute to the URL
+- The `_` prefix marks a route as pathless - it doesn't contribute to the URL
 - Child routes of pathless layouts are matched by their own path, not the layout's
-- Pathless layouts can define `beforeLoad`, `loader`, search validation, error boundaries — all inherited by children
+- Pathless layouts can define `beforeLoad`, `loader`, search validation, error boundaries - all inherited by children
 - Pathless layouts cannot use dynamic segments (`_$param/` is invalid)
 - Use for auth boundaries, visual chrome, or grouping routes that share UI but not URL structure

@@ -12,7 +12,7 @@ router = APIRouter(tags=["application"])
 
 
 def _filename(title: str) -> str:
-    safe = re.sub(r'[\\/:*?"<>|\r\n]+', " ", f"Přihláška – {title}").strip()[:120]
+    safe = re.sub(r'[\\/:*?"<>|\r\n]+', " ", f"Přihláška - {title}").strip()[:120]
     return f"{safe}.pdf"
 
 

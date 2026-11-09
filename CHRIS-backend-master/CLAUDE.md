@@ -1,4 +1,4 @@
-# Rakathon 2026 — NÚVR Research Matchmaker
+# Rakathon 2026 - NÚVR Research Matchmaker
 
 ## Výzva
 NÚVR Research Matchmaker. Vědec zapíše svůj výzkumný nápad (hypotézu / zájem) a systém mu doporučí:
@@ -16,22 +16,22 @@ Krátký volný prompt → AI se strukturovaně doptá přes formulář (follow-
 - **Granty:** zdroj zatím nevybrán
 - **Technologie:** zdroj zatím nevybrán (technologie = způsob + fyzická dostupnost pracoviště)
 
-## Matchmaking — oboustranný výběr
-Technologie i lidé se navrhují **současně**. Vědec může kliknout na kteroukoli stranu — klik zúží druhou. (Facet filtering.)
+## Matchmaking - oboustranný výběr
+Technologie i lidé se navrhují **současně**. Vědec může kliknout na kteroukoli stranu - klik zúží druhou. (Facet filtering.)
 
 ## Dvě varianty návrhu týmu
-- **INTELLIGENCE-FIRST** — tým primárně dle expertízy, granty se hledají až poté. **Hlavní varianta na hackathonu.**
-- **GRANT-FIRST** — najde nejvhodnější grant, podle jeho pravidel sestaví tým. Na hackathonu **naznačeno jako future work** — ukázat vizi, ne doperfekcionizovat.
+- **INTELLIGENCE-FIRST** - tým primárně dle expertízy, granty se hledají až poté. **Hlavní varianta na hackathonu.**
+- **GRANT-FIRST** - najde nejvhodnější grant, podle jeho pravidel sestaví tým. Na hackathonu **naznačeno jako future work** - ukázat vizi, ne doperfekcionizovat.
 
 ## Datové zdroje (potvrzené)
 
-### NÚVR — WordPress REST API (veřejné)
-- `GET https://www.nuvr.cz/wp-json/wp/v2/vedec?per_page=100` — **seznam skupin** (⚠ `vedec` = výzkumná **skupina**, ne jednotlivec)
-- `GET /wp-json/wp/v2/vedec/{id}` — detail skupiny
-- `GET /wp-json/wp/v2/uzel` — uzly Praha/Brno/Olomouc
-- `GET /wp-json/wp/v2/faktulty_ustavy` — pracoviště
-- `GET /wp-json/wp/v2/vyzkumny-program` — VP1–VP5
-- `GET /wp-json/wp/v2/pages` — stránky (katalog technologií, spolupráce)
+### NÚVR - WordPress REST API (veřejné)
+- `GET https://www.nuvr.cz/wp-json/wp/v2/vedec?per_page=100` - **seznam skupin** (⚠ `vedec` = výzkumná **skupina**, ne jednotlivec)
+- `GET /wp-json/wp/v2/vedec/{id}` - detail skupiny
+- `GET /wp-json/wp/v2/uzel` - uzly Praha/Brno/Olomouc
+- `GET /wp-json/wp/v2/faktulty_ustavy` - pracoviště
+- `GET /wp-json/wp/v2/vyzkumny-program` - VP1-VP5
+- `GET /wp-json/wp/v2/pages` - stránky (katalog technologií, spolupráce)
 - Fallback scrape: `https://www.nuvr.cz/vedci/`, `/vedec/{slug}/`, EN verze `/en/research-groups/`
 
 ### Publikace (per autor/skupina)
@@ -43,7 +43,7 @@ Technologie i lidé se navrhují **současně**. Vědec může kliknout na ktero
 ### Granty
 - EU CORDIS: `https://cordis.europa.eu/search?q={}`
 - EU Funding & Tenders: `https://api.tech.ec.europa.eu/search-api/prod/rest/search` (otevřené výzvy)
-- **ISVAVAI (ČR)**: `https://www.isvavai.cz/` — CEP, AZV/GAČR/TAČR, **má open data dumps** na `isvavai.cz/open-data` ← zlato
+- **ISVAVAI (ČR)**: `https://www.isvavai.cz/` - CEP, AZV/GAČR/TAČR, **má open data dumps** na `isvavai.cz/open-data` ← zlato
 - AZV: `https://www.azvcr.cz/` (scrape)
 
 ### Infrastruktury / technologie (biomed)
@@ -64,9 +64,9 @@ Technologie i lidé se navrhují **současně**. Vědec může kliknout na ktero
 - **Backend:** Python + FastAPI
   - **Package manager:** `uv`
   - **Struktura:** modulární od začátku (`app/routers`, `app/services`, `app/schemas`, `app/models`)
-  - **LLM provider:** neurčeno — bude za abstrakcí (`LLMClient` interface + mock impl)
-  - **Storage:** neurčeno — leading nápad: stáhnout NÚVR databázi lokálně (desítky–stovky vědců), udělat vektorový search (embeddings in-memory nebo sqlite-vec)
+  - **LLM provider:** neurčeno - bude za abstrakcí (`LLMClient` interface + mock impl)
+  - **Storage:** neurčeno - leading nápad: stáhnout NÚVR databázi lokálně (desítky-stovky vědců), udělat vektorový search (embeddings in-memory nebo sqlite-vec)
 - **Frontend:** React
 
 ## Poznámka pro Claude
-Vše výše jsou nápady, ne finální rozhodnutí. Uživatel vítá kritiku, protinávrhy a zpětnou vazbu. Nic není nedotknutelné — pokud vidíš lepší cestu, řekni to.
+Vše výše jsou nápady, ne finální rozhodnutí. Uživatel vítá kritiku, protinávrhy a zpětnou vazbu. Nic není nedotknutelné - pokud vidíš lepší cestu, řekni to.
