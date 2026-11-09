@@ -310,7 +310,7 @@ def oppose(req: CopilotRequest) -> CopilotResult:
 
 
 def write(req: CopilotRequest) -> CopilotResult:
-    """Raises LLMError when no draft can be produced — there is nothing honest to fall back to."""
+    """Raises LLMError when no draft can be produced - there is nothing honest to fall back to."""
     assert req.section_key is not None
     section = next(s for s in req.sections if s.key == req.section_key)
     payload = {

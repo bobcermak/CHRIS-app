@@ -20,5 +20,5 @@ class ApplicationPdfRequest(BaseModel):
     # Line above the title, e.g. "AZV ČR · standardní projekt · Program …".
     subtitle: str = Field(default="", max_length=400)
     sections: list[PdfSection] = Field(min_length=1, max_length=MAX_SECTIONS)
-    # Footer notices — the "AI-assisted draft" one is always added by the backend.
+    # Footer notices - the "AI-assisted draft" one is always added by the backend.
     notices: list[str] = Field(default_factory=list, max_length=5)

@@ -12,7 +12,7 @@ export const BUTTON_HEIGHT: Record<ButtonSize, string> = {
   lg: 'h-16', // 64 px · circle 44 · inset 10 · radius 30.5
 }
 
-/** Square size for the `icon` variant — same height as the other variants. */
+/** Square size for the `icon` variant - same height as the other variants. */
 export const BUTTON_SQUARE: Record<ButtonSize, string> = {
   sm: 'size-10',
   md: 'size-[54px]',

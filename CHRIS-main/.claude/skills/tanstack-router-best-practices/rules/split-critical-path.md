@@ -9,25 +9,25 @@ When code splitting, the main route file must contain everything needed for rout
 ## Bad Example
 
 ```tsx
-// routes/dashboard.tsx — empty, everything in lazy file
+// routes/dashboard.tsx - empty, everything in lazy file
 import { createFileRoute } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/dashboard')({
-  // Nothing here — loader is in the lazy file
+  // Nothing here - loader is in the lazy file
 })
 
 // routes/dashboard.lazy.tsx
 import { createLazyFileRoute } from '@tanstack/react-router'
 
 export const Route = createLazyFileRoute('/dashboard')({
-  // BAD: loader can't go in lazy files — it needs to run before rendering
+  // BAD: loader can't go in lazy files - it needs to run before rendering
   // loader: () => fetchDashboardData(),  // This won't work!
   component: DashboardPage,
 })
 ```
 
 ```tsx
-// Exporting component functions — prevents automatic code splitting
+// Exporting component functions - prevents automatic code splitting
 // routes/posts.tsx
 export const Route = createFileRoute('/posts')({
   component: PostsComponent,
@@ -42,7 +42,7 @@ export function PostsComponent() {
 ## Good Example
 
 ```tsx
-// routes/dashboard.tsx — all critical config here
+// routes/dashboard.tsx - all critical config here
 import { createFileRoute } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/dashboard')({
@@ -53,10 +53,10 @@ export const Route = createFileRoute('/dashboard')({
   loaderDeps: ({ search: { period } }) => ({ period }),
   loader: ({ deps, context: { queryClient } }) =>
     queryClient.ensureQueryData(dashboardQueryOptions(deps)),
-  // No component — it's in the lazy file
+  // No component - it's in the lazy file
 })
 
-// routes/dashboard.lazy.tsx — only UI
+// routes/dashboard.lazy.tsx - only UI
 import { createLazyFileRoute } from '@tanstack/react-router'
 
 export const Route = createLazyFileRoute('/dashboard')({
@@ -66,7 +66,7 @@ export const Route = createLazyFileRoute('/dashboard')({
   notFoundComponent: DashboardNotFound,
 })
 
-// NOT exported — stays code-split
+// NOT exported - stays code-split
 function DashboardPage() {
   const data = Route.useLoaderData()
   return <div>{/* heavy UI */}</div>
@@ -87,9 +87,9 @@ function DashboardPage() {
 
 ## Context
 
-- The loader is already an async boundary — splitting it adds a second network round-trip (fetch chunk + execute loader)
+- The loader is already an async boundary - splitting it adds a second network round-trip (fetch chunk + execute loader)
 - Loaders typically contribute less to bundle size than components with heavy UI libraries
-- The loader is a key preloadable asset (e.g. on link hover) — it should be available without async overhead
-- Do NOT export component functions from route files — exported values bypass code splitting
+- The loader is a key preloadable asset (e.g. on link hover) - it should be available without async overhead
+- Do NOT export component functions from route files - exported values bypass code splitting
 - `createLazyFileRoute` only accepts `component`, `errorComponent`, `pendingComponent`, `notFoundComponent`
 - Use `getRouteApi()` in lazy files for type-safe access to loader data, params, and search without importing the main route file

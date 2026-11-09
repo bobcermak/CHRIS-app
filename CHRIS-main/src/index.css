@@ -1,4 +1,4 @@
-/* Fonts: Bricolage Grotesque — display & numbers, Geist — UI text, Geist Mono — meta, Montserrat — buttons. */
+/* Fonts: Bricolage Grotesque - display & numbers, Geist - UI text, Geist Mono - meta, Montserrat - buttons. */
 @import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Montserrat:wght@500&display=swap");
 @import "tailwindcss";
 @import "./styles/brand.css";
@@ -38,7 +38,7 @@
   [role="button"]:not([aria-disabled="true"]) {
     cursor: pointer;
   }
-  /* Disabled things never react to the pointer — no hover, no trace, no underline */
+  /* Disabled things never react to the pointer - no hover, no trace, no underline */
   :disabled,
   [aria-disabled="true"] {
     pointer-events: none;

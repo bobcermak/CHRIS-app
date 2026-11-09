@@ -80,7 +80,7 @@ export function GroupPanel({ projectId, group: fromMatch, member, citations, onE
       <ResearchBlock
         projectId={projectId}
         target={{ kind: 'group', id: group.id }}
-        subtitle={`Vše o vedoucím skupiny ${group.pi_name} — profil, publikace, granty a ocenění`}
+        subtitle={`Vše o vedoucím skupiny ${group.pi_name} - profil, publikace, granty a ocenění`}
       />
 
       <div className="flex flex-wrap gap-2 px-1 pt-1">

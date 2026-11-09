@@ -7,7 +7,7 @@ import { intro, introEase } from '../../motion/presets'
 /**
  * Opening line of the home page: one surprising, sourced science fact instead of a greeting.
  * Always the same size, never clamped: a longer fact simply wraps onto more lines. The sentence
- * comes in word by word as a single soft wave (each word ~700 ms, part of the home intro) —
+ * comes in word by word as a single soft wave (each word ~700 ms, part of the home intro) -
  * never letter by letter.
  */
 export function ScienceFact() {
@@ -43,7 +43,7 @@ export function ScienceFact() {
         transition={{ duration: wordDur, ease: introEase, delay: reduce ? 0 : start + words.length * step }}
       >
         {/* Hover: the label darkens while an orange line grows under it (text only, not the icon),
-            and the arrow turns inside a small warm circle — the same language as the buttons. */}
+            and the arrow turns inside a small warm circle - the same language as the buttons. */}
         <a
           href={fact.source_url}
           target="_blank"

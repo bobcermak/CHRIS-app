@@ -49,7 +49,7 @@ function inside(p: Point) {
   return hit
 }
 
-// The dotted land as one path of zero-length strokes (round caps draw the dots) — one element, fast.
+// The dotted land as one path of zero-length strokes (round caps draw the dots) - one element, fast.
 const STEP = 9
 const DOTS = (() => {
   let d = ''
@@ -64,7 +64,7 @@ const CITIES: Record<Node, Point> = {
   Olomouc: project(17.25, 49.59),
 }
 const NODES: Node[] = ['Praha', 'Brno', 'Olomouc']
-// Where each label box sits relative to its city (map units — scaled with the map), and which way
+// Where each label box sits relative to its city (map units - scaled with the map), and which way
 // it grows from that point.
 const LABEL: Record<Node, { dx: number; dy: number; align: 'left' | 'right' }> = {
   Praha: { dx: -90, dy: -90, align: 'right' },
@@ -155,7 +155,7 @@ export function CzechMap({ byNode, onOpen, className }: CzechMapProps) {
     hideTimer.current = window.setTimeout(() => setTip(null), TIP_HIDE_MS)
   }
 
-  // A fixed tooltip would drift on scroll/resize — just hide it.
+  // A fixed tooltip would drift on scroll/resize - just hide it.
   useEffect(() => {
     if (!tip) return
     const close = () => setTip(null)

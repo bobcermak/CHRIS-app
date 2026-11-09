@@ -2,7 +2,7 @@
 
 Emil Kowalski is a Design Engineer at Linear (previously Vercel). Creator of Sonner, Vaul, and the "Animations on the Web" course. His approach emphasizes **restraint, speed, and purposeful motion**.
 
-This file is Emil's **philosophy and decision frameworks** — the judgment for *whether* and *when* to animate. Implementation code lives in `motion-cookbook.md` (cross-referenced below).
+This file is Emil's **philosophy and decision frameworks** - the judgment for *whether* and *when* to animate. Implementation code lives in `motion-cookbook.md` (cross-referenced below).
 
 ---
 
@@ -39,31 +39,31 @@ A 180ms animation feels more responsive than 400ms. Speed creates perceived perf
 
 Emil's decision checklist. Code for each is in the cookbook section noted.
 
-1. **Scale your buttons** — Subtle `scale(0.97)` on `:active` for immediate tactile feedback. → cookbook §10
-2. **Don't animate from `scale(0)`** — It creates unnatural motion. Start from `scale(0.9)` or higher. → cookbook §10
-3. **Tooltip delay patterns** — First tooltip in a group: delay + animation. Subsequent: instant. → cookbook §10
-4. **Custom easing is essential** — *"Easing is the most important part of any animation. It can make a bad animation feel great."* Built-in `ease`/`ease-in-out` lack strength; use custom Bézier curves (easing.dev, easings.co). → cookbook §2
-5. **Origin-aware animations** — Motion should originate from its logical source; a dropdown expands from its trigger, not from center. → cookbook §13
-6. **Keep animations fast** — Under 300ms for UI; remove animation entirely for high-frequency interactions.
-7. **Use blur when nothing else works** — `filter: blur(2px)` masks imperfections during rough state transitions. → cookbook §10
+1. **Scale your buttons** - Subtle `scale(0.97)` on `:active` for immediate tactile feedback. → cookbook §10
+2. **Don't animate from `scale(0)`** - It creates unnatural motion. Start from `scale(0.9)` or higher. → cookbook §10
+3. **Tooltip delay patterns** - First tooltip in a group: delay + animation. Subsequent: instant. → cookbook §10
+4. **Custom easing is essential** - *"Easing is the most important part of any animation. It can make a bad animation feel great."* Built-in `ease`/`ease-in-out` lack strength; use custom Bézier curves (easing.dev, easings.co). → cookbook §2
+5. **Origin-aware animations** - Motion should originate from its logical source; a dropdown expands from its trigger, not from center. → cookbook §13
+6. **Keep animations fast** - Under 300ms for UI; remove animation entirely for high-frequency interactions.
+7. **Use blur when nothing else works** - `filter: blur(2px)` masks imperfections during rough state transitions. → cookbook §10
 
 ---
 
-## Signature Techniques (decision context — code in cookbook)
+## Signature Techniques (decision context - code in cookbook)
 
 | Technique | When Emil reaches for it | Cookbook |
 |-----------|--------------------------|----------|
-| Clip-path animations | Reveals and tab transitions — hardware-accelerated, no layout shift, no extra DOM | §9 |
+| Clip-path animations | Reveals and tab transitions - hardware-accelerated, no layout shift, no extra DOM | §9 |
 | Spring physics | Any value that should interpolate smoothly rather than snap (e.g. mouse position) | §12 |
-| CSS transitions over keyframes | Anything the user can rapidly re-trigger — keyframes can't retarget mid-flight | §11 |
-| Direct style updates | Frequent updates like drag — CSS variables cause cascade recalculation | §11 |
-| Momentum-based dismissal | Swipe-to-dismiss — use velocity, not distance thresholds | §11 |
+| CSS transitions over keyframes | Anything the user can rapidly re-trigger - keyframes can't retarget mid-flight | §11 |
+| Direct style updates | Frequent updates like drag - CSS variables cause cascade recalculation | §11 |
+| Momentum-based dismissal | Swipe-to-dismiss - use velocity, not distance thresholds | §11 |
 
 ---
 
 ## Interruptibility
 
-Great animations can be interrupted mid-play and respond naturally. Framer Motion supports this natively; CSS transitions allow smooth interruption before completion. **Test by clicking rapidly** — animations should blend, not queue.
+Great animations can be interrupted mid-play and respond naturally. Framer Motion supports this natively; CSS transitions allow smooth interruption before completion. **Test by clicking rapidly** - animations should blend, not queue.
 
 ---
 
@@ -83,7 +83,7 @@ Great animations can be interrupted mid-play and respond naturally. Framer Motio
 
 ## Invisible Quality: Lessons from Sonner & Vaul
 
-Emil's open-source libraries (Sonner for toasts, Vaul for drawers) reveal his philosophy in shipped code. The throughline: every detail serves **invisible quality** — users shouldn't notice polished interactions, they should just feel right.
+Emil's open-source libraries (Sonner for toasts, Vaul for drawers) reveal his philosophy in shipped code. The throughline: every detail serves **invisible quality** - users shouldn't notice polished interactions, they should just feel right.
 
 > "When a feature functions as you assume it should, you proceed without giving it a second thought, which is our goal."
 

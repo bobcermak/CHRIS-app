@@ -9,7 +9,7 @@ async function audit(page: Page, label: string) {
   const results = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa']).analyze()
   const serious = results.violations.filter((v) => v.impact === 'serious' || v.impact === 'critical')
   const detail = serious
-    .map((v) => `${v.id}: ${v.nodes.map((n) => `${n.target.join(' ')} — ${n.any[0]?.message ?? n.failureSummary ?? ''}`).join(' | ')}`)
+    .map((v) => `${v.id}: ${v.nodes.map((n) => `${n.target.join(' ')} - ${n.any[0]?.message ?? n.failureSummary ?? ''}`).join(' | ')}`)
     .join('\n')
   expect(serious, `${label}:\n${detail}`).toEqual([])
 }

@@ -6,9 +6,9 @@ Use this checklist when reviewing motion design in any UI code.
 
 ## Philosophy Check (Do First)
 
-- [ ] **How often will users trigger this?** (Frequent = less/no animation — Emil's rule)
-- [ ] **Is this keyboard-initiated?** (If yes, don't animate — Emil's rule)
-- [ ] **Does this animation serve a purpose?** (orientation, feedback, continuity—not just decoration)
+- [ ] **How often will users trigger this?** (Frequent = less/no animation - Emil's rule)
+- [ ] **Is this keyboard-initiated?** (If yes, don't animate - Emil's rule)
+- [ ] **Does this animation serve a purpose?** (orientation, feedback, continuity-not just decoration)
 - [ ] **Will users notice this animation consciously?** (If yes for production UI, probably too much)
 - [ ] **Have I tested this with `prefers-reduced-motion: reduce`?**
 - [ ] **Does this feel natural after the 10th interaction?** (Test repeatedly, not just once)
@@ -21,9 +21,9 @@ Use this checklist when reviewing motion design in any UI code.
 
 Conditional UI changes that **lack** animation are often worse than poorly-tuned animations:
 
-- [ ] **Searched for conditional renders** — `{condition && <Component />}` patterns
-- [ ] **Searched for ternary swaps** — `{condition ? <A /> : <B />}` patterns
-- [ ] **Searched for dynamic inline styles** — `style={{ prop: dynamicValue }}` without transition
+- [ ] **Searched for conditional renders** - `{condition && <Component />}` patterns
+- [ ] **Searched for ternary swaps** - `{condition ? <A /> : <B />}` patterns
+- [ ] **Searched for dynamic inline styles** - `style={{ prop: dynamicValue }}` without transition
 - [ ] **Each conditional render** either has AnimatePresence wrapper OR doesn't need animation (static content)
 - [ ] **Mode switches** (tabs, toggles) animate their content changes, not just the switch itself
 - [ ] **Settings panels** with conditional controls have enter/exit animations
@@ -115,7 +115,7 @@ Conditional UI changes that **lack** animation are often worse than poorly-tuned
 - Missing `prefers-reduced-motion` support
 - Animating layout properties (width, height, top, left)
 - No exit animations (elements just disappear)
-- **Motion gaps in primary UI** — Conditional controls/panels that snap in/out without animation
+- **Motion gaps in primary UI** - Conditional controls/panels that snap in/out without animation
 - Animating keyboard-initiated actions (Emil)
 - Animations on high-frequency actions (100s/day)
 

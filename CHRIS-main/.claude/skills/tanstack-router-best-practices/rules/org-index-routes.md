@@ -9,7 +9,7 @@ Index routes match when their parent route's URL is matched exactly and no child
 ## Bad Example
 
 ```tsx
-// Missing index route — /posts shows empty outlet
+// Missing index route - /posts shows empty outlet
 routes/
 ├── posts.tsx              # /posts layout with sidebar
 ├── posts.$postId.tsx      # /posts/:postId
@@ -30,7 +30,7 @@ function PostsLayout() {
   return (
     <div>
       <PostsSidebar />
-      {/* Mixing layout and index concerns — breaks when children render */}
+      {/* Mixing layout and index concerns - breaks when children render */}
       {!params.postId && <p>Select a post</p>}
       <Outlet />
     </div>
@@ -48,7 +48,7 @@ routes/
 ```
 
 ```tsx
-// routes/posts.tsx — pure layout, always renders
+// routes/posts.tsx - pure layout, always renders
 import { createFileRoute, Outlet } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/posts')({
@@ -66,7 +66,7 @@ function PostsLayout() {
   )
 }
 
-// routes/posts.index.tsx — shows when at /posts exactly
+// routes/posts.index.tsx - shows when at /posts exactly
 import { createFileRoute } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/posts/')({
@@ -95,6 +95,6 @@ createFileRoute('/posts/')
 
 - Index routes use the `index` filename token (or trailing `/` in `createFileRoute`)
 - An index route only matches when the parent URL is matched exactly with no further path segments
-- Layout routes always render and provide `<Outlet />` — index routes fill that outlet at the exact parent path
+- Layout routes always render and provide `<Outlet />` - index routes fill that outlet at the exact parent path
 - Every layout route with child routes should have a corresponding index route unless the parent path is never visited directly
 - The root index route (`routes/index.tsx`) matches `/` exactly

@@ -1,4 +1,4 @@
-"""Resolve an unknown call into an application template (ARCHITECTURE §9.5, steps 2–3).
+"""Resolve an unknown call into an application template (ARCHITECTURE §9.5, steps 2-3).
 
 documentation (link or upload) → call_docs sources → LLM extraction (structured)
 → validation: every section / limit must cite a real source, the rest is dropped
@@ -46,7 +46,7 @@ KNOWN_KEYS = {
     "references", "budget", "infrastructure", "impact", "excellence", "implementation", "ethics",
 }
 
-# Universal outline (§9.5 step 3) — same keys as the frontend's library, so text carries over.
+# Universal outline (§9.5 step 3) - same keys as the frontend's library, so text carries over.
 GENERIC_SECTIONS: list[tuple[str, str]] = [
     ("state", "Stav poznání"),
     ("aims", "Cíle a hypotéza"),

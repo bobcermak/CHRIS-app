@@ -19,7 +19,7 @@ export const Route = createRootRoute({
 // routes/posts.tsx
 export const Route = createFileRoute('/posts')({
   loader: ({ context }) => {
-    // context is {} — no type safety, no access to queryClient
+    // context is {} - no type safety, no access to queryClient
     const posts = context.queryClient.ensureQueryData(postsQuery) // Type error
   },
 })
@@ -55,7 +55,7 @@ const router = createRouter({
 // routes/posts.tsx
 export const Route = createFileRoute('/posts')({
   loader: ({ context: { queryClient } }) => {
-    // queryClient is fully typed — autocomplete and type checking work
+    // queryClient is fully typed - autocomplete and type checking work
     return queryClient.ensureQueryData(postsQueryOptions())
   },
 })
@@ -63,8 +63,8 @@ export const Route = createFileRoute('/posts')({
 
 ## Context
 
-- `createRootRouteWithContext` is a factory — note the double call `()()`
+- `createRootRouteWithContext` is a factory - note the double call `()()`
 - Only define properties in the context type that are passed directly to `createRouter`
-- Context added via `beforeLoad` in child routes is automatically inferred — no need to include it in the root type
+- Context added via `beforeLoad` in child routes is automatically inferred - no need to include it in the root type
 - TypeScript will error if required context properties are missing from `createRouter`
 - If all context properties are optional, passing context to `createRouter` is optional too

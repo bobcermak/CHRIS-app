@@ -7,7 +7,7 @@ const PROJECT_PATH = /^\/projekt\/([^/]+)\/(upresneni|tymy|prihlaska)$/
 
 /**
  * Remembers where the user is inside each project, so the home page can reopen the exact step
- * (with its search params) — also after a refresh. Renders nothing.
+ * (with its search params) - also after a refresh. Renders nothing.
  */
 export function SessionTracker() {
   const { pathname, searchStr } = useRouterState({

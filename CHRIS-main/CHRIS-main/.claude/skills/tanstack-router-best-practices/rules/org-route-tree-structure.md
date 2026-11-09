@@ -9,7 +9,7 @@ TanStack Router uses a nested route tree to match URLs to the correct component 
 ## Bad Example
 
 ```tsx
-// Flat list of routes with no nesting — no shared layouts or data
+// Flat list of routes with no nesting - no shared layouts or data
 routes/
 ├── __root.tsx
 ├── dashboard.tsx           # /dashboard
@@ -34,18 +34,18 @@ export const Route = createFileRoute('/dashboard-stats')({
 ## Good Example
 
 ```
-# Nested tree — shared layout and auth handled once in parent
+# Nested tree - shared layout and auth handled once in parent
 routes/
 ├── __root.tsx
 ├── dashboard.tsx           # /dashboard (layout + auth)
-├── dashboard.index.tsx     # /dashboard (exact — default view)
+├── dashboard.index.tsx     # /dashboard (exact - default view)
 ├── dashboard.stats.tsx     # /dashboard/stats
 ├── dashboard.settings.tsx  # /dashboard/settings
 └── dashboard.users.tsx     # /dashboard/users
 ```
 
 ```tsx
-// dashboard.tsx — parent layout, runs once for all children
+// dashboard.tsx - parent layout, runs once for all children
 import { createFileRoute, Outlet } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/dashboard')({
@@ -66,7 +66,7 @@ function DashboardLayout() {
   )
 }
 
-// dashboard.stats.tsx — inherits layout and auth from parent
+// dashboard.stats.tsx - inherits layout and auth from parent
 export const Route = createFileRoute('/dashboard/stats')({
   loader: ({ context: { queryClient } }) =>
     queryClient.ensureQueryData(statsQueryOptions()),
@@ -92,6 +92,6 @@ routes/
 - Parent route components must render `<Outlet />` for children to appear
 - Layout routes run `beforeLoad` and `loader` before any child route
 - Search params, context, and error boundaries are inherited by child routes
-- Use flat (`.` separator) or directory style interchangeably — they produce the same tree
+- Use flat (`.` separator) or directory style interchangeably - they produce the same tree
 - Use `route.tsx` inside a directory to define the parent route's configuration
 - Routes are automatically sorted by specificity: index > static > dynamic > splat

@@ -68,7 +68,7 @@ export function TeamsPage() {
     setBusy(null);
     setLastDiff(diff);
     // The diff carries no citations; without the newcomer's source its "why" claims would be
-    // dropped. The data source has saved the whole result — take it from there.
+    // dropped. The data source has saved the whole result - take it from there.
     void data.getMatch(id).then((saved) => saved && setMatch(id, saved));
   });
 

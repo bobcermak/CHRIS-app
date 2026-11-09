@@ -4,12 +4,12 @@ Targets are just names (group slug / name / PI, and/or a technology); the group
 profile from data/groups.json is the context the LLM writes from.
 
 Two kinds of target:
-  - team member — invites the group into the project team.
-  - technology (`technology` set) — asks the group's lab for access to a technology it runs.
+  - team member - invites the group into the project team.
+  - technology (`technology` set) - asks the group's lab for access to a technology it runs.
 
 Two modes of the same request:
-  - generate (no `instruction`) — fresh e-mail from the group profile, role/technology and reason.
-  - revise (`instruction` + per-target `current`/`history`) — copilot edits the
+  - generate (no `instruction`) - fresh e-mail from the group profile, role/technology and reason.
+  - revise (`instruction` + per-target `current`/`history`) - copilot edits the
     e-mail or just answers a question about it.
 """
 
@@ -151,7 +151,7 @@ def draft(req: DraftRequest) -> DraftResponse:
     if missing:
         raise UnknownGroups(missing)
 
-    # Dedupe after resolving — "Jiří Homola" and "jiri-homola" are the same recipient.
+    # Dedupe after resolving - "Jiří Homola" and "jiri-homola" are the same recipient.
     # One group can still get two e-mails: as a team member and as a technology provider.
     jobs: list[tuple[DraftTarget, Group]] = []
     seen: set[tuple[str, str | None]] = set()
@@ -165,7 +165,7 @@ def draft(req: DraftRequest) -> DraftResponse:
     def _one(target: DraftTarget, group: Group) -> Draft:
         if req.instruction is not None:
             return _revise(req, target, group)
-        # Each e-mail mentions the other proposed team members — a consortium reads as more credible.
+        # Each e-mail mentions the other proposed team members - a consortium reads as more credible.
         # Technology providers aren't team members, so they're never listed as partners.
         partners = [
             {"group": g.name, "pi": g.pi, "role": t.role.name if t.role else ""}

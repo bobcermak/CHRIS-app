@@ -1,6 +1,6 @@
 """A4 PDF of an application draft, rendered with fpdf2.
 
-Fonts: DejaVu Sans (data/fonts, free licence) — full Czech coverage, which the PDF core
+Fonts: DejaVu Sans (data/fonts, free licence) - full Czech coverage, which the PDF core
 fonts lack. Section markdown is converted to the small HTML subset fpdf2's `write_html`
 understands; every piece of text is HTML-escaped first, so nothing in a section can inject
 markup.
@@ -19,7 +19,7 @@ from backend.schemas.application_pdf import ApplicationPdfRequest
 
 FONT_DIR = Path(__file__).resolve().parents[3] / "data" / "fonts"
 FONT = "DejaVu"
-AI_DRAFT_NOTICE = "AI-assisted draft — oficiální podání pouze v ISVP/GRIS."
+AI_DRAFT_NOTICE = "AI-assisted draft - oficiální podání pouze v ISVP/GRIS."
 MONTHS = [
     "ledna", "února", "března", "dubna", "května", "června",
     "července", "srpna", "září", "října", "listopadu", "prosince",
@@ -101,7 +101,7 @@ def render(req: ApplicationPdfRequest, today: date | None = None) -> bytes:
     pdf.add_font(FONT, "I", FONT_DIR / "DejaVuSans-Oblique.ttf")
     pdf.add_font(FONT, "BI", FONT_DIR / "DejaVuSans-BoldOblique.ttf")
     pdf.set_title(req.title)
-    pdf.set_creator("CHRIS — NÚVR Research Matchmaker")
+    pdf.set_creator("CHRIS - NÚVR Research Matchmaker")
     pdf.add_page()
 
     # Header: call line, title, date.

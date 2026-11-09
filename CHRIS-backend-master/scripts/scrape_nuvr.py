@@ -166,7 +166,7 @@ def parse_photo(soup: BeautifulSoup) -> str:
     featured = soup.select_one("img.wp-post-image")
     if featured:
         candidates.append(featured.get("src", ""))
-    # Only images uploaded to the NÚVR site — never logos/flags from plugins or themes.
+    # Only images uploaded to the NÚVR site - never logos/flags from plugins or themes.
     return next((c for c in candidates if c.startswith(UPLOADS_PREFIX)), "")
 
 
@@ -222,7 +222,7 @@ def fill_photos(path: Path, delay: float) -> int:
                 print(f"    ✗ {group['slug']}: {e}")
             if not group.get("photo_url"):
                 missing.append(group["slug"])
-            print(f"  [{i}/{len(groups)}] {group['slug']}: {group.get('photo_url') or '—'}")
+            print(f"  [{i}/{len(groups)}] {group['slug']}: {group.get('photo_url') or '-'}")
             if delay and i < len(groups):
                 time.sleep(delay)
     path.write_text(json.dumps(groups, ensure_ascii=False, indent=2), encoding="utf-8")

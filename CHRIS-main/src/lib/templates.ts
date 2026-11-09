@@ -1,6 +1,6 @@
 import type { ApplicationTemplate, TemplateStatus } from './data'
 
-/** Typographic status labels (§9.5 UI) — shown at the title and on every section. */
+/** Typographic status labels (§9.5 UI) - shown at the title and on every section. */
 export function templateStatusLabel(t: Pick<ApplicationTemplate, 'status' | 'based_on'>, library?: ApplicationTemplate[]): string {
   switch (t.status) {
     case 'verified':
@@ -31,5 +31,5 @@ export const AGENCY_LABEL: Record<ApplicationTemplate['agency'], string> = {
   OTHER: 'Jiný poskytovatel',
 }
 
-export const AI_DRAFT_NOTICE = 'AI-assisted draft — oficiální podání pouze v ISVP/GRIS.'
+export const AI_DRAFT_NOTICE = 'AI-assisted draft - oficiální podání pouze v ISVP/GRIS.'
 export const UNVERIFIED_NOTICE = 'Šablona nebyla ověřena proti oficiální dokumentaci výzvy.'

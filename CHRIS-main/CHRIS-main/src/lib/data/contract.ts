@@ -54,7 +54,7 @@ export interface IntentCard {
   readiness: number
   study_name?: StudyName
   /**
-   * PROPOSED: what clarification distilled for searching the catalogue — the enriched project
+   * PROPOSED: what clarification distilled for searching the catalogue - the enriched project
    * description, the researcher's own group(s) never to propose, preferred nodes.
    */
   search?: { query: string; exclude_slugs: string[]; nodes: string[] }
@@ -70,7 +70,7 @@ export type QuestionKind =
   | 'file'
   | 'confirm_assumption'
 
-/** PROPOSED: body of POST /api/intents — the prompt plus structured context from the composer. */
+/** PROPOSED: body of POST /api/intents - the prompt plus structured context from the composer. */
 export interface CreateProjectInput {
   prompt: string
   /** Metadata of attached files; contents are uploaded separately (POST /api/intents/{id}/upload). */
@@ -111,7 +111,7 @@ export interface ClarifyRound {
 export interface ClarifyAnswer {
   question_id: string
   value: string | string[] | null
-  /** User pressed "Nevím" — the AI assumes. */
+  /** User pressed "Nevím" - the AI assumes. */
   unknown?: boolean
 }
 
@@ -142,10 +142,10 @@ export interface Group {
   owner?: string
 }
 
-/** Grant call from the catalogue (`/grants`, `/grants/{slug}`) — alias of the backend schema. */
+/** Grant call from the catalogue (`/grants`, `/grants/{slug}`) - alias of the backend schema. */
 export type GrantInfo = components['schemas']['Grant']
 
-/** A semantic search hit (`/groups/search`, `/grants/search`): similarity 0–1. */
+/** A semantic search hit (`/groups/search`, `/grants/search`): similarity 0-1. */
 export interface Scored<T> {
   score: number
   item: T
@@ -259,7 +259,7 @@ export interface TeamVariant {
   weights: StrategyWeights
 }
 
-/** PROPOSED: result of POST /api/intents/{id}/match — variants plus the groups they reference. */
+/** PROPOSED: result of POST /api/intents/{id}/match - variants plus the groups they reference. */
 export interface MatchResult {
   intent: IntentCard
   variants: TeamVariant[]
@@ -411,7 +411,7 @@ export interface CopilotComment {
   options?: { id: string; label: string }[]
 }
 
-/** PROPOSED: result of one copilot run — comments plus an optional per-criterion score. */
+/** PROPOSED: result of one copilot run - comments plus an optional per-criterion score. */
 export interface CopilotResult {
   comments: CopilotComment[]
   score?: {

@@ -9,14 +9,14 @@ TanStack Router navigation uses `from` (origin) and `to` (destination). When `fr
 ## Bad Example
 
 ```tsx
-// No 'from' — relative navigation has no context
+// No 'from' - relative navigation has no context
 function PostActions() {
   return (
     <div>
-      {/* to=".." without from — TypeScript doesn't know the current route */}
+      {/* to=".." without from - TypeScript doesn't know the current route */}
       <Link to="..">Back to Posts</Link>
 
-      {/* Interpolating params into path — loses type safety */}
+      {/* Interpolating params into path - loses type safety */}
       <Link to={`/posts/${postId}/edit`}>Edit</Link>
     </div>
   )
@@ -76,7 +76,7 @@ function PostPage() {
 
 ```tsx
 function PostPage() {
-  // 'from' set at hook level — all navigate calls are relative to this route
+  // 'from' set at hook level - all navigate calls are relative to this route
   const navigate = useNavigate({ from: '/posts/$postId' })
 
   const handleDelete = async () => {
@@ -100,8 +100,8 @@ function PostPage() {
 
 ## Context
 
-- Always pass `from` for relative navigation — without it, TypeScript can't validate the target
+- Always pass `from` for relative navigation - without it, TypeScript can't validate the target
 - Use `Route.fullPath` or literal route path strings for `from`
-- Do NOT interpolate path params, search, or hash into the `to` string — use `params`, `search`, `hash` options
+- Do NOT interpolate path params, search, or hash into the `to` string - use `params`, `search`, `hash` options
 - In pathless layout routes, `Route.useNavigate()` resolves relative paths from the layout's parent route
 - `from` can also be a route object import: `from={postRoute.fullPath}`

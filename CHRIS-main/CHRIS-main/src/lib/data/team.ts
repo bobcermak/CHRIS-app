@@ -3,7 +3,7 @@ import type { Citation, Gap, Group, MatchResult, Member, TeamVariant, TechResour
 /**
  * Technologies of a team: the research infrastructures its groups use (`infrastructures` in the
  * NÚVR catalogue), most shared first. Each one lists the groups through which it is reachable
- * and cites their profiles — nothing beyond what the catalogue says.
+ * and cites their profiles - nothing beyond what the catalogue says.
  */
 export function techFromGroups(variant: TeamVariant, groups: Record<string, Group>, citations: Record<string, Citation>): TechResource[] {
   const byName = new Map<string, Group[]>()
@@ -49,7 +49,7 @@ export interface AddMemberInput {
   role: string
   /** How the group got in: picked by hand, or as the replacement for a removed group. */
   origin?: 'manual' | 'replacement'
-  /** Who the user said is missing ("Popsat, koho hledám") — the role in their words. */
+  /** Who the user said is missing ("Popsat, koho hledám") - the role in their words. */
   description?: string
   /** `slot_key` of the gap this group fills; the gap disappears once it is added. */
   fills_gap?: string
@@ -57,12 +57,12 @@ export interface AddMemberInput {
   reason?: string
 }
 
-/** Members best match first — the order the team is shown and ranked in. */
+/** Members best match first - the order the team is shown and ranked in. */
 export const byMatch = (a: Member, b: Member) => b.total - a.total
 
 /**
  * Removes a group from one variant. Coverage (share of the backend's planned roles that are
- * filled) is left as the backend scored it — the role plan is not known here.
+ * filled) is left as the backend scored it - the role plan is not known here.
  */
 export function withoutMember(match: MatchResult, variantId: string, groupId: string): MatchResult {
   return {
@@ -90,7 +90,7 @@ export function withMember(
       id: citationId,
       url: group.web_url ?? '',
       source: 'nuvr',
-      title: `${group.lab_name} — profil výzkumné skupiny`,
+      title: `${group.lab_name} - profil výzkumné skupiny`,
       snippet: group.tags?.join(', ') || group.lab_name,
       fetched_at: new Date().toISOString(),
     }

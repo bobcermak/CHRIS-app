@@ -1,6 +1,6 @@
 # Motion Cookbook
 
-The single source of truth for motion **recipes** — implementation patterns and code. In Create mode this is your primary reference; in Audit mode load it when making implementation recommendations. Designer philosophy and decision frameworks live in the per-designer reference files; the code lives here.
+The single source of truth for motion **recipes** - implementation patterns and code. In Create mode this is your primary reference; in Audit mode load it when making implementation recommendations. Designer philosophy and decision frameworks live in the per-designer reference files; the code lives here.
 
 ---
 
@@ -53,7 +53,7 @@ Use `animation-fill-mode` to prevent jarring visual resets:
 ## 2. Easing & Timing
 
 ### Duration Impacts Naturalness
-> "Duration is all about timing, and timing has a big impact on the movement's naturalness." — Jhey Tompkins
+> "Duration is all about timing, and timing has a big impact on the movement's naturalness." - Jhey Tompkins
 
 ### Custom Easing is Essential (Emil)
 > "Easing is the most important part of any animation. It can make a bad animation feel great."
@@ -89,7 +89,7 @@ transition={{ type: "spring", duration: 0.45, bounce: 0 }}
 transition={{ type: "spring", duration: 0.55, bounce: 0.1 }}
 ```
 
-**Why `bounce: 0`?** It gives smooth deceleration without overshoot—professional and refined. Reserve bounce > 0 for playful contexts.
+**Why `bounce: 0`?** It gives smooth deceleration without overshoot-professional and refined. Reserve bounce > 0 for playful contexts.
 
 ### The linear() Function (Jhey)
 CSS `linear()` enables bounce, elastic, and spring effects in pure CSS:
@@ -109,7 +109,7 @@ Use Jake Archibald's linear() generator for custom curves: https://linear-easing
 ### Stagger Techniques (Jhey)
 `animation-delay` only applies once (not per iteration). Approaches:
 
-1. **Different delays with finite iterations** — Works for one-time sequences
+1. **Different delays with finite iterations** - Works for one-time sequences
 2. **Pad keyframes** to create stagger within the animation:
 ```css
 @keyframes spin {
@@ -122,7 +122,7 @@ Use Jake Archibald's linear() generator for custom curves: https://linear-easing
 ```css
 .element { animation-delay: calc(var(--index) * -0.2s); }
 ```
-This makes animations appear mid-flight from the start—useful for staggered continuous animations.
+This makes animations appear mid-flight from the start-useful for staggered continuous animations.
 
 ---
 
@@ -270,7 +270,7 @@ The `@property` rule lets you declare types for CSS variables, enabling smooth i
 
 **Available types**: length, number, percentage, color, angle, time, integer, transform-list
 
-**Why this matters**: Without `@property`, CSS sees custom properties as strings. Strings can't interpolate—they just swap. With a declared type, the browser knows how to smoothly transition between values.
+**Why this matters**: Without `@property`, CSS sees custom properties as strings. Strings can't interpolate-they just swap. With a declared type, the browser knows how to smoothly transition between values.
 
 ### Decompose Complex Transforms
 Instead of animating a monolithic transform (which can't interpolate curved paths), split into typed properties:
@@ -291,7 +291,7 @@ Instead of animating a monolithic transform (which can't interpolate curved path
 }
 ```
 
-This creates curved motion paths that would be impossible with standard transform animation—the ball arcs through space rather than moving in straight lines.
+This creates curved motion paths that would be impossible with standard transform animation-the ball arcs through space rather than moving in straight lines.
 
 ### Scoped Variables for Dynamic Behavior (Jhey)
 CSS custom properties respect scope, enabling powerful patterns:
@@ -309,7 +309,7 @@ Use scoped variables to create varied behavior from a single animation definitio
 ## 8. 3D CSS (Jhey)
 
 ### Think in Cuboids
-> "Think in cubes instead of boxes" — Jhey Tompkins
+> "Think in cubes instead of boxes" - Jhey Tompkins
 
 Complex 3D scenes are assemblies of cube-shaped elements (like LEGO). Decompose any 3D object into cuboids.
 
@@ -361,7 +361,7 @@ clip-path: polygon(coordinates);
 ```
 
 ### Tab Transitions
-Duplicate tab lists with different styling. Animate the overlay's clip-path to reveal only the active tab—creates smooth color transitions without timing issues.
+Duplicate tab lists with different styling. Animate the overlay's clip-path to reveal only the active tab-creates smooth color transitions without timing issues.
 
 ### Scroll-Driven with clip-path
 ```javascript
@@ -457,7 +457,7 @@ const velocity = dragDistance / elapsedTime;
 if (velocity > 0.11) dismiss();
 ```
 
-Fast, short gestures should work—users shouldn't need to drag far.
+Fast, short gestures should work-users shouldn't need to drag far.
 
 ### Damping for Natural Boundaries
 When dragging past boundaries, reduce movement progressively. Things in real life slow down before stopping.
@@ -480,13 +480,13 @@ const x = useSpring(mouseX, springConfig);
 const y = useSpring(mouseY, springConfig);
 ```
 
-Use `useSpring` for any value that should interpolate smoothly rather than snap—nothing in the real world changes instantly.
+Use `useSpring` for any value that should interpolate smoothly rather than snap-nothing in the real world changes instantly.
 
 ### Interruptibility
 Great animations can be interrupted mid-play:
 - Framer Motion supports interruption natively
 - CSS transitions allow smooth interruption before completion
-- Test by clicking rapidly—animations should blend, not queue
+- Test by clicking rapidly-animations should blend, not queue
 
 ---
 
@@ -510,14 +510,14 @@ Animations should originate from their logical source:
 ## 14. Scroll-Driven Animations (Jhey)
 
 ### The Core Problem
-Scroll-driven animations are tied to scroll **speed**. If users scroll slowly, animations play slowly. This feels wrong for most UI—you want animations to trigger at a scroll position, not be controlled by scroll speed.
+Scroll-driven animations are tied to scroll **speed**. If users scroll slowly, animations play slowly. This feels wrong for most UI-you want animations to trigger at a scroll position, not be controlled by scroll speed.
 
 ### Duration Control Pattern
 Use two coordinated animations:
 1. **Trigger animation**: Scroll-driven, toggles a custom property when element enters view
 2. **Main animation**: Traditional duration-based, activated via Style Query
 
-This severs the connection between scroll speed and animation timing—the animation runs over a fixed duration once triggered, regardless of how fast the user scrolled.
+This severs the connection between scroll speed and animation timing-the animation runs over a fixed duration once triggered, regardless of how fast the user scrolled.
 
 ### Progressive Enhancement
 Always provide fallbacks:

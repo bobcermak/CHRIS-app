@@ -1,4 +1,4 @@
-"""Technology recommendation steps — shared by both match pipelines.
+"""Technology recommendation steps - shared by both match pipelines.
 
 Flow:
   1. LLM proposes `top_k` technologies/methods needed for the query.
@@ -8,7 +8,7 @@ Flow:
      access the method: node, faculty) + a short "evidence" line pulled
      from the group's expertise list.
 
-Reuses the groups index — no new embeddings file is built, since 65 groups
+Reuses the groups index - no new embeddings file is built, since 65 groups
 are small enough that query-time matching over the full group profile works
 well for method/capability lookups.
 """
@@ -45,7 +45,7 @@ def _best_expertise_lines(group: Group, needle: str, limit: int = 2) -> str:
 
 
 def propose_technologies(query: str, top_k: int) -> list[dict]:
-    """Returns [{name, description}] — raw dicts, not yet with providers."""
+    """Returns [{name, description}] - raw dicts, not yet with providers."""
     if top_k <= 0:
         return []
     client = get_chat_client()

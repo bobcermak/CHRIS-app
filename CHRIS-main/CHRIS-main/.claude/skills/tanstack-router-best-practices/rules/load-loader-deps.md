@@ -4,12 +4,12 @@
 
 ## Explanation
 
-Search params are not directly available in the loader function. Use `loaderDeps` to explicitly declare which search params (or other reactive values) the loader depends on. This controls the cache key — the loader only re-runs when the declared dependencies change, not on every search param change. Returning the entire search object causes unnecessary cache invalidation.
+Search params are not directly available in the loader function. Use `loaderDeps` to explicitly declare which search params (or other reactive values) the loader depends on. This controls the cache key - the loader only re-runs when the declared dependencies change, not on every search param change. Returning the entire search object causes unnecessary cache invalidation.
 
 ## Bad Example
 
 ```tsx
-// Returning the entire search object — cache invalidates on ANY param change
+// Returning the entire search object - cache invalidates on ANY param change
 export const Route = createFileRoute('/products')({
   validateSearch: z.object({
     page: z.number().catch(1),
@@ -41,7 +41,7 @@ export const Route = createFileRoute('/products')({
 function ProductsPage() {
   const { view } = Route.useSearch()
   const products = Route.useLoaderData()
-  // Changing 'view' does NOT refetch — only 'page' and 'sort' trigger reloads
+  // Changing 'view' does NOT refetch - only 'page' and 'sort' trigger reloads
   return <ProductList products={products} view={view} />
 }
 ```
@@ -80,4 +80,4 @@ export const Route = createFileRoute('/products')({
 - UI-only search params (view mode, collapsed state) should be excluded from `loaderDeps`
 - The return value of `loaderDeps` is available as `deps` in the loader function
 - Without `loaderDeps`, the cache key is based only on the route path and path params
-- `loaderDeps` also controls SWR behavior — the loader re-runs when deps change
+- `loaderDeps` also controls SWR behavior - the loader re-runs when deps change

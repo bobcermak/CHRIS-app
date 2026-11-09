@@ -29,7 +29,7 @@ META_PATH = GROUPS_PATH.parent / "groups_embeddings_meta.json"
 def build_profile_text(group: dict) -> str:
     """Compose the text that represents a group for embedding.
     Fields selected to maximize semantic signal; structured relations like
-    `collaborations` and `infrastructures` are intentionally excluded — they
+    `collaborations` and `infrastructures` are intentionally excluded - they
     carry graph/filter value, not semantic text value."""
     parts = [
         f"Skupina: {group['name']}",

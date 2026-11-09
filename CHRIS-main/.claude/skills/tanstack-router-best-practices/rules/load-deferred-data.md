@@ -9,7 +9,7 @@ Not all data is equally important for the initial render. Await critical data in
 ## Bad Example
 
 ```tsx
-// Awaiting everything — page blocked until slowest request finishes
+// Awaiting everything - page blocked until slowest request finishes
 export const Route = createFileRoute('/posts/$postId')({
   loader: async ({ params }) => {
     const post = await fetchPost(params.postId)           // 100ms
@@ -28,7 +28,7 @@ import { createFileRoute, Await } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/posts/$postId')({
   loader: async ({ params }) => {
-    // Kick off slow requests — do NOT await
+    // Kick off slow requests - do NOT await
     const commentsPromise = fetchComments(params.postId)
     const recommendationsPromise = fetchRecommendations()
 
@@ -73,11 +73,11 @@ function PostPage() {
 ```tsx
 export const Route = createFileRoute('/posts/$postId')({
   loader: async ({ params, context: { queryClient } }) => {
-    // Non-critical — prefetch without awaiting
+    // Non-critical - prefetch without awaiting
     queryClient.prefetchQuery(commentsQueryOptions(params.postId))
     queryClient.prefetchQuery(recommendationsQueryOptions())
 
-    // Critical — await to prevent loading state
+    // Critical - await to prevent loading state
     await queryClient.ensureQueryData(postQueryOptions(params.postId))
   },
   component: PostPage,
@@ -105,9 +105,9 @@ function CommentsSection({ postId }: { postId: string }) {
 
 ## Context
 
-- Critical data: content above the fold, page title, primary layout data — `await` these
-- Non-critical data: comments, recommendations, analytics, sidebar content — defer these
+- Critical data: content above the fold, page title, primary layout data - `await` these
+- Non-critical data: comments, recommendations, analytics, sidebar content - defer these
 - Deferred promises follow the same cache lifecycle as their loader
-- Works with SSR streaming — deferred data streams in as inline `<script>` tags
+- Works with SSR streaming - deferred data streams in as inline `<script>` tags
 - With TanStack Query, use `prefetchQuery` (not awaited) for deferred and `ensureQueryData` (awaited) for critical
 - Wrap each deferred section in its own `<Suspense>` boundary for independent loading states

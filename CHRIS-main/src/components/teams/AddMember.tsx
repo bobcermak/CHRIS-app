@@ -145,7 +145,7 @@ export function AddMember({ projectId, search, variant, onAdded }: AddMemberProp
   // Never offer groups already in the team, nor the researcher's own group.
   const inTeam = new Set([...variant.members.map((m) => m.group_id), ...search.exclude_slugs])
   // The team's % comes from `/match` (fit to a role), candidates' from `/groups/search` (fit to the
-  // whole brief) — the same group scores ~0.06 lower there. Shift candidates by the mean difference
+  // whole brief) - the same group scores ~0.06 lower there. Shift candidates by the mean difference
   // measured on the current members, so "N. místo" compares like with like.
   const paired = variant.members.filter((m) => scores.data?.[m.group_id] !== undefined)
   const offset = paired.length ? paired.reduce((sum, m) => sum + m.total - scores.data![m.group_id], 0) / paired.length : 0
@@ -185,7 +185,7 @@ export function AddMember({ projectId, search, variant, onAdded }: AddMemberProp
 
   return (
     <div className="mt-2">
-      {/* The empty seat at the end of the team — opens the add dialog */}
+      {/* The empty seat at the end of the team - opens the add dialog */}
       <button
         type="button"
         onClick={() => setOpen(true)}

@@ -51,7 +51,7 @@ function load(): DemoDb {
     const raw = safeLocalStorage.getItem(KEY) as string | null
     if (raw) return { projects: {}, matches: {}, applications: {}, templates: {}, variants: {}, ...(JSON.parse(raw) as Partial<DemoDb>) }
   } catch {
-    // storage unavailable — fall through to an empty db
+    // storage unavailable - fall through to an empty db
   }
   return { projects: {}, matches: {}, applications: {}, templates: {}, variants: {} }
 }
@@ -108,7 +108,7 @@ function citationsFor(s: Scenario) {
   return Object.fromEntries(
     s.groups.map((g) => [
       `c-${g.id}`,
-      demoCitation(`c-${g.id}`, `${g.lab_name} — profil skupiny (demo)`, `${g.pi_name}, ${g.institution}`),
+      demoCitation(`c-${g.id}`, `${g.lab_name} - profil skupiny (demo)`, `${g.pi_name}, ${g.institution}`),
     ]),
   )
 }

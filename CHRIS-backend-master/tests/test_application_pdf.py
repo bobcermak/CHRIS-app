@@ -1,4 +1,4 @@
-"""POST /application/pdf — an A4 PDF of the application draft."""
+"""POST /application/pdf - an A4 PDF of the application draft."""
 
 from datetime import date
 

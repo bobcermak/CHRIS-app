@@ -9,7 +9,7 @@ File-based routing generates route configuration automatically from your file st
 ## Bad Example
 
 ```tsx
-// Code-based routing — verbose, manual, error-prone
+// Code-based routing - verbose, manual, error-prone
 import { createRouter, createRoute, createRootRoute } from '@tanstack/react-router'
 
 const rootRoute = createRootRoute({ component: Root })
@@ -18,7 +18,7 @@ const aboutRoute = createRoute({ getParentRoute: () => rootRoute, path: '/about'
 const postsRoute = createRoute({ getParentRoute: () => rootRoute, path: '/posts', component: Posts })
 const postRoute = createRoute({ getParentRoute: () => postsRoute, path: '/$postId', component: Post })
 
-// Manual tree assembly — must keep in sync as routes are added
+// Manual tree assembly - must keep in sync as routes are added
 const routeTree = rootRoute.addChildren([
   indexRoute,
   aboutRoute,
@@ -98,8 +98,8 @@ export default defineConfig({
 
 ## Context
 
-- File-based and code-based routing support the same features — file-based just requires less code
-- The path string in `createFileRoute('/posts/$postId')` is auto-managed by the plugin — don't edit it manually
+- File-based and code-based routing support the same features - file-based just requires less code
+- The path string in `createFileRoute('/posts/$postId')` is auto-managed by the plugin - don't edit it manually
 - Use flat style (`posts.index.tsx`) or directory style (`posts/index.tsx`) or mix both
 - Supports Vite, Rspack/Rsbuild, Webpack, and Esbuild
 - Route tree is regenerated on file changes during development

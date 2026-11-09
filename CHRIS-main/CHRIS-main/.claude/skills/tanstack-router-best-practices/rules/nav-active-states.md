@@ -4,12 +4,12 @@
 
 ## Explanation
 
-The `<Link>` component automatically tracks whether it matches the current route and provides `activeProps`, `inactiveProps`, and a `data-status="active"` attribute for styling. Configure `activeOptions` to control matching behavior — exact path, search param inclusion, and hash matching.
+The `<Link>` component automatically tracks whether it matches the current route and provides `activeProps`, `inactiveProps`, and a `data-status="active"` attribute for styling. Configure `activeOptions` to control matching behavior - exact path, search param inclusion, and hash matching.
 
 ## Bad Example
 
 ```tsx
-// Manually tracking active state — duplicates router logic, error-prone
+// Manually tracking active state - duplicates router logic, error-prone
 function NavLink({ to, children }) {
   const location = useLocation()
   const isActive = location.pathname === to // Doesn't handle nested routes
@@ -68,7 +68,7 @@ function Navigation() {
 ## Good Example: activeOptions
 
 ```tsx
-// Exact matching — only active on /dashboard, not /dashboard/settings
+// Exact matching - only active on /dashboard, not /dashboard/settings
 <Link
   to="/dashboard"
   activeOptions={{ exact: true }}

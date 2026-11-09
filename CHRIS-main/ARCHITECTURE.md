@@ -1,4 +1,4 @@
-# C.H.R.I.S. — Architecture & Build Spec (v2)
+# C.H.R.I.S. - Architecture & Build Spec (v2)
 
 **Collaborative Hub for Research Intelligence & Synergy**
 NÚVR Research Matchmaker · Rakathon 2026 · Praha · tým Remiho Klubík
@@ -16,7 +16,7 @@ NÚVR Research Matchmaker · Rakathon 2026 · Praha · tým Remiho Klubík
 - **Název výzvy:** NÚVR Research Matchmaker. AI platforma pro vyhledávání partnerů, technologií a zdrojů v českém onkologickém výzkumu.
 - **Motto:** *Správný partner. Správný zdroj. Správný čas.*
 - **Cíl:** proměnit rozptýlené znalosti o týmech NÚVR a jejich potenciálu ve **funkční alianci spolupráce**, s **vysvětlením, proč propojení dává smysl**.
-- **Pilot:** **30–60 týmů**. Je to základ pro postupné rozšíření na celý NÚVR i za jeho (národní) hranice.
+- **Pilot:** **30-60 týmů**. Je to základ pro postupné rozšíření na celý NÚVR i za jeho (národní) hranice.
 - **Výstup:** funkční prototyp.
 
 ### 0.2 „Rozhodují kvalitní vstupní data"
@@ -47,7 +47,7 @@ Každé doporučení konkrétní skupiny má být **vysvětlitelné** a vést ke
 - **Vždy:** návrh propojení, zdůvodnění a **dohledatelný zdroj informace**.
 
 ### 0.4 „Od pilotu k institutu"
-1. **Připravit:** jednotná struktura dat a výběr 30–60 týmů
+1. **Připravit:** jednotná struktura dat a výběr 30-60 týmů
 2. **Postavit:** vyhledávání a vysvětlitelné doporučování
 3. **Ověřit:** reálné scénáře, kontrola relevance skupiny pro tým
 4. **Rozšířit:** plán správy dat a škálování na NÚVR
@@ -64,7 +64,7 @@ Každé doporučení konkrétní skupiny má být **vysvětlitelné** a vést ke
 | 5 | Prezentace a tým (finále) | Jasně ukázat co a jak, přesvědčivost, motivace pokračovat | Demo scénář (kap. 15), záložní video, roadmapa |
 
 ### 0.6 Pravidla a odevzdání
-- Tým 2–4 lidé, onsite. **Jen 1 výzva na tým.**
+- Tým 2-4 lidé, onsite. **Jen 1 výzva na tým.**
 - **Jen prototyp:** ne zdravotnický prostředek, ne klinicky ověřený nástroj.
 - **Licence:** autorství zůstává týmu, pořadatel a partneři dostávají nevýhradní licenci.
 - **Nezveřejňovat neveřejná data pacientů ani know-how.** Používáme jen veřejná data.
@@ -74,9 +74,9 @@ Každé doporučení konkrétní skupiny má být **vysvětlitelné** a vést ke
   3. Dopad a AI: jak využíváte AI, jaký dopad a pro koho (FHIR od InterSystems je pro nás irelevantní, nepoužíváme klinická data)
   4. Odkazy a obrázek: titulní obrázek povinný (do 8 MB, 16:9), GitHub, demo, video
   - Po odeslání přijde odkaz pro úpravy až do uzávěrky.
-- **Finále ne 18. 10.** (Kampus Plzeňská, 2. LF UK, budova A, Praha 5 – Motol):
+- **Finále ne 18. 10.** (Kampus Plzeňská, 2. LF UK, budova A, Praha 5 - Motol):
   - 13:00 registrace a kontrola prezentací
-  - 14:00–16:30 pitche osobně před porotou
+  - 14:00-16:30 pitche osobně před porotou
   - 17:00 vyhlášení
 
 ---
@@ -143,7 +143,7 @@ npx skills check && npx skills update
 | Doptávání obecně | Doptává se i na **technologie** (má je? jak chce řešit?), **požadavky na tým**, **předchozí podání** |
 | AI vybere grant / tým | **AI nevybírá za uživatele**, jen navrhuje a řadí |
 | „Odeslat přihlášku" | Export DOCX/PDF + ISVP tahák, oficiální podání vždy v ISVP/GRIS |
-| — | Generátor názvu projektu, copilot přihlášky (Write / Oponent / Check), e-mail z vlastní adresy |
+| - | Generátor názvu projektu, copilot přihlášky (Write / Oponent / Check), e-mail z vlastní adresy |
 | Spinner | **Thinking s vědeckými slovesy** |
 
 ---
@@ -216,12 +216,12 @@ sequenceDiagram
 ```mermaid
 flowchart LR
     T[Tým + výzva] --> L{Šablona<br/>v knihovně?}
-    L -- ano --> S[Ověřená šablona<br/>např. AZV osnova a–n]
+    L -- ano --> S[Ověřená šablona<br/>např. AZV osnova a-n]
     L -- ne --> F[Fallback §9.5<br/>odvozená · z dokumentace · obecná]
     F --> U[Uživatel potvrdí sekce a limity]
     U --> S
     S --> W[Write<br/>draft sekce z dat týmu]
-    W --> R[Oponent<br/>simulace panelu 0–100]
+    W --> R[Oponent<br/>simulace panelu 0-100]
     R --> W
     W --> C[Check<br/>limity · pravidla · citace · jazyk]
     C --> X{Export}
@@ -551,13 +551,13 @@ Agent s nástroji `search_openalex`, `search_europepmc`, `search_cep`, `search_c
 
 ### 9.1 Jak se reálně podává (AZV vzor)
 - Formulář se vyplňuje v **ISVP** (eregpublic.ksrzis.cz): části A (základní údaje, abstrakt), B (finance), C (bibliografie), D (související projekty), přílohy, prohlášení.
-- Jako **PDF příloha** se nahrává **Popis projektu** (EN, max 10 stran A4, 11 pt, řádkování 1, max 3 MB, závazná osnova a–n) a **CV** (EN, max 2 strany, max 1 MB).
+- Jako **PDF příloha** se nahrává **Popis projektu** (EN, max 10 stran A4, 11 pt, řádkování 1, max 3 MB, závazná osnova a-n) a **CV** (EN, max 2 strany, max 1 MB).
 - ISVP vygeneruje finální PDF s elektronickou pečetí. To se nesmí upravit a posílá se **datovou schránkou**.
 - GAČR (GRIS) funguje stejně. Horizon Europe: Part A webový formulář, Part B PDF podle šablony.
 
 **Naše appka tedy připravuje podklady, ne podání.**
 
-### 9.2 Šablona Popisu projektu (AZV osnova a–n)
+### 9.2 Šablona Popisu projektu (AZV osnova a-n)
 a úvod / stav poznání · b pilotní data · c podstata, originalita, návaznost na Program, gender · d hypotéza a cíle · e experimentální design (statistika velikosti souboru) · f metodika · g harmonogram (Gantt) · h očekávané výsledky · i spolupráce · j připravenost pracovišť a technologie · k zdůvodnění účasti spolunavrhovatelů, junioři · l analýza rizik · m výzkumná data / DMP (FAIR) · n literatura
 
 ### 9.3 Pravidla pro eligibility engine (`rules/azv.yaml`)
@@ -575,12 +575,12 @@ Každé pravidlo má citaci na zadávací dokumentaci.
 
 ### 9.4 Copilot
 - **Write:** draft sekce z dat týmu, technologií a deep research. Před začátkem se zeptá, jaký tým / variantu použít.
-- **Oponent:** simuluje 2 zpravodaje panelu. Dá bodový odhad 0–100, silné stránky, výtky a „co by zpravodaj chtěl vidět".
+- **Oponent:** simuluje 2 zpravodaje panelu. Dá bodový odhad 0-100, silné stránky, výtky a „co by zpravodaj chtěl vidět".
 - **Check:** limity stran a znaků, povinné sekce, pravidla výzvy, citace (ČSN ISO 690), jazyk, statistické zdůvodnění.
 - AI text je vizuálně odlišený od textu člověka. Po ruční úpravě odlišení zmizí.
 - **Generátor názvu projektu:** akronym + rozvinutí + 3 alternativy, kontrola ≤ 250 znaků a unikátnosti vůči CEP.
 - **ISVP tahák:** všechna pole formuláře s počítadlem znaků a „Kopírovat".
-- **Export:** PDF (WeasyPrint, přesný počet stran zpět do UI), DOCX, ISVP tahák. Vždy s hláškou *AI-assisted draft — oficiální podání pouze v ISVP/GRIS.*
+- **Export:** PDF (WeasyPrint, přesný počet stran zpět do UI), DOCX, ISVP tahák. Vždy s hláškou *AI-assisted draft - oficiální podání pouze v ISVP/GRIS.*
 - Copilot se chová podle `template_status` (§9.5).
 
 #### 9.4.1 Povaha copilota: nejdřív oponent, pak pomocník
@@ -590,9 +590,9 @@ Copilot je **kritický recenzent panelu**, ne asistent, který chválí. Jeho ú
 - **Žádné lichotky ani výplň.** Žádné „skvělá práce“, „velmi zajímavý projekt“, „toto je dobrý základ“. Silné stránky jen tehdy, když jsou konkrétní a ověřitelné, a vždy až po výtkách.
 - **Každá výtka je konkrétní a akční:** sekce + kotva v textu, co je špatně, proč to zpravodaj strhne (kritérium nebo pravidlo výzvy s citací) a co přesně změnit. Bez obecných rad typu „rozepište metodiku“.
 - **Pořadí podle závažnosti:** `blocker` (nesplňuje pravidlo, chybí povinná část) → `warning` (zpravodaj strhne body) → `suggestion` → `info`.
-- **Bodování 0–100 vždy s odůvodněním** po kritériích výzvy. Při nejistotě uvede rozsah a důvod (např. chybí data o vzorku), nikdy nenafukuje.
+- **Bodování 0-100 vždy s odůvodněním** po kritériích výzvy. Při nejistotě uvede rozsah a důvod (např. chybí data o vzorku), nikdy nenafukuje.
 - **Nevymýšlí.** Pravidla, limity a kritéria jen z šablony a dokumentace (§9.5). Když něco neví, řekne to a ukáže, kde to hledat.
-- **I ve Write zůstává oponentem.** Návrh textu označí jako AI draft a připojí 1–3 nejslabší místa návrhu a co chybí od uživatele (data, čísla, citace). Text nikdy nepředstírá výsledky, které uživatel nemá.
+- **I ve Write zůstává oponentem.** Návrh textu označí jako AI draft a připojí 1-3 nejslabší místa návrhu a co chybí od uživatele (data, čísla, citace). Text nikdy nepředstírá výsledky, které uživatel nemá.
 - **Nesouhlasí, když je potřeba.** Když uživatel žádá změnu, která přihlášku zhorší nebo poruší pravidlo, copilot to řekne a navrhne alternativu.
 - **Tón:** věcný, odborný, vykání, krátké věty. Jako zkušený zpravodaj GA ČR nebo AZV, ne jako marketing.
 
@@ -607,7 +607,7 @@ Výstup je vždy strukturovaný (`CopilotComment[]` a skóre), nikdy volný text
 
 | Šablona | Agentura | Poznámka |
 |---|---|---|
-| `azv-standard` | AZV | osnova a–n (§9.2), EN, 10 stran |
+| `azv-standard` | AZV | osnova a-n (§9.2), EN, 10 stran |
 | `azv-junior` | AZV | jako standard + pravidla juniora |
 | `gacr-standard` · `gacr-junior-star` | GAČR | GRIS |
 | `tacr-sigma` | TAČR | |
@@ -627,7 +627,7 @@ Každá šablona obsahuje: sekce (název, povinnost, nápověda, limity), limity
 | 2 | **Z dokumentace:** uživatel vloží URL stránky výzvy (backend z ní projde nejrelevantnější přiložená PDF/DOCX: šablona, osnova, zadávací dokumentace, Information for Applicants…) nebo nahraje PDF/DOCX. Text se čte přes pypdf / python-docx (zatím bez OCR: sken → obecná osnova s varováním), u dlouhé dokumentace se vyberou strany s osnovou a limity. LLM se strukturovaným výstupem vytáhne osnovu a limity, sekce bez platné citace se zahodí a přejdou do `unknown`. Stahování chrání SSRF kontrola (jen veřejné IP, i po přesměrování) a limit 15 MB. Každá položka má citaci (strana / odstavec). Obsah dokumentace = data, ne instrukce (`<source>`). | `extracted` | máme dokumentaci |
 | 3 | **Obecná:** univerzální osnova: stav poznání · cíle a hypotéza · metodika · harmonogram · tým a spolupráce · infrastruktura · rizika · rozpočet · dopad a výsledky · DMP · literatura. Bez limitů. | `generic` | nic z výše uvedeného |
 
-Kroky 1–3 se dají kombinovat: odvozená šablona se zpřesní z dokumentace (sekce, které dokumentace potvrdí, dostanou citaci).
+Kroky 1-3 se dají kombinovat: odvozená šablona se zpřesní z dokumentace (sekce, které dokumentace potvrdí, dostanou citaci).
 
 **Potvrzení člověkem.** U `derived`, `extracted` a `generic` má každá sekce `confirmed: false`. UI ukáže osnovu vedle zdroje (strana dokumentace) a uživatel sekce potvrdí, upraví nebo smaže a doplní chybějící limity (`unknown`). Draft přihlášky jde vytvořit i bez potvrzení, ale Check i export to hlásí.
 
@@ -653,7 +653,7 @@ Neznámé limity Check nikdy nevymýšlí. Ukáže je jako `EligibilityCheck` se
 
 | Obrazovka | Musí umět |
 |---|---|
-| Úvod | popsat projekt (text, volitelně upload abstraktu), nabídnout 2–3 příklady (Šedův jako první), jasná hodnota produktu |
+| Úvod | popsat projekt (text, volitelně upload abstraktu), nabídnout 2-3 příklady (Šedův jako první), jasná hodnota produktu |
 | Doptávání | konverzace s AI forms, živý přehled pochopeného projektu (sloty, must/nice, editace), míra připravenosti, „Hledej teď" kdykoliv |
 | Výsledky | přepínání INTELLIGENCE / GRANT / BALANCED · členové s PROČ/PŘÍNOS/MEZERA/PRVNÍ KROK a zdroji · skóre po 6 oblastech · pokrytí potřeb a MEZERY · technologie (co/kde/jak) · granty + checklist · graf spoluprací · **Změnit tým** |
 | Detail skupiny | profil, zdroje, freshness, existující spolupráce, deep research, e-mail |
@@ -733,7 +733,7 @@ Pravidla:
 > **v3 (16. 10.):** vizuální směr převzat ze schváleného prototypu **v5** (bento dashboard). Paleta orange/charcoal zůstává, mění se písma a neutrály. Zdroj pravdy v kódu: `src/styles/brand.css`.
 
 ### 11.1 Směr
-- **Bento podle prototypu v5:** teplé šedé plátno, bílé karty s radiusem 28 px, vnořené šedé bloky (radius 18–20 px), velké nadpisy a čísla v Bricolage Grotesque, černé pill CTA, varianty jako pill (aktivní černá), sidebar s teplým pozadím.
+- **Bento podle prototypu v5:** teplé šedé plátno, bílé karty s radiusem 28 px, vnořené šedé bloky (radius 18-20 px), velké nadpisy a čísla v Bricolage Grotesque, černé pill CTA, varianty jako pill (aktivní černá), sidebar s teplým pozadím.
 - **Pořád ne generické:** žádné fialové / duhové gradienty, glassmorphism, emoji ikony, „sparkles ✨" u AI, stock fotky vědců. Karty nesou obsah, ne dekoraci; hierarchie dál vzniká typografií a prostorem.
 - Jedna akcentní barva. Oranžová znamená „tady se děje akce / match". Velká čísla shody jsou oranžová, „%" šedé.
 - Málo barev, žádné pastely. Sémantické barvy jen na drobné prvky.
@@ -796,8 +796,8 @@ Pravidla:
 
 | Token (Tailwind) | Font | Velikost | Poznámka |
 |---|---|---|---|
-| `text-hero` | Bricolage 500 | fluid 40–64 px | pozdrav na úvodu, tracking -0.035em |
-| `text-display` | Bricolage 500 | fluid 32–52 px | nadpis projektu / kroku, tracking -0.035em |
+| `text-hero` | Bricolage 500 | fluid 40-64 px | pozdrav na úvodu, tracking -0.035em |
+| `text-display` | Bricolage 500 | fluid 32-52 px | nadpis projektu / kroku, tracking -0.035em |
 | `text-title` | Bricolage 500 | 26 / 32 | titulky karet |
 | `text-heading` | Bricolage / Geist 500 | 19 / 26 | otázky, sekce |
 | `text-body` | Geist 400 | 15 / 24 | běžný text |
@@ -836,7 +836,7 @@ Písma se načítají v CSS (`src/index.css`), **ne** v `index.html`:
 3. Typ vstupu odpovídá obsahu: výběr, multivýběr, škála (velikost týmu, poměr věda ↔ grant), ano/ne, datum, upload.
 4. U každé otázky jednou větou **„proč se ptám"**.
 5. **Impact preview:** „Tato odpověď zúží výběr z 65 na ~12 skupin."
-6. **Potvrzení předpokladu:** „Rozumím, že jde o společný grant AZV — sedí?"
+6. **Potvrzení předpokladu:** „Rozumím, že jde o společný grant AZV - sedí?"
 7. **Živý přehled projektu**, který jde přímo editovat. Each slot má must / nice.
 8. **Klávesnice:** čísla = výběr, Enter = další, Esc = přeskoč, ⌘Enter = Hledej teď.
 9. **Upload PDF abstraktu** → AI vyplní sloty a ukáže, odkud to vzala (strana).

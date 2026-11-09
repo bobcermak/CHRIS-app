@@ -16,7 +16,7 @@ def resolve_template(
 ) -> ApplicationTemplate:
     """Application template for a call without a library template (§9.5), from its documentation.
 
-    Send `url` (the call page — its linked template / call documents are followed —
+    Send `url` (the call page - its linked template / call documents are followed -
     or a direct PDF/DOCX link) **or** `file`. Every section cites the page or part
     of the documentation it came from and comes unconfirmed (`status="extracted"`).
     When nothing can be extracted the generic outline comes back

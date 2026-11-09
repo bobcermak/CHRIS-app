@@ -42,7 +42,7 @@ class FastembedClient:
     """Local ONNX embedding model via fastembed (Qdrant). Multilingual by default."""
 
     def __init__(self, model_name: str = DEFAULT_FASTEMBED_MODEL) -> None:
-        from fastembed import TextEmbedding  # imported lazily — heavy import
+        from fastembed import TextEmbedding  # imported lazily - heavy import
 
         self._TextEmbedding = TextEmbedding
         self.name = model_name

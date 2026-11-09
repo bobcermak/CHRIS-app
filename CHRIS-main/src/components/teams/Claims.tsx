@@ -10,7 +10,7 @@ interface ClaimsProps {
 }
 
 // Minimal inline markdown: **bold** then *italic*. Text is still rendered as text (no HTML),
-// matching the "render API text as text" rule — we only wrap matched spans in <strong>/<em>.
+// matching the "render API text as text" rule - we only wrap matched spans in <strong>/<em>.
 const INLINE_RE = /\*\*([^*]+)\*\*|\*([^*\n]+)\*/g
 
 function renderInline(text: string): ReactNode {

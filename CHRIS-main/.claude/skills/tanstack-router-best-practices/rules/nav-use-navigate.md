@@ -4,7 +4,7 @@
 
 ## Explanation
 
-Use `useNavigate()` for programmatic navigation triggered by side effects — form submissions, successful mutations, or conditional logic. Prefer `<Link>` for anything the user directly clicks. Pass `from` to `useNavigate()` at the hook level for type-safe relative navigation.
+Use `useNavigate()` for programmatic navigation triggered by side effects - form submissions, successful mutations, or conditional logic. Prefer `<Link>` for anything the user directly clicks. Pass `from` to `useNavigate()` at the hook level for type-safe relative navigation.
 
 ## Bad Example
 
@@ -114,9 +114,9 @@ function PostActions() {
 
 ## Context
 
-- Prefer `<Link>` for user-clickable elements — it renders a real `<a>` with `href`, supports cmd/ctrl+click, and tracks active state
+- Prefer `<Link>` for user-clickable elements - it renders a real `<a>` with `href`, supports cmd/ctrl+click, and tracks active state
 - Use `useNavigate` for side effects: form submissions, auth flows, conditional redirects
 - Pass `from` to the hook (not each `navigate()` call) for type-safe relative paths
 - `Route.useNavigate()` automatically sets `from` to the current route
-- Do not use `router.navigate()` inside React components — use the hook instead
+- Do not use `router.navigate()` inside React components - use the hook instead
 - `<Navigate>` component is for immediate redirects on mount (renders nothing)

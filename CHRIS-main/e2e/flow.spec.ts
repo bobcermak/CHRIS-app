@@ -7,11 +7,11 @@ test('full flow: zadání → upřesnění → týmy → změna týmu → profil
   // 01 Zadání
   await startProject(page)
 
-  // 02 Upřesnění — thinking folds into a summary, never "Přemýšlím"
+  // 02 Upřesnění - thinking folds into a summary, never "Přemýšlím"
   await clarifyToTeams(page)
   await expect(page.getByText(/Přemýšl|Načítám|Thinking/)).toHaveCount(0)
 
-  // 03 Týmy — five groups with match %, two strategies
+  // 03 Týmy - five groups with match %, two strategies
   const people = page.getByRole('button', { name: /otevřít profil skupiny/ })
   await expect(people).toHaveCount(5)
   await expect(page.getByRole('tab', { name: 'Intelligence-first' })).toHaveAttribute('aria-selected', 'true')
@@ -58,7 +58,7 @@ test('full flow: zadání → upřesnění → týmy → změna týmu → profil
   await expect(page.getByRole('dialog').getByText('Kde to jde dělat')).toBeVisible()
   await page.keyboard.press('Escape')
 
-  // 04 Přihláška — template library → oppose-first copilot → write → export checklist
+  // 04 Přihláška - template library → oppose-first copilot → write → export checklist
   await page.getByRole('button', { name: 'Vytvořit přihlášku' }).first().click()
   await expect(page.getByText('Doporučeno')).toBeVisible()
   await page.getByRole('button', { name: /AZV ČR · standardní projekt/ }).click()

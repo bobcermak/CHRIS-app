@@ -12,7 +12,7 @@ Use `beforeLoad` to extend or modify the route context before the loader runs. C
 // Duplicating auth checks in every loader
 export const Route = createFileRoute('/dashboard')({
   loader: async ({ context }) => {
-    // Auth check in loader — runs after beforeLoad, too late for redirects
+    // Auth check in loader - runs after beforeLoad, too late for redirects
     if (!context.user) {
       throw redirect({ to: '/login' })
     }
@@ -22,7 +22,7 @@ export const Route = createFileRoute('/dashboard')({
 
 export const Route = createFileRoute('/dashboard/settings')({
   loader: async ({ context }) => {
-    // Same auth check duplicated — if parent didn't check, child must
+    // Same auth check duplicated - if parent didn't check, child must
     if (!context.user) {
       throw redirect({ to: '/login' })
     }
@@ -34,7 +34,7 @@ export const Route = createFileRoute('/dashboard/settings')({
 ## Good Example
 
 ```tsx
-// routes/dashboard.tsx — auth check once in beforeLoad, inherited by children
+// routes/dashboard.tsx - auth check once in beforeLoad, inherited by children
 export const Route = createFileRoute('/dashboard')({
   beforeLoad: async ({ context }) => {
     if (!context.user) {
@@ -47,15 +47,15 @@ export const Route = createFileRoute('/dashboard')({
     }
   },
   loader: ({ context: { dashboardApi } }) => {
-    // dashboardApi is available — typed and guaranteed by beforeLoad
+    // dashboardApi is available - typed and guaranteed by beforeLoad
     return dashboardApi.getOverview()
   },
 })
 
-// routes/dashboard.settings.tsx — inherits auth + dashboardApi
+// routes/dashboard.settings.tsx - inherits auth + dashboardApi
 export const Route = createFileRoute('/dashboard/settings')({
   loader: ({ context: { dashboardApi } }) => {
-    // No auth check needed — parent's beforeLoad already handled it
+    // No auth check needed - parent's beforeLoad already handled it
     // dashboardApi is available from parent context
     return dashboardApi.getSettings()
   },
@@ -65,12 +65,12 @@ export const Route = createFileRoute('/dashboard/settings')({
 ## Good Example: Building Context Incrementally
 
 ```tsx
-// routes/__root.tsx — base context
+// routes/__root.tsx - base context
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   component: RootLayout,
 })
 
-// routes/_auth.tsx — adds user context
+// routes/_auth.tsx - adds user context
 export const Route = createFileRoute('/_auth')({
   beforeLoad: async ({ context }) => {
     const user = await context.queryClient.ensureQueryData(currentUserQuery())
@@ -79,7 +79,7 @@ export const Route = createFileRoute('/_auth')({
   },
 })
 
-// routes/_auth.dashboard.tsx — adds dashboard-specific context
+// routes/_auth.dashboard.tsx - adds dashboard-specific context
 export const Route = createFileRoute('/_auth/dashboard')({
   beforeLoad: ({ context }) => {
     // context.queryClient from root + context.user from _auth
@@ -110,10 +110,10 @@ Then loaders run IN PARALLEL:
 
 ## Context
 
-- `beforeLoad` runs serially top-down before any loaders — use it for auth guards and redirects
+- `beforeLoad` runs serially top-down before any loaders - use it for auth guards and redirects
 - Context returned from `beforeLoad` is merged with parent context and passed to `loader` and children
 - `beforeLoad` receives `context`, `params`, `search`, `location`, and `cause`
-- You cannot use React hooks in `beforeLoad` — pass hook values through router context via `RouterProvider`
+- You cannot use React hooks in `beforeLoad` - pass hook values through router context via `RouterProvider`
 - Throwing `redirect()` in `beforeLoad` prevents the route and all children from loading
 - Throwing `notFound()` in `beforeLoad` always triggers the root `notFoundComponent`
-- TypeScript automatically infers the merged context — no manual typing needed
+- TypeScript automatically infers the merged context - no manual typing needed

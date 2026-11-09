@@ -9,7 +9,7 @@ import { ThinkingLine } from '../thinking/ThinkingLine'
 
 /**
  * Live scientific verbs while the backend works; afterwards folds into
- * "Analyzováno za 3,2 s · 3 kroky ▸" with an expandable list of steps (§10.1 — never "Přemýšlel").
+ * "Analyzováno za 3,2 s · 3 kroky ▸" with an expandable list of steps (§10.1 - never "Přemýšlel").
  */
 interface AnalysisTraceProps {
   stream: Pick<StreamState<unknown>, 'status' | 'stage' | 'verb' | 'pct' | 'steps' | 'startedAt' | 'finishedAt'>

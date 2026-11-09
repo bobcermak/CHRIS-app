@@ -72,7 +72,7 @@ def size_rule(team_size: int | None) -> str:
     """Instruction for the role-plan prompt: the AI decides, within [MIN, cap]."""
     cap = team_size or MAX_TEAM_SIZE
     return (
-        f"Navrhni {MIN_TEAM_SIZE}–{cap} rolí (nikdy méně než {MIN_TEAM_SIZE}, nikdy více než {cap}) — "
+        f"Navrhni {MIN_TEAM_SIZE}-{cap} rolí (nikdy méně než {MIN_TEAM_SIZE}, nikdy více než {cap}) - "
         "tolik, kolik projekt reálně potřebuje. Vždy navrhni alespoň jednoho spolupracovníka "
         "nad rámec hlavního vědce, i když jde o malý projekt."
     )
@@ -103,7 +103,7 @@ def parse_role_plan(raw: dict[str, Any], team_size: int | None) -> tuple[list[Ro
 def assemble_team(
     roles: list[Role], candidates: dict[str, list[Candidate]]
 ) -> tuple[list[TeamMember], list[Gap]]:
-    """Greedy, in role order: the best candidate wins — a new group, or one already in
+    """Greedy, in role order: the best candidate wins - a new group, or one already in
     the team that still has room (max MAX_ROLES_PER_GROUP roles). Roles without any
     candidate become gaps."""
     team: list[TeamMember] = []
@@ -153,7 +153,7 @@ def select_team(
     → gap), with a one-sentence reason, plus a summary of the resulting team. A pick
     from another role's candidates is fine (the LLM saw its profile) and is scored
     against this role; a group the LLM was not shown, or a pick beyond
-    MAX_ROLES_PER_GROUP for one group, becomes a gap. Raises LLMError — callers fall
+    MAX_ROLES_PER_GROUP for one group, becomes a gap. Raises LLMError - callers fall
     back to `assemble_team`."""
     if not roles:
         return [], [], ""

@@ -37,7 +37,7 @@ export function SidePanel({ open, onOpenChange, title, description, children }: 
               asChild
               forceMount
               onOpenAutoFocus={() => {
-                // Runs before focus moves into the panel — remember the opener.
+                // Runs before focus moves into the panel - remember the opener.
                 returnTo.current = document.activeElement instanceof HTMLElement ? document.activeElement : null
               }}
               onCloseAutoFocus={(e) => {

@@ -1,10 +1,10 @@
 """Chat/LLM abstraction.
 
 Provider is selected via `CHAT_PROVIDER` env var:
-  - `azure-apim` (default) — Azure OpenAI-compatible endpoint via the Rakathon APIM
+  - `azure-apim` (default) - Azure OpenAI-compatible endpoint via the Rakathon APIM
                              gateway. Reads AZURE_APIM_{KEY,ENDPOINT,MODEL} +
                              AZURE_API_VERSION.
-  - `mock`                 — static responses, for tests / offline dev.
+  - `mock`                 - static responses, for tests / offline dev.
 
 The two Protocol methods map onto the typical uses:
   - complete_json: structured output (role plan, explanations). Uses OpenAI's
@@ -63,7 +63,7 @@ class AzureAPIMChatClient:
     """OpenAI-compatible chat completions via the Rakathon APIM gateway.
 
     The gateway exposes an OpenAI-shaped API (endpoint ends in `/openai/v1`), so
-    we POST to `{endpoint}/chat/completions` with `model` in the request body —
+    we POST to `{endpoint}/chat/completions` with `model` in the request body -
     not Azure's deployment-in-URL convention.
 
     Auth: `api-key` header (APIM gateway rule, same name Azure OpenAI uses).

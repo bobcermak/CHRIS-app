@@ -17,7 +17,7 @@ interface SectionEditorProps {
   writing?: boolean
   /** The copilot is reviewing this section for concrete edits. */
   revising?: boolean
-  /** The copilot is busy with something else — its actions wait. */
+  /** The copilot is busy with something else - its actions wait. */
   copilotBusy?: boolean
   onSave: (content: string) => void
   onWrite: () => void

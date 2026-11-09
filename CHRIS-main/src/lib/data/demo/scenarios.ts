@@ -91,7 +91,7 @@ const tech = (id: string, name: string, institution: string, node: string, infra
 })
 
 // ---------------------------------------------------------------------------------------------
-// Oncology — the pitch scenario (ARCHITECTURE §15: Šedův dotaz)
+// Oncology - the pitch scenario (ARCHITECTURE §15: Šedův dotaz)
 // ---------------------------------------------------------------------------------------------
 
 export const ONCOLOGY: Scenario = {
@@ -204,22 +204,22 @@ export const ONCOLOGY: Scenario = {
   grants: [
     grant('azv-2027', 'AZV', 'AZV ČR', 'Program na podporu zdravotnického aplikovaného výzkumu', '2027-01-30', 0.94, 'azv-standard'),
     grant('gacr-2027', 'GACR', 'GA ČR', 'Standardní projekty', '2027-04-07', 0.91, 'gacr-standard'),
-    grant('he-2027', 'HORIZON', 'Evropská komise', 'Horizon Europe – Cluster 1 Health', '2027-04-16', 0.78, 'horizon-ria-ia'),
-    grant('tacr-2027', 'TACR', 'TA ČR', 'Program SIGMA – DC3', '2027-05-14', 0.72, 'tacr-sigma'),
+    grant('he-2027', 'HORIZON', 'Evropská komise', 'Horizon Europe - Cluster 1 Health', '2027-04-16', 0.78, 'horizon-ria-ia'),
+    grant('tacr-2027', 'TACR', 'TA ČR', 'Program SIGMA - DC3', '2027-05-14', 0.72, 'tacr-sigma'),
   ],
   sections: {
     title: 'Prostorová mapa mikroprostředí mozkových metastáz: od kohorty pacientů k modelu in vivo',
     abstract:
       'Mozkové metastázy postihují až čtvrtinu pacientů se solidními nádory a jejich léčba zůstává omezená. Projekt zmapuje interakce nádorových buněk s buňkami mozkového mikroprostředí pomocí prostorové transkriptomiky na vzorcích pacientů a ověří klíčové interakce v intrakraniálním myším modelu.',
     aims:
-      '1. Sestavit prostorový atlas mikroprostředí mozkových metastáz z archivních vzorků.\n2. Identifikovat interakce nádor–astrocyt spojené s progresí.\n3. Ověřit vybrané interakce v modelu in vivo.',
+      '1. Sestavit prostorový atlas mikroprostředí mozkových metastáz z archivních vzorků.\n2. Identifikovat interakce nádor-astrocyt spojené s progresí.\n3. Ověřit vybrané interakce v modelu in vivo.',
     methods:
       'Vzorky z kohorty pacientů budou analyzovány prostorovou transkriptomikou. Data budou integrována se single-cell profily. Vybrané interakce budou ověřeny v intrakraniálním myším modelu.',
   },
 }
 
 // ---------------------------------------------------------------------------------------------
-// Parkinson — content from the approved prototype v5
+// Parkinson - content from the approved prototype v5
 // ---------------------------------------------------------------------------------------------
 
 export const PARKINSON: Scenario = {
@@ -326,13 +326,13 @@ export const PARKINSON: Scenario = {
   grants: [
     grant('azv-2027', 'AZV', 'AZV ČR', 'Program na podporu zdravotnického aplikovaného výzkumu', '2027-01-30', 0.94, 'azv-standard'),
     grant('gacr-2027', 'GACR', 'GA ČR', 'Standardní projekty', '2027-04-07', 0.91, 'gacr-standard'),
-    grant('he-2027', 'HORIZON', 'Evropská komise', 'Horizon Europe – Cluster 1 Health', '2027-04-16', 0.78, 'horizon-ria-ia'),
-    grant('tacr-2027', 'TACR', 'TA ČR', 'Program SIGMA – DC3', '2027-05-14', 0.72, 'tacr-sigma'),
+    grant('he-2027', 'HORIZON', 'Evropská komise', 'Horizon Europe - Cluster 1 Health', '2027-04-16', 0.78, 'horizon-ria-ia'),
+    grant('tacr-2027', 'TACR', 'TA ČR', 'Program SIGMA - DC3', '2027-05-14', 0.72, 'tacr-sigma'),
   ],
   sections: {
     title: 'Hlas jako biomarker: včasná detekce Parkinsonovy nemoci pomocí self-supervised řečových modelů',
     abstract:
-      'Parkinsonova nemoc je diagnostikována v průměru 5–10 let po vzniku prvních neurologických změn. Změny hlasu patří mezi nejčasnější projevy. Projekt vyvine a klinicky ověří model, který z 30sekundové nahrávky odhalí prodromální stadium nemoci.',
+      'Parkinsonova nemoc je diagnostikována v průměru 5-10 let po vzniku prvních neurologických změn. Změny hlasu patří mezi nejčasnější projevy. Projekt vyvine a klinicky ověří model, který z 30sekundové nahrávky odhalí prodromální stadium nemoci.',
     aims:
       '1. Sestavit referenční databázi nahrávek pacientů s RBD, PD a kontrol.\n2. Vyvinout model s AUC ≥ 0,85 pro prodromální fázi.\n3. Ověřit model v klinické praxi.',
     methods:

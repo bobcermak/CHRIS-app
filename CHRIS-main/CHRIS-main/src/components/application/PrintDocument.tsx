@@ -11,7 +11,7 @@ interface PrintDocumentProps {
 }
 
 /**
- * Print-only rendering of the application — what "Exportovat PDF" saves (the browser's
+ * Print-only rendering of the application - what "Exportovat PDF" saves (the browser's
  * Save as PDF on an A4 page set up in index.css). Section text is rendered from markdown;
  * the AI-draft notice is always there.
  */
@@ -20,7 +20,7 @@ export function PrintDocument({ app, title, scheme, callName }: PrintDocumentPro
   return (
     <article className="print-only text-[11pt] leading-[1.45] text-black">
       <header className="mb-6 border-b border-black/30 pb-3">
-        {/* Scheme and call name often both start with the agency — each part once. */}
+        {/* Scheme and call name often both start with the agency - each part once. */}
         <p className="text-[9pt] tracking-[0.1em] uppercase">{[...new Set([scheme, callName].filter(Boolean).join(' · ').split(' · '))].join(' · ')}</p>
         <h1 className="mt-1 text-[18pt] leading-tight font-semibold">{title}</h1>
         <p className="mt-1 text-[9pt]">Koncept přihlášky · {today}</p>

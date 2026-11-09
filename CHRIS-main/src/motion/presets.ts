@@ -1,6 +1,6 @@
 import type { Transition, Variants } from 'motion/react'
 
-// ARCHITECTURE.md §10.2 — the base presets. Animations explain state changes, max 400 ms.
+// ARCHITECTURE.md §10.2 - the base presets. Animations explain state changes, max 400 ms.
 export const dur = { micro: 0.15, base: 0.25, slow: 0.4 };
 export const ease = [0.22, 1, 0.36, 1] as const;
 export const spring = { type: 'spring', stiffness: 380, damping: 32, mass: 0.8 } as const;
@@ -18,7 +18,7 @@ export const fadeUp: Variants = {
 
 /**
  * Home intro only (01 Zadání): a slower, softer entrance than the UI presets. A deliberate
- * exception to the 400 ms cap — it is a one-off page reveal, not feedback on a state change.
+ * exception to the 400 ms cap - it is a one-off page reveal, not feedback on a state change.
  */
 export const introEase = [0.16, 1, 0.3, 1] as const
 export const intro = { duration: 0.9, start: 0.15, step: 0.18 }

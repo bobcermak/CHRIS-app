@@ -3,7 +3,7 @@ import type { StreamOp } from '../source'
 
 /**
  * Demo speed factor. `?demoSpeed=0.05` in the URL (or localStorage `chris:demo-speed`)
- * makes streams near-instant — used by e2e tests.
+ * makes streams near-instant - used by e2e tests.
  */
 function speed(): number {
   try {

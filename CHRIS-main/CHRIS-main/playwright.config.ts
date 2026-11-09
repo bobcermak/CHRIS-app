@@ -38,7 +38,7 @@ export default defineConfig({
     command: `pnpm build:e2e && pnpm exec vite preview --port ${PORT} --strictPort`,
     env: { VITE_DEMO: 'true' },
     url: `http://localhost:${PORT}`,
-    // Always test a fresh build — a reused preview server would serve stale code.
+    // Always test a fresh build - a reused preview server would serve stale code.
     reuseExistingServer: false,
     timeout: 180_000,
   },

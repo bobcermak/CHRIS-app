@@ -53,7 +53,7 @@ CALL_LABELS = {
 
 
 def _fold(s: str) -> str:
-    """Lowercase, strip diacritics and titles — for loose name matching."""
+    """Lowercase, strip diacritics and titles - for loose name matching."""
     s = unicodedata.normalize("NFKD", s).encode("ascii", "ignore").decode().lower()
     return re.sub(r"\b(prof|doc|mudr|rndr|mgr|ing|phd|csc|drsc)\b\.?", " ", s)
 
@@ -257,7 +257,7 @@ def _fallback(req: ClarifyRequest, round_no: int, warning: str) -> ClarifyRespon
 
 
 def _complete_with_retry(system: str, user: str) -> dict[str, Any]:
-    """One retry — the model occasionally returns truncated / invalid JSON."""
+    """One retry - the model occasionally returns truncated / invalid JSON."""
     try:
         return get_chat_client().complete_json(system=system, user=user)
     except LLMError as e:

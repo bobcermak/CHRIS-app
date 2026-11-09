@@ -10,7 +10,7 @@ DATA_PATH = Path(__file__).resolve().parents[3] / "data" / "groups.json"
 
 @lru_cache(maxsize=1)
 def load_groups() -> list[Group]:
-    """Load all NÚVR groups from the scraped JSON. Cached — read once per process."""
+    """Load all NÚVR groups from the scraped JSON. Cached - read once per process."""
     raw = json.loads(DATA_PATH.read_text(encoding="utf-8"))
     return [Group.model_validate(r) for r in raw]
 

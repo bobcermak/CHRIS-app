@@ -28,7 +28,7 @@ META_PATH = GRANTS_PATH.parent / "grants_embeddings_meta.json"
 
 def build_profile_text(grant: dict) -> str:
     """Compose the text that represents a grant for embedding.
-    Mirrors the group pipeline — pack semantic signal (title, programme,
+    Mirrors the group pipeline - pack semantic signal (title, programme,
     description, keywords) into a dense paragraph."""
     parts = [
         f"Grant: {grant['title']}",

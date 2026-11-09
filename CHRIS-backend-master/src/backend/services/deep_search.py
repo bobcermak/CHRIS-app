@@ -16,7 +16,7 @@ from backend.services.perplexity import PerplexityAnswer, ask_perplexity
 
 GROUP_PROMPT = """\
 Najdi na internetu informace o vědci {pi} (vede výzkumnou skupinu "{name}" \
-na NÚVR — Národní ústav pro výzkum rakoviny, Česká republika, uzel {node}).
+na NÚVR - Národní ústav pro výzkum rakoviny, Česká republika, uzel {node}).
 
 Zahrň:
 - biografie / profesní dráha (vzdělání, pozice, afiliace)

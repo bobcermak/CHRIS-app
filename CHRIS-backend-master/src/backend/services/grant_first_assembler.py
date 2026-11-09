@@ -11,7 +11,7 @@ Flow (per CLAUDE.md variant description):
      - LLM writes per-member reasons.
   3. Return N `GrantOption`s, each with its own derived team.
 
-Parallelization uses `ThreadPoolExecutor` — LLM calls are IO-bound, GIL releases
+Parallelization uses `ThreadPoolExecutor` - LLM calls are IO-bound, GIL releases
 on network I/O, so threads realize wall-clock speedup. If any single grant
 option fails, it is dropped from the response and the rest proceed.
 """

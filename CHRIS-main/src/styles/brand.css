@@ -1,9 +1,9 @@
-/* src/styles/brand.css — ARCHITECTURE.md §11. The only fixed design tokens.
+/* src/styles/brand.css - ARCHITECTURE.md §11. The only fixed design tokens.
    Palette (orange + charcoal) is unchanged; typography and warm neutrals follow the approved prototype v5. */
 :root {
   /* Brand */
   --orange-500:#FF5E1F; --orange-400:#FF8A4C; --orange-50:#FFF0E8;
-  --orange-ink:#B5410F;   /* orange text on light fills — AA contrast (orange-500 is ~2.9:1) */
+  --orange-ink:#B5410F;   /* orange text on light fills - AA contrast (orange-500 is ~2.9:1) */
   --charcoal-900:#1D1D1F; --charcoal-700:#404041; --charcoal-500:#6D6E71; --charcoal-300:#BCBEC0;
 
   /* Warm neutrals (prototype v5) */
@@ -23,7 +23,7 @@
   /* Legacy neutrals kept for compatibility */
   --bg:var(--canvas); --surface:var(--inset); --border:var(--line);
 
-  /* Semantics — small marks only (dots, lines, text), never large areas */
+  /* Semantics - small marks only (dots, lines, text), never large areas */
   --ok:#16A34A; --gap:#D97706; --stale:#9CA3AF; --risk:#DC2626; --info:#2563EB;
 
   /* 6 dimensions */
@@ -36,8 +36,8 @@
   --font-mono:"Geist Mono",ui-monospace,SFMono-Regular,monospace;
   --font-nav:"Montserrat",ui-sans-serif,system-ui,sans-serif;   /* buttons: 500, 14 px, lowercase */
 
-  /* Motion — every hover / focus / active transition uses these two tokens */
-  --dur-hover:450ms;    /* every hover / focus / active transition — same as buttons */
+  /* Motion - every hover / focus / active transition uses these two tokens */
+  --dur-hover:450ms;    /* every hover / focus / active transition - same as buttons */
   --dur-button:450ms;   /* buttons: white spill, arrow turn and trace are slower and more deliberate */
   --ease-out:cubic-bezier(.22,1,.36,1);
 

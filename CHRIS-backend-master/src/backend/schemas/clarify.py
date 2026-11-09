@@ -1,6 +1,6 @@
 """Clarification ("doptávání"): follow-up questions when the initial prompt is incomplete.
 
-Stateless — the client sends the prompt, composer context and every finished
+Stateless - the client sends the prompt, composer context and every finished
 round (questions + answers); the backend returns the next round, or `ready=True`
 together with a `brief` that is fed into POST /match.
 
@@ -84,7 +84,7 @@ class ClarifyRequest(BaseModel):
     prompt: str = Field(..., min_length=5, max_length=4000)
     context: ClarifyContext = Field(default_factory=ClarifyContext)
     history: list[AnsweredRound] = Field(default_factory=list, max_length=MAX_ROUNDS + 1)
-    # "Přeskočit a hledat hned" — no more questions, just distil the brief.
+    # "Přeskočit a hledat hned" - no more questions, just distil the brief.
     finish: bool = False
 
 

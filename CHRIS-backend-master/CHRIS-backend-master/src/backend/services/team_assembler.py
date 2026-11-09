@@ -68,7 +68,7 @@ def _fallback_match(
         team.append(TeamMember(role=fallback_role, group=group, score=score))
     grants = match_grants(query, grants_top_k)
     title_res = generate_study_title_full(query, context=context)
-    # Technologies also need LLM — skip in fallback.
+    # Technologies also need LLM - skip in fallback.
     return MatchResult(
         query=query,
         title=title_res.title,

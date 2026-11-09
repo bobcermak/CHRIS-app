@@ -78,7 +78,7 @@ test.describe('home', () => {
     await page.getByRole('tab', { name: 'Grant-first' }).click()
     const url = page.url()
 
-    await page.getByRole('link', { name: 'CHRIS – úvod' }).click()
+    await page.getByRole('link', { name: 'CHRIS - úvod' }).click()
     await expect(page).toHaveURL(/\/$/)
     const recent = page.getByRole('region', { name: 'Rozpracované projekty' })
     await expect(recent.getByText('Nádorové mikroprostředí mozkových metastáz')).toBeVisible()

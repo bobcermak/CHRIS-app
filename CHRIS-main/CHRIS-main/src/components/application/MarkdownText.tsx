@@ -1,8 +1,8 @@
 import type { ReactNode } from 'react'
 
 /**
- * The small markdown subset the copilot and users write in sections — paragraphs, `#` headings,
- * `-`/`*`/`•` and `1.` lists, **bold** and *italic* — rendered as React elements (text nodes
+ * The small markdown subset the copilot and users write in sections - paragraphs, `#` headings,
+ * `-`/`*`/`•` and `1.` lists, **bold** and *italic* - rendered as React elements (text nodes
  * only, never raw HTML). Used for the printed / PDF version of the application.
  */
 export function MarkdownText({ text }: { text: string }) {

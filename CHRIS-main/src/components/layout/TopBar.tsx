@@ -17,7 +17,7 @@ export function TopBar({ minimal = false }: { minimal?: boolean }) {
       <div className="flex items-center gap-3">
         {!minimal && (
           <>
-            {/* Phones get the round icon button — a text-less pill would look squashed */}
+            {/* Phones get the round icon button - a text-less pill would look squashed */}
             <Button
               href="/"
               variant="icon"

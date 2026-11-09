@@ -32,7 +32,7 @@ export const keys = {
   research: (projectId: string, target: ResearchTarget) => ['project', projectId, 'research', target.kind, target.id] as const,
 }
 
-// The catalogue changes only when the backend reloads its data — a few minutes of cache is plenty.
+// The catalogue changes only when the backend reloads its data - a few minutes of cache is plenty.
 const CATALOGUE_STALE = 5 * 60_000
 
 export const projectQuery = (id: string) =>
@@ -173,7 +173,7 @@ export function useSaveSection(appId: string) {
 }
 
 /**
- * Deep research is a one-shot async call — wrap it in useQuery so the result is cached in-memory
+ * Deep research is a one-shot async call - wrap it in useQuery so the result is cached in-memory
  * for the whole session. Reopening the same group/grant/tech panel after it ran once is instant;
  * reloading the page drops the cache (that's the trade-off we picked).
  */

@@ -66,13 +66,13 @@ export function ClarifyPage() {
     setClarify(id, { done, current, trace })
   }, [id, done, current, trace, setClarify])
 
-  // First round on entry (unless the project already has teams — then offer to go there).
+  // First round on entry (unless the project already has teams - then offer to go there).
   const started = useRef(false)
   useEffect(() => {
     if (started.current || !project.data || existingMatch.isPending || existingMatch.data) return
     started.current = true
     if (initial?.current) return // the open round is restored as it was
-    if (initial?.done.length) void matchStream.start(data.match(id)) // left while teams were being composed — finish it
+    if (initial?.done.length) void matchStream.start(data.match(id)) // left while teams were being composed - finish it
     else void clarify.start(data.clarify(id))
   }, [project.data, existingMatch.isPending, existingMatch.data, clarify, matchStream, id, initial])
 
@@ -105,7 +105,7 @@ export function ClarifyPage() {
             {done.length > 0 ? (
               done.map((d) => <AnsweredRound key={d.round.round} round={d.round} answers={d.answers} />)
             ) : (
-              // Only with saved progress — without it we don't know whether questions were asked.
+              // Only with saved progress - without it we don't know whether questions were asked.
               initial && <p className="text-small text-text-muted">Zadání stačilo, nebylo potřeba se doptávat.</p>
             )}
             <div className="flex flex-col items-start gap-4">

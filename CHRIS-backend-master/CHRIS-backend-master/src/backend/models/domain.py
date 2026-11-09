@@ -24,7 +24,7 @@ class Group(BaseModel):
 
 
 class Grant(BaseModel):
-    """A funding opportunity relevant to NÚVR research. Hand-curated for the demo —
+    """A funding opportunity relevant to NÚVR research. Hand-curated for the demo -
     real pipeline would scrape ISVAVAI (CZ) + EU Funding & Tenders.
 
     `description` is the main semantic signal for embedding search; the structured
@@ -39,7 +39,7 @@ class Grant(BaseModel):
     url: str = ""
     deadline: str = ""   # ISO date; "" if rolling / unknown
     budget: str = ""     # free-text, e.g. "max 15 M Kč / projekt"
-    duration: str = ""   # free-text, e.g. "3–5 let"
+    duration: str = ""   # free-text, e.g. "3-5 let"
     description: str = ""
     keywords: list[str] = Field(default_factory=list)
     eligible_applicants: str = ""

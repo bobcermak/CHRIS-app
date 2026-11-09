@@ -29,7 +29,7 @@ class TeamMember(BaseModel):
 
 
 class Gap(BaseModel):
-    """A role no NÚVR group fits well enough — left empty instead of forcing a weak match."""
+    """A role no NÚVR group fits well enough - left empty instead of forcing a weak match."""
 
     role: Role
     reason: str

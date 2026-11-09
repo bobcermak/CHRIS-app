@@ -1,5 +1,5 @@
 """POST /templates/resolve tests. HTTP is served by httpx.MockTransport, DNS is faked,
-the LLM is faked — nothing leaves the machine."""
+the LLM is faked - nothing leaves the machine."""
 
 import io
 from typing import Any

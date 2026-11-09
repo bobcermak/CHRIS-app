@@ -18,7 +18,7 @@ interface EmailPanelProps {
 const field =
   'w-full rounded-field border border-line bg-inset px-3.5 py-2.5 text-body text-text transition-colors hover:border-line-strong focus:border-line-strong focus:bg-card'
 
-/** Collaboration e-mail draft to edit and copy. Never sent from CHRIS — ARCHITECTURE §8.5. */
+/** Collaboration e-mail draft to edit and copy. Never sent from CHRIS - ARCHITECTURE §8.5. */
 export function EmailPanel({ projectId, group, onBack }: EmailPanelProps) {
   const draft = useEmailDraft(projectId, group.id, 'default')
 

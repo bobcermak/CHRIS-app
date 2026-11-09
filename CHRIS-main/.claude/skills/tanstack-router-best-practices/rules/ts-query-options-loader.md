@@ -9,7 +9,7 @@ Define query configurations with `queryOptions()` and share them between route l
 ## Bad Example
 
 ```tsx
-// Inline query config — duplicated between loader and component, easy to desync
+// Inline query config - duplicated between loader and component, easy to desync
 export const Route = createFileRoute('/posts/$postId')({
   loader: ({ params, context: { queryClient } }) =>
     queryClient.ensureQueryData({
@@ -33,7 +33,7 @@ function PostPage() {
 ## Good Example
 
 ```tsx
-// Shared queryOptions — single source of truth
+// Shared queryOptions - single source of truth
 import { queryOptions } from '@tanstack/react-query'
 
 const postQueryOptions = (postId: string) =>
@@ -45,7 +45,7 @@ const postQueryOptions = (postId: string) =>
 
 export const Route = createFileRoute('/posts/$postId')({
   loader: async ({ params, context: { queryClient } }) => {
-    // Return void — avoids unnecessary type inference on loader return
+    // Return void - avoids unnecessary type inference on loader return
     await queryClient.ensureQueryData(postQueryOptions(params.postId))
   },
   component: PostPage,
@@ -53,7 +53,7 @@ export const Route = createFileRoute('/posts/$postId')({
 
 function PostPage() {
   const { postId } = Route.useParams()
-  // Same queryOptions — guaranteed cache hit, fully typed
+  // Same queryOptions - guaranteed cache hit, fully typed
   const { data: post } = useSuspenseQuery(postQueryOptions(postId))
   return <div>{post.title}</div>
 }
@@ -62,7 +62,7 @@ function PostPage() {
 ## Good Example: Organizing Query Options
 
 ```tsx
-// api/posts.ts — centralized query option factories
+// api/posts.ts - centralized query option factories
 import { queryOptions } from '@tanstack/react-query'
 
 export const postsQueryOptions = () =>
@@ -87,6 +87,6 @@ export const postCommentsQueryOptions = (postId: string) =>
 ## Context
 
 - `queryOptions()` returns a typed config object reusable across `ensureQueryData`, `useSuspenseQuery`, `useQuery`, and `prefetchQuery`
-- Use `async`/`await` in loaders to return `Promise<void>` — this reduces TypeScript inference burden
+- Use `async`/`await` in loaders to return `Promise<void>` - this reduces TypeScript inference burden
 - Keep query option factories in separate files to avoid circular imports between routes
 - `useSuspenseQuery` is preferred over `useQuery` when the loader guarantees data exists

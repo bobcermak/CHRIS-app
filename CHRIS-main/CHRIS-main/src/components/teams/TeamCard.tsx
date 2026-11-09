@@ -31,7 +31,7 @@ const MAP_MIN_HEIGHT = 280;
 interface TeamCardProps {
   variant: TeamVariant;
   groups: Record<string, Group>;
-  /** The edit in progress (↻ / ✕ on one group) — that row shows it until the backend answers. */
+  /** The edit in progress (↻ / ✕ on one group) - that row shows it until the backend answers. */
   busy?: { groupId: string; action: MemberAction } | null;
   lastDiff: TeamDiff | null;
   recompute: Pick<
@@ -46,15 +46,15 @@ interface TeamCardProps {
   onSearchAgain: () => void;
   /** "Přidat dalšího člověka" under the list. */
   addSlot?: ReactNode;
-  /** Groups just added by hand — marked like recompute additions. */
+  /** Groups just added by hand - marked like recompute additions. */
   fresh?: string[];
-  /** Edit mode entered — the page keeps a snapshot of the team. */
+  /** Edit mode entered - the page keeps a snapshot of the team. */
   onEditStart?: () => void;
-  /** ✕ in edit mode — the page restores that snapshot. */
+  /** ✕ in edit mode - the page restores that snapshot. */
   onEditCancel?: () => void;
 }
 
-/** Team of research groups (no team score, only a plain description — prototype rules). */
+/** Team of research groups (no team score, only a plain description - prototype rules). */
 export function TeamCard(props: TeamCardProps) {
   const {
     variant,
@@ -78,7 +78,7 @@ export function TeamCard(props: TeamCardProps) {
     ...(lastDiff?.after.id === variant.id ? lastDiff.added : []),
     ...(fresh ?? []),
   ]);
-  // Always ranked by match at render time — also teams stored before ranking existed and demo data.
+  // Always ranked by match at render time - also teams stored before ranking existed and demo data.
   const members = [...variant.members].sort(byMatch);
   const n = members.length;
 
@@ -209,7 +209,7 @@ export function TeamCard(props: TeamCardProps) {
         )}
       </AnimatePresence>
 
-      {/* Unfilled roles — also for an empty team (the AI sizes the team; it may find nobody). */}
+      {/* Unfilled roles - also for an empty team (the AI sizes the team; it may find nobody). */}
       {variant.gaps.length > 0 && (
         <ul className="mt-3 flex flex-col gap-1.5 px-1">
           {variant.gaps.map((gap) => (
@@ -238,7 +238,7 @@ export function TeamCard(props: TeamCardProps) {
           <motion.div
             key="map"
             // The row folds 1fr → 0fr: on wide screens the map fills what the card has left (flex
-            // basis 0), on narrow ones it keeps its own minimum height — both collapse the same way.
+            // basis 0), on narrow ones it keeps its own minimum height - both collapse the same way.
             // The minimum height keeps the map visible when the grant column is not taller than the
             // people (e.g. Grant-first with few calls): the card grows and the grant column follows.
             initial={{ opacity: 0, flexGrow: 0, paddingTop: 0, minHeight: 0, gridTemplateRows: "0fr" }}

@@ -198,7 +198,7 @@ export function CatalogPage() {
               type="search"
               value={text}
               onChange={(e) => setText(e.target.value)}
-              placeholder={tab === 'skupiny' ? 'Téma, metoda nebo jméno — např. imunoterapie' : 'Téma nebo typ výzvy — např. prevence nádorů'}
+              placeholder={tab === 'skupiny' ? 'Téma, metoda nebo jméno - např. imunoterapie' : 'Téma nebo typ výzvy - např. prevence nádorů'}
               className={cn(FIELD, 'w-full pr-10 pl-11 [&::-webkit-search-cancel-button]:hidden')}
             />
             {text && (

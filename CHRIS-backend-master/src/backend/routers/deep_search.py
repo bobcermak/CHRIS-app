@@ -1,4 +1,4 @@
-"""Deep search endpoints — Perplexity-backed enrichment for a single entity.
+"""Deep search endpoints - Perplexity-backed enrichment for a single entity.
 
 Three endpoints (one per entity type) because scopes differ. All return the
 same `DeepSearchResult` shape. 503 is used for upstream Perplexity failures

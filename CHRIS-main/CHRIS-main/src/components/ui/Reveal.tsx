@@ -5,7 +5,7 @@ type Kind = 'rise' | 'unfold' | 'line'
 
 interface RevealProps extends HTMLMotionProps<'div'> {
   kind?: Kind
-  /** Seconds; use small steps (0.04–0.08) to cascade neighbours. */
+  /** Seconds; use small steps (0.04-0.08) to cascade neighbours. */
   delay?: number
   /** Corner radius the unfold clip ends on (px). */
   radius?: number
@@ -15,9 +15,9 @@ const VIEWPORT = { once: true, amount: 0.15, margin: '0px 0px -8% 0px' } as cons
 
 /**
  * Viewport entrance (max 400 ms, once):
- * - rise   — fades in and settles 16 px upwards, de-blurring like a slide coming into focus
- * - unfold — a card opens from a narrow band to its full shape (clip-path), like a sheet being uncovered
- * - line   — a hairline draws itself from the left
+ * - rise   - fades in and settles 16 px upwards, de-blurring like a slide coming into focus
+ * - unfold - a card opens from a narrow band to its full shape (clip-path), like a sheet being uncovered
+ * - line   - a hairline draws itself from the left
  * Reduced motion → plain fade.
  */
 export function Reveal({ kind = 'rise', delay = 0, radius = 28, children, ...props }: RevealProps) {

@@ -214,7 +214,7 @@ def _docx_sources(data: bytes, name: str, url: str, prefix: str) -> list[Source]
         if not text:
             continue
         style = (p.style.name if p.style is not None else "").lower()
-        # Keep headings visible — they usually are the outline.
+        # Keep headings visible - they usually are the outline.
         lines.append(f"## {text}" if style.startswith(("heading", "nadpis", "title")) else text)
     for table in doc.tables:
         for row in table.rows:

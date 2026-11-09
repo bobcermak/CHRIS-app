@@ -9,7 +9,7 @@ router = APIRouter(tags=["copilot"])
 
 @router.post("/copilot")
 def post_copilot(req: CopilotRequest) -> CopilotResult:
-    """Application copilot — a strict panel reviewer that helps with the whole application.
+    """Application copilot - a strict panel reviewer that helps with the whole application.
 
     - `oppose` (default): formal checks + panel review of every section, a per-criterion
       score, and `reply` to `instruction` (the copilot chat). An LLM outage still returns

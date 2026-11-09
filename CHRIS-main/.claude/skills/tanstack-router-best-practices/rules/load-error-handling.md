@@ -4,7 +4,7 @@
 
 ## Explanation
 
-Loader errors are caught by the route's `errorComponent` (or the router's `defaultErrorComponent`). Use `router.invalidate()` to retry after loader errors — not the `reset` function, which only resets React render errors. For missing resources, throw `notFound()` instead of returning null. When using TanStack Query, also reset the query error boundary state.
+Loader errors are caught by the route's `errorComponent` (or the router's `defaultErrorComponent`). Use `router.invalidate()` to retry after loader errors - not the `reset` function, which only resets React render errors. For missing resources, throw `notFound()` instead of returning null. When using TanStack Query, also reset the query error boundary state.
 
 ## Bad Example
 
@@ -12,7 +12,7 @@ Loader errors are caught by the route's `errorComponent` (or the router's `defau
 export const Route = createFileRoute('/posts/$postId')({
   loader: async ({ params }) => {
     const post = await fetchPost(params.postId)
-    return post // Could be null — component must handle it
+    return post // Could be null - component must handle it
   },
   errorComponent: ({ error, reset }) => (
     <div>
@@ -102,7 +102,7 @@ function PostError({ error, reset }: ErrorComponentProps) {
 export const Route = createFileRoute('/posts')({
   loader: () => fetchPosts(),
   onError: ({ error }) => {
-    // Called when loader throws — use for logging/reporting
+    // Called when loader throws - use for logging/reporting
     reportError(error)
   },
   onCatch: ({ error, errorInfo }) => {
@@ -114,9 +114,9 @@ export const Route = createFileRoute('/posts')({
 
 ## Context
 
-- Use `router.invalidate()` for loader errors — it reloads all active loaders and resets error boundaries
+- Use `router.invalidate()` for loader errors - it reloads all active loaders and resets error boundaries
 - Use `reset()` only for React render errors (component-level throws)
-- Throw `notFound()` for missing resources — don't return null and check in the component
-- `onError` fires when the loader throws — use it for logging, not recovery
+- Throw `notFound()` for missing resources - don't return null and check in the component
+- `onError` fires when the loader throws - use it for logging, not recovery
 - Router-wide defaults: set `defaultErrorComponent` on the router for a fallback
 - `ErrorComponent` from `@tanstack/react-router` provides a styled default you can use as a fallback

@@ -5,7 +5,7 @@ export const toPercent = (fraction: number) => Math.round(fraction * 100)
 
 /** ISO date → "30. 1. 2027" */
 export function formatDate(iso: string | undefined): string {
-  if (!iso) return '—'
+  if (!iso) return '-'
   const d = new Date(iso)
   return Number.isNaN(d.getTime()) ? iso : dateFmt.format(d)
 }

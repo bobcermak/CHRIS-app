@@ -11,7 +11,7 @@ interface StrategySwitchProps {
   available?: readonly Strategy[];
 }
 
-/** Variant pills — active one is black with a shared indicator that slides (§10.2 bod 5). */
+/** Variant pills - active one is black with a shared indicator that slides (§10.2 bod 5). */
 export function StrategySwitch({
   value,
   onChange,
